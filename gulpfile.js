@@ -29,7 +29,7 @@ function injectFiles (src, injectTo, dest) {
 	}
 	var target = gulp.src(injectTo),
 		sources = gulp.src(src, {read: false});
-	return target.pipe($.inject(sources, {addPrefix: "/"}))
+	return target.pipe($.inject(sources, {addPrefix: "", addRootSlash: false}))
 		.pipe(gulp.dest(dest));
 }
 

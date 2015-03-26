@@ -8,8 +8,8 @@
   <meta name="description" content="Aidata.me : This is a prototype for pixel managing for aidata.me tool.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- inject:css -->
-  <link rel="stylesheet" href="/css/dev/libs.concat.css">
-  <link rel="stylesheet" href="/css/dev/app.concat.css">
+  <link rel="stylesheet" href="css/prod/e947e9ab5aa16ec.libs.min.css">
+  <link rel="stylesheet" href="css/prod/fb9aced22451adc.app.min.css">
   <!-- endinject -->
   <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q || []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -19,15 +19,104 @@ ga('create', 'UA-58974646-1', 'auto');
 ga('send', 'pageview');</script>
 </head>
 <body>
-  <div ng-if="$root.preloading.page !== false" class="preloader"><div class="preloader_veil"></div><div class="preloader_message"><img src="/img/dots_preloader.gif" alt=""/><span>Loading, please wait ...</span></div></div><div class="header"><div class="header_wrapper"><div class="logo"><a ui-sref="dashboard.adaccounts"><img src="/img/logo.png" alt="Aidata logo" height="46px;"/></a></div><div class="user"><a href="https://github.com/yuriMalakhov/aidata" class="user_name">View on GitHub</a><a href="javascript: void 0;"><img src="/img/icons/icon-logout.png" alt="Logout icon" class="log-out-icon"/></a></div></div></div><div ng-controller="MainController" ng-class="{'content__visible': $root.preloading.page == false}" class="content"><div class="content_inner"><div ng-controller="TableController" class="table"><div ng-show="!$root.preloading.page" class="tablecontrols ng-cloak"><script type="text/ng-template" id="modal.html"><div class="modal-header"><h3 class="modal-title">Create new pixel</h3></div><div class="modal-body"><form role="form" id="pixel-form" action="#" method="get" class="pixelCreateForm"><div class="basic-option row"><div class="form-group col-lg-6 col-md-6"><label class="control-label">Pixel ID</label><input type="text" name="id" placeholder="Identifier for a new pixel" role="input" class="form-control"/></div><div class="form-group col-lg-6 col-md-6"><label class="control-label">Name</label><input type="text" name="name" placeholder="Displayed name" role="input" class="form-control"/></div></div><div class="sharing-options"><h4 class="sharing-options_header">Sharing options</h4><hr class="hr"/><div ng-repeat="option in options" class="sharing-option row"><div class="sharing-option-inner col-lg-12 col-md-12"><div class="form-group col-lg-6 col-md-6"><label class="control-label">Customer</label><div class="input-group"><div dropdown="dropdown" class="input-group-btn"><input type="hidden" value="[[selectedCustomer.id]]" name="id_externals-0-type" id="id_externals-0-type"/><button type="button" dropdown-toggle="dropdown-toggle" class="btn btn-default dropdown-toggle">[[selectedCustomer.name]]<span class="caret"></span></button><ul role="menu" class="dropdown-menu"><li ng-repeat="customer in customers" ng-class="{active: $parent.selectedCustomer.id == customer.id }" ng-click="$parent.selectedCustomer = customer"><span ng-bind="customer.name"></span></li></ul></div><input type="text" id="id_externals-0-customer_id" name="id_externals-0-customer_id" data-fv-notempty="true" data-fv-notempty-message="Customer ID is required." data-fv-digits="true" data-fv-digits-message="Customer ID value can contain only digits." placeholder="Customer ID" role="input" class="form-control"/></div></div><div class="form-group col-lg-6 col-md-6"><label class="control-label">Cost</label><div class="input-group"><div dropdown="dropdown" class="input-group-btn"><input type="hidden" value="[[selectedCurrency.id]]" id="id_externals-0-currency" name="id_externals-0-currency"/><button type="button" dropdown-toggle="dropdown-toggle" class="btn btn-default dropdown-toggle">[[selectedCurrency.name]]<span class="caret"></span></button><ul role="menu" class="dropdown-menu"><li ng-repeat="currency in currencies" ng-class="{active: $parent.selectedCurrency.id == currency.id }" ng-click="$parent.selectedCurrency = currency"><span ng-bind="currency.name"></span></li></ul></div><input type="text" role="input" id="id_externals-0-cost" data-fv-notempty="true" data-fv-notempty-message="Cost value is required." data-fv-regexp="true" data-fv-regexp-regexp="^[0-9]*.?[0-9]{1,2}$" data-fv-regexp-message="Cost value must be numeric and can't have less than 1 or more than 2 decimal places." placeholder="Cost Value" name="id_externals-0-cost" class="form-control"/></div></div></div><div ng-click="options.splice($index, 1)" ng-show="options.length &gt; 1" class="trash"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></div></div><div class="sharing-options_add"><div ng-click="options.push({})" class="btn btn-sm btn-success">Add Option</div></div></div><div class="modal-footer row"><button type="submit" class="btn btn-primary">OK</button><button ng-click="cancel()" class="btn btn-warning">Cancel</button></div></form></div></script><button ng-click="openModal('lg')" class="btn btn-success btn-md">Create Pixel</button></div><div ng-class="{'tablegrid__visible': gridOptions.data.length}" class="tablegrid"><div role="alert" ng-hide="gridOptions.data.length" class="alert alert-info"><span>You haven't created any pixels yet! Please, create new one.</span></div><div ng-show="gridOptions.data.length" ui-grid="gridOptions" external-scopes="gridScope" ui-grid-selection="ui-grid-selection" ui-grid-pinning="ui-grid-pinning" ui-grid-resize-columns="ui-grid-resize-columns" ui-grid-auto-resize="ui-grid-auto-resize" ui-grid-move-columns="ui-grid-move-columns" ui-grid-exporter="ui-grid-exporter" ui-grid-save-state="ui-grid-save-state" class="tablegrid_grid"></div></div></div></div></div><div class="footer"><div class="footer_inner"><p class="footer_project-author">Aidata.me maintained by <a href="https://github.com/yuriMalakhov">yuriMalakhov</a></p></div></div>
+  
+<div ng-if="$root.preloading.page !== false" class="preloader">
+  <div class="preloader_veil"></div>
+  <div class="preloader_message"><img src="img/dots_preloader.gif" alt=""/><span>Loading, please wait ...</span></div>
+</div>
+<div class="header">
+  <div class="header_wrapper">
+    <div class="logo"><a ui-sref="dashboard.adaccounts"><img src="img/logo.png" alt="Aidata logo" height="46px;"/></a></div>
+    <div class="user"><a href="https://github.com/yuriMalakhov/aidata" class="user_name">View on GitHub</a><a href="javascript: void 0;"><img src="img/icons/icon-logout.png" alt="Logout icon" class="log-out-icon"/></a></div>
+  </div>
+</div>
+<div ng-controller="MainController" ng-class="{'content__visible': $root.preloading.page == false}" class="content">
+  <div class="content_inner">
+    <div ng-controller="TableController" class="table">
+      <div ng-show="!$root.preloading.page" class="tablecontrols ng-cloak">
+        <script type="text/ng-template" id="modal.html">
+          <div class="modal-header">
+            <h3 class="modal-title">Create new pixel</h3>
+          </div>
+          <div class="modal-body">
+            <form role="form" id="pixel-form" action="#" method="get" class="pixelCreateForm">
+              <div class="basic-option row">
+                <div class="form-group col-lg-6 col-md-6">
+                  <label class="control-label">Pixel ID</label>
+                  <input type="text" name="id" placeholder="Identifier for a new pixel" role="input" class="form-control"/>
+                </div>
+                <div class="form-group col-lg-6 col-md-6">
+                  <label class="control-label">Name</label>
+                  <input type="text" name="name" placeholder="Displayed name" role="input" class="form-control"/>
+                </div>
+              </div>
+              <div class="sharing-options">
+                <h4 class="sharing-options_header">Sharing options</h4>
+                <hr class="hr"/>
+                <div ng-repeat="option in options" class="sharing-option row">
+                  <div class="sharing-option-inner col-lg-12 col-md-12">
+                    <div class="form-group col-lg-6 col-md-6">
+                      <label class="control-label">Customer</label>
+                      <div class="input-group">
+                        <div dropdown="dropdown" class="input-group-btn">
+                          <input type="hidden" value="[[selectedCustomer.id]]" name="id_externals-0-type" id="id_externals-0-type"/>
+                          <button type="button" dropdown-toggle="dropdown-toggle" class="btn btn-default dropdown-toggle">[[selectedCustomer.name]]<span class="caret"></span></button>
+                          <ul role="menu" class="dropdown-menu">
+                            <li ng-repeat="customer in customers" ng-class="{active: $parent.selectedCustomer.id == customer.id }" ng-click="$parent.selectedCustomer = customer"><span ng-bind="customer.name"></span></li>
+                          </ul>
+                        </div>
+                        <input type="text" id="id_externals-0-customer_id" name="id_externals-0-customer_id" data-fv-notempty="true" data-fv-notempty-message="Customer ID is required." data-fv-digits="true" data-fv-digits-message="Customer ID value can contain only digits." placeholder="Customer ID" role="input" class="form-control"/>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-6 col-md-6">
+                      <label class="control-label">Cost</label>
+                      <div class="input-group">
+                        <div dropdown="dropdown" class="input-group-btn">
+                          <input type="hidden" value="[[selectedCurrency.id]]" id="id_externals-0-currency" name="id_externals-0-currency"/>
+                          <button type="button" dropdown-toggle="dropdown-toggle" class="btn btn-default dropdown-toggle">[[selectedCurrency.name]]<span class="caret"></span></button>
+                          <ul role="menu" class="dropdown-menu">
+                            <li ng-repeat="currency in currencies" ng-class="{active: $parent.selectedCurrency.id == currency.id }" ng-click="$parent.selectedCurrency = currency"><span ng-bind="currency.name"></span></li>
+                          </ul>
+                        </div>
+                        <input type="text" role="input" id="id_externals-0-cost" data-fv-notempty="true" data-fv-notempty-message="Cost value is required." data-fv-regexp="true" data-fv-regexp-regexp="^[0-9]*.?[0-9]{1,2}$" data-fv-regexp-message="Cost value must be numeric and can't have less than 1 or more than 2 decimal places." placeholder="Cost Value" name="id_externals-0-cost" class="form-control"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div ng-click="options.splice($index, 1)" ng-show="options.length &gt; 1" class="trash"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></div>
+                </div>
+                <div class="sharing-options_add">
+                  <div ng-click="options.push({})" class="btn btn-sm btn-success">Add Option</div>
+                </div>
+              </div>
+              <div class="modal-footer row">
+                <button type="submit" class="btn btn-primary">OK</button>
+                <button ng-click="cancel()" class="btn btn-warning">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </script>
+        <button ng-click="openModal('lg')" class="btn btn-success btn-md">Create Pixel</button>
+      </div>
+      <div ng-class="{'tablegrid__visible': gridOptions.data.length}" class="tablegrid">
+        <div role="alert" ng-hide="gridOptions.data.length" class="alert alert-info"><span>You haven't created any pixels yet! Please, create new one.</span></div>
+        <div ng-show="gridOptions.data.length" ui-grid="gridOptions" external-scopes="gridScope" ui-grid-selection="ui-grid-selection" ui-grid-pinning="ui-grid-pinning" ui-grid-resize-columns="ui-grid-resize-columns" ui-grid-auto-resize="ui-grid-auto-resize" ui-grid-move-columns="ui-grid-move-columns" ui-grid-exporter="ui-grid-exporter" ui-grid-save-state="ui-grid-save-state" class="tablegrid_grid"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="footer_inner">
+    <p class="footer_project-author">Aidata.me maintained by <a href="https://github.com/yuriMalakhov">yuriMalakhov</a></p>
+  </div>
+</div>
   <script>
     window.__pixels = [{"pixel_id":"PURINA-ONE","status":"Approved","name":"Nestle Purina One App","size":750000,"created":1427356032183},{"pixel_id":"PURINA","status":"Approved","name":"Nestle Purina One Web Site","size":3500000,"created":1427356176913},{"pixel_id":"NESTLE-001","status":"Approved","name":"Nestle Test 1","size":1300000,"created":1427356218075},{"pixel_id":"NESTLE-002","status":"Not Approved","name":"Nestle Test 2","size":0,"created":1427356255975},{"pixel_id":"NESTLE-003","status":"Rejected","name":"Nestle Test 3","size":0,"created":1427356305766},{"pixel_id":"NESTLE-004","status":"Rejected","name":"Nestle Test 4","size":0,"created":1427356361774}];
     window.__customers = [{"id":"1","name":"Google DDP"},{"id":"2","name":"AppNexus"},{"id":"3","name":"Audience Science"},{"id":"4","name":"Videology"}];
     window.__currencies = [{"name":"Argentine Peso","id":"ARS"},{"name":"Australian Dollar","id":"AUD"},{"name":"Bahraini Dinar","id":"BHD"},{"name":"Bolivian Boliviano","id":"BOB"},{"name":"Brazilian Real","id":"BRL"},{"name":"Bulgarian Lev","id":"BGN"},{"name":"British Pound","id":"GBP"},{"name":"Canadian Dollar","id":"CAD"},{"name":"Chilean Peso","id":"CLP"},{"name":"Chinese Yuan","id":"CNY"},{"name":"Colombian Peso","id":"COP"},{"name":"Costa Rican Colon","id":"CRC"},{"name":"Croatian Kuna","id":"HRK"},{"name":"Czech Koruna","id":"CZK"},{"name":"Danish Krone","id":"DKK"},{"name":"Dominican Peso","id":"DOP"},{"name":"Egyptian Pound","id":"EGP"},{"name":"Estonian Kroon","id":"EEK"},{"name":"Euro","id":"EUR"},{"name":"Guatemalan Quetza","id":"GTQ"},{"name":"Honduran Lempira","id":"HNL"},{"name":"Hong Kong Dollar","id":"HKD"},{"name":"Hungarian Forint","id":"HUF"},{"name":"Iceland Krona","id":"ISK"},{"name":"Indian Rupee","id":"INR"},{"name":"Indonesian Rupiah","id":"IDR"},{"name":"Israeli New Shekel","id":"ILS"},{"name":"Japanese Yen","id":"JPY"},{"name":"Jordanian Dinar","id":"JOD"},{"name":"Korean Won","id":"KRW"},{"name":"Latvian Lats","id":"LVL"},{"name":"Lithuanian Litas","id":"LTL"},{"name":"Macau Patacas","id":"MOP"},{"name":"Malaysian Ringgit","id":"MYR"},{"name":"Mexican Peso","id":"MXN"},{"name":"New Zealand Dollar","id":"NZD"},{"name":"Nicaraguan Cordoba","id":"NIO"},{"name":"Norwegian Krone","id":"NOK"},{"name":"Paraguayan Guarani","id":"PYG"},{"name":"Peruvian Nuevo Sol","id":"PEN"},{"name":"Philippine Peso","id":"PHP"},{"name":"Polish Zloty","id":"PLN"},{"name":"Qatari Rials","id":"QAR"},{"name":"Romanian Leu","id":"RON"},{"name":"Russian Ruble","id":"RUB"},{"name":"Saudi Arabian Riyal","id":"SAR"},{"name":"Serbian Dinar","id":"RSD"},{"name":"Singapore Dollar","id":"SGD"},{"name":"Slovak Koruna","id":"SKK"},{"name":"South African Rand","id":"ZAR"},{"name":"Swedish Krona","id":"SEK"},{"name":"Swiss Franc","id":"CHF"},{"name":"Taiwan Dollar","id":"TWD"},{"name":"Thai Baht","id":"THB"},{"name":"Turkish Lira","id":"TRY"},{"name":"Uae Dirham","id":"AED"},{"name":"Ukrainian Hryvnia","id":"UAH"},{"name":"United States Dollar","id":"USD"},{"name":"Uruguay Peso","id":"UYU"},{"name":"Venezuelan Bolivar","id":"VEF"},{"name":"Vietnamese Dong","id":"VND"}];
   </script>
   <!-- inject:js -->
-  <script src="/js/dev/libs.concat.js"></script>
-  <script src="/js/dev/app.concat.js"></script>
+  <script src="js/prod/6f3c368ce27bde9.libs.min.js"></script>
+  <script src="js/prod/34652e2812a8e3b.app.min.js"></script>
   <!-- endinject -->
 </body>
 </html>

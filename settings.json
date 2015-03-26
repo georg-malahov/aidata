@@ -1,56 +1,56 @@
 {
   "pathToWatch": {
-    "css": "./css/dev",
-    "js": "./js/dev"
+    "css": "css/dev",
+    "js": "js/dev"
   },
   "dev_borschik": {
     "css": [
-      "node_modules/.bin/borschik --minimize=no -i ./css/dev/libs.css -o ./css/dev/libs.concat.css",
-      "node_modules/.bin/borschik --minimize=no -i ./css/dev/app.css -o ./css/dev/app.concat.css"
+      "node_modules/.bin/borschik --minimize=no -i css/dev/libs.css -o css/dev/libs.concat.css",
+      "node_modules/.bin/borschik --minimize=no -i css/dev/app.css -o css/dev/app.concat.css"
     ],
     "js": [
-      "node_modules/.bin/borschik --minimize=no -i ./js/dev/libs.js -o ./js/dev/libs.concat.js",
-      "node_modules/.bin/borschik --minimize=no -i ./js/dev/app.js -o ./js/dev/app.concat.js"
+      "node_modules/.bin/borschik --minimize=no -i js/dev/libs.js -o js/dev/libs.concat.js",
+      "node_modules/.bin/borschik --minimize=no -i js/dev/app.js -o js/dev/app.concat.js"
     ]
   },
   "prod_borschik": {
     "css": [
-      "node_modules/.bin/borschik --input=./css/dev/libs.css --output=./css/prod/libs.minified.css",
-      "node_modules/.bin/borschik --input=./css/dev/app.css --output=./css/prod/app.minified.css"
+      "node_modules/.bin/borschik --input=css/dev/libs.css --output=css/prod/libs.minified.css",
+      "node_modules/.bin/borschik --input=css/dev/app.css --output=css/prod/app.minified.css"
     ],
     "js": [
-      "node_modules/.bin/borschik --input=./js/dev/libs.js --output=./js/prod/libs.minified.js --tech-options='{\"uglify\":{\"compress\":{\"drop_debugger\": true,\"dead_code\":true,\"unused\":true, \"join_vars\": true, \"if_return\": true, \"drop_console\": true}}}'",
-      "node_modules/.bin/borschik --input=./js/dev/app.js --output=./js/prod/app.minified.js --tech-options='{\"uglify\":{\"compress\":{\"drop_debugger\": true,\"dead_code\":true,\"unused\":true, \"join_vars\": true, \"if_return\": true, \"drop_console\": true}}}'"
+      "node_modules/.bin/borschik --input=js/dev/libs.js --output=js/prod/libs.minified.js --tech-options='{\"uglify\":{\"compress\":{\"drop_debugger\": true,\"dead_code\":true,\"unused\":true, \"join_vars\": true, \"if_return\": true, \"drop_console\": true}}}'",
+      "node_modules/.bin/borschik --input=js/dev/app.js --output=js/prod/app.minified.js --tech-options='{\"uglify\":{\"compress\":{\"drop_debugger\": true,\"dead_code\":true,\"unused\":true, \"join_vars\": true, \"if_return\": true, \"drop_console\": true}}}'"
     ]
   },
   "dev_files": {
     "css": [
-      "./css/dev/libs.concat.css",
-      "./css/dev/app.concat.css"
+      "css/dev/libs.concat.css",
+      "css/dev/app.concat.css"
     ],
     "js": [
-      "./js/dev/libs.concat.js",
-      "./js/dev/app.concat.js"
+      "js/dev/libs.concat.js",
+      "js/dev/app.concat.js"
     ]
   },
   "prod_files": {
     "css": [
-      "./css/prod/libs.minified.css",
-      "./css/prod/app.minified.css"
+      "css/prod/libs.minified.css",
+      "css/prod/app.minified.css"
     ],
     "js": [
-      "./js/prod/libs.minified.js",
-      "./js/prod/app.minified.js"
+      "js/prod/libs.minified.js",
+      "js/prod/app.minified.js"
     ]
   },
   "prod_files_to_inject": {
     "css": [
-      "./css/prod/*.libs.min.css",
-      "./css/prod/*.app.min.css"
+      "css/prod/*.libs.min.css",
+      "css/prod/*.app.min.css"
     ],
     "js": [
-      "./js/prod/*.libs.min.js",
-      "./js/prod/*.app.min.js"
+      "js/prod/*.libs.min.js",
+      "js/prod/*.app.min.js"
     ]
   }
 }

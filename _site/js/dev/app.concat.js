@@ -25,8 +25,6 @@ angular.module('app').controller('MainController', [
       modalInstance = $modal.open({
         templateUrl: 'modal.html',
         controller: 'ModalController',
-        backdrop: 'static',
-        keyboard: false,
         size: size,
         resolve: {
           items: function() {

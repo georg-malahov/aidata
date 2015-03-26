@@ -23,7 +23,7 @@ angular.module('app').directive("tablecontrolPreview", ['$rootScope', '$timeout'
                                 </script>
                               """
                 return """
-                  <textarea class="form-control" readonly onclick="this.focus();this.select()">#{pixel_code}</textarea>
+                  <textarea class="form-control" readonly rows="13" onclick="this.focus();this.select()">#{pixel_code}</textarea>
                 """
       placement: 'right'
       trigger: 'click'

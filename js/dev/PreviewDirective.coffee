@@ -1,7 +1,6 @@
 angular.module('app').directive("tablecontrolPreview", ['$rootScope', '$timeout', ($rootScope, $timeout) ->
   restrict: "CA"
   link: (scope, elm, attrs) ->
-    console.info("tablecontrolPreview inited")
     elm.popover({
       html: true
       container: 'body'

@@ -20,7 +20,7 @@ angular.module('app', ['ui.grid', 'ui.grid.edit', 'ui.grid.autoResize', 'ui.grid
 angular.module('app').controller('MainController', [
   '$scope', '$rootScope', '$modal', '$window', function($scope, $rootScope, $modal, $window) {
     $rootScope.preloading.page = false;
-    $scope.openModal = function(size) {
+    $scope.openModal = function(size, mode) {
       var modalInstance;
       modalInstance = $modal.open({
         templateUrl: 'modal.html',
@@ -32,10 +32,11 @@ angular.module('app').controller('MainController', [
           }
         }
       });
+      modalInstance.mode = mode;
       return modalInstance.result.then(function(selectedItem) {
         return $scope.selected = selectedItem;
       }, function() {
-        return console.info('Modal dismissed at: ' + new Date());
+        return console.info('Modal dismissed at  : ' + new Date());
       });
     };
     if (!$window.__pixels.length) {
@@ -52,7 +53,11 @@ angular.module('app').controller('ModalController', [
   '$scope', '$rootScope', '$modalInstance', '$window', function($scope, $rootScope, $modalInstance, $window) {
     $scope.customers = $window.__customers;
     $scope.currencies = $window.__currencies;
-    $scope.pixel = $rootScope.editedPixel || {};
+    $scope.mode = $modalInstance.mode;
+    $rootScope.pixel = $rootScope.pixel || {};
+    if ($scope.mode === 'edit') {
+      $rootScope.pixel = $rootScope.editedPixel;
+    }
     $scope.defaultOption = {
       "new": 1,
       customer: {
@@ -69,7 +74,7 @@ angular.module('app').controller('ModalController', [
       defaultOption = angular.fromJson(angular.toJson($scope.defaultOption));
       return defaultOption;
     };
-    $scope.pixelOptions = $scope.pixel.options || [$scope.getDefaultOption()];
+    $scope.pixelOptions = $rootScope.pixel.options || [$scope.getDefaultOption()];
     $scope.ok = function() {
       return $modalInstance.close();
     };
@@ -91,8 +96,6 @@ angular.module('app').controller('TableController', [
     $scope.endSym = $interpolate.endSymbol();
     editPixelTooltip = "Select at least one pixel from the table.";
     $scope.editPixelTooltip = editPixelTooltip;
-    console.log("$window.__pixels: ", $window.__pixels);
-    console.log("ColumnsService: ", ColumnsService);
     $scope.preloading.page = false;
     return $scope.gridOptions = {
       saveScroll: false,
@@ -142,7 +145,6 @@ angular.module('app').directive("tablecontrolPreview", [
       restrict: "CA",
       link: function(scope, elm, attrs) {
         var onClick;
-        console.info("tablecontrolPreview inited");
         elm.popover({
           html: true,
           container: 'body',
@@ -216,20 +218,13 @@ angular.module('app').directive("pixelCreateForm", [
                 }
               }
             }
+          }).on('success.form.fv', function(e) {
+            return $rootScope.pixel = {};
           });
         };
         $timeout(function() {
           return initValidation();
         }, 100);
-        $rootScope.resetForm = function() {
-          return elm.data('formValidation').resetForm();
-        };
-        $rootScope.updateForm = function() {
-          elm.data('formValidation').destroy();
-          return $timeout(function() {
-            return initValidation();
-          }, 100);
-        };
         elm.find(".sharing-options_add").click(function() {
           return $timeout(function() {
             var fields;

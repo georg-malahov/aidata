@@ -1,12 +1,12 @@
 div(class="tablecontrols ng-cloak", ng-show="!$root.preloading.page")
   include modal
   button(class="btn btn-success btn-md tablecontrol__create",
-    ng-click="openModal('lg')") Create Pixel
+    ng-click="openModal('lg', 'create')") Create Pixel
   div(class="tablecontrol_wrapper", tooltip="[[editPixelTooltip]]",
     ng-show="gridOptions.data.length")
     button(class="btn btn-success btn-md tablecontrol__edit",
       ng-disabled="!$root.editedPixel",
-      ng-click="openModal('lg')") Edit Pixel
+      ng-click="openModal('lg', 'edit')") Edit Pixel
   div(class="tablecontrol_wrapper", tooltip="[[editPixelTooltip]]",
     ng-show="gridOptions.data.length")
     button(class="btn btn-success btn-md tablecontrol__preview",

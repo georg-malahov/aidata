@@ -2,7 +2,7 @@
 angular.module('app').controller('MainController', [
   '$scope', '$rootScope', '$modal', '$window', function($scope, $rootScope, $modal, $window) {
     $rootScope.preloading.page = false;
-    $scope.openModal = function(size) {
+    $scope.openModal = function(size, mode) {
       var modalInstance;
       modalInstance = $modal.open({
         templateUrl: 'modal.html',
@@ -14,10 +14,11 @@ angular.module('app').controller('MainController', [
           }
         }
       });
+      modalInstance.mode = mode;
       return modalInstance.result.then(function(selectedItem) {
         return $scope.selected = selectedItem;
       }, function() {
-        return console.info('Modal dismissed at: ' + new Date());
+        return console.info('Modal dismissed at  : ' + new Date());
       });
     };
     if (!$window.__pixels.length) {

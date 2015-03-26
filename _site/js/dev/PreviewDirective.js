@@ -5,7 +5,6 @@ angular.module('app').directive("tablecontrolPreview", [
       restrict: "CA",
       link: function(scope, elm, attrs) {
         var onClick;
-        console.info("tablecontrolPreview inited");
         elm.popover({
           html: true,
           container: 'body',

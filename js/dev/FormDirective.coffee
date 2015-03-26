@@ -35,19 +35,13 @@ angular.module('app').directive("pixelCreateForm", ['$rootScope', '$timeout', ($
             }
           }
         }
-      })
+      }).on('success.form.fv', (e) ->
+        $rootScope.pixel = {}
+      )
 
     $timeout(->
       initValidation()
     , 100)
-
-    $rootScope.resetForm = () ->
-      elm.data('formValidation').resetForm()
-    $rootScope.updateForm = () ->
-      elm.data('formValidation').destroy()
-      $timeout(->
-        initValidation()
-      , 100)
 
     elm.find(".sharing-options_add").click(->
       $timeout(->

@@ -7,8 +7,6 @@ angular.module('app').controller('TableController', [
     $scope.endSym = $interpolate.endSymbol();
     editPixelTooltip = "Select at least one pixel from the table.";
     $scope.editPixelTooltip = editPixelTooltip;
-    console.log("$window.__pixels: ", $window.__pixels);
-    console.log("ColumnsService: ", ColumnsService);
     $scope.preloading.page = false;
     return $scope.gridOptions = {
       saveScroll: false,

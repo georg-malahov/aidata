@@ -39,20 +39,13 @@ angular.module('app').directive("pixelCreateForm", [
                 }
               }
             }
+          }).on('success.form.fv', function(e) {
+            return $rootScope.pixel = {};
           });
         };
         $timeout(function() {
           return initValidation();
         }, 100);
-        $rootScope.resetForm = function() {
-          return elm.data('formValidation').resetForm();
-        };
-        $rootScope.updateForm = function() {
-          elm.data('formValidation').destroy();
-          return $timeout(function() {
-            return initValidation();
-          }, 100);
-        };
         elm.find(".sharing-options_add").click(function() {
           return $timeout(function() {
             var fields;

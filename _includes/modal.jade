@@ -10,6 +10,7 @@ script(type="text/ng-template", id="modal.html")
             type="text",
             name="id",
             ng-model="pixel.pixel_id",
+            ng-disabled="mode == 'edit'",
             placeholder="Identifier for a new pixel",
             role="input")
         div(class="form-group col-lg-6 col-md-6")
@@ -33,7 +34,10 @@ script(type="text/ng-template", id="modal.html")
                   value="[[option.customer.type]]",
                   name="id_externals-[[$index]]-type",
                   id="id_externals-[[$index]]-type")
-                  button(type="button", class="btn btn-default dropdown-toggle", dropdown-toggle) [[(customers | filter: {type:option.customer.type})[0].name]]
+                  button(type="button",
+                    class="btn btn-default dropdown-toggle",
+                    ng-disabled="mode == 'edit' && !option.new",
+                    dropdown-toggle) [[(customers | filter: {type:option.customer.type})[0].name]]
                     span(class="caret")
                   ul(class="dropdown-menu" role="menu")
                     li(class="",
@@ -43,6 +47,7 @@ script(type="text/ng-template", id="modal.html")
                       span(class="", ng-bind="customer.name")
                 input(class="form-control",
                   type="text",
+                  ng-disabled="mode == 'edit' && !option.new",
                   id="id_externals-[[$index]]-customer_id",
                   name="id_externals-[[$index]]-customer_id",
                   ng-model="option.customer.id",
@@ -85,7 +90,7 @@ script(type="text/ng-template", id="modal.html")
               ng-show="option.new && pixelOptions.length > 1")
               span(class="glyphicon glyphicon-trash", aria-hidden="true")
             div(class="sharing-option_action sharing-option_action__checkbox",
-              ng-show="option.new != 1")
+              ng-show="!option.new")
               span [[option.new]]
               input(type="checkbox",
                 id="id_externals-[[$index]]-enabled",

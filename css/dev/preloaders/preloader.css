@@ -1,0 +1,41 @@
+.preloader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+.preloader_veil {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: auto;
+  background-color: #DEF0F5;
+  opacity: .3;
+}
+.preloader_message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: auto;
+  margin-left: -90px;
+  margin-top: -22.5px;
+  color: #232830;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: inherit;
+  border-radius: 3px;
+  padding: 5px 10px;
+  text-align: center;
+  box-sizing: border-box;
+  opacity: .8;
+}
+.preloader_message span {
+  position: relative;
+  display: inline-block;
+  left: 25px;
+}

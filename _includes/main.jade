@@ -1,0 +1,8 @@
+include preloader
+div(class="content",
+  ng-controller="MainController",
+  ng-class="{'content__visible': $root.preloading.page == false}")
+  div(class="content_inner")
+    div(class="table", ng-controller="TableController")
+      include tablecontrols
+      include tablegrid

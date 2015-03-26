@@ -1,0 +1,26 @@
+.sharing-option {
+  position: relative;
+  margin-bottom: 10px;
+  background-color: #F5F5F5;
+}
+.sharing-option .trash {
+  display: inline-block;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  margin-top: -12px;
+  cursor: pointer;
+}
+.sharing-option-inner {
+  padding: 7px 15px 15px 15px;
+}
+.sharing-option-inner .form-group {
+  margin: 0;
+}
+.sharing-options_add {
+  margin-bottom: 15px;
+  text-align: center;
+}
+.button-wrapper {
+  display: inline-block;
+}

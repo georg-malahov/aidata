@@ -1,0 +1,27 @@
+.grid_controls_chart {
+  text-align: center;
+  cursor: pointer;
+  opacity: .2;
+}
+.grid_controls_chart i {
+  position: relative;
+  top: 4px;
+}
+.grid_controls_chart.grid_controls_chart__header {
+  position: relative;
+  top: 4px;
+}
+.grid_controls_chart.grid_controls_chart__header.grid_controls_chart__selected {
+  background-color: inherit!important;
+}
+.grid_controls_chart [class^="flaticon-"]:before,
+.grid_controls_chart [class*=" flaticon-"]:before,
+.grid_controls_chart [class^="flaticon-"]:after,
+.grid_controls_chart [class*=" flaticon-"]:after {
+  font-size: 1.7rem;
+}
+.grid_controls_chart.grid_controls_chart__selected {
+  opacity: 1;
+  background-color: #eff5f8;
+  height: 30px;
+}

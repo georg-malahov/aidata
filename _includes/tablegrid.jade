@@ -1,0 +1,15 @@
+div(class="tablegrid", ng-class="{'tablegrid__visible': gridOptions.data.length}")
+  div(class="alert alert-info" role="alert", ng-hide="gridOptions.data.length")
+    span You haven't created any pixels yet! Please, create new one.
+  div(class="tablegrid_grid",
+    ng-show="gridOptions.data.length",
+    ui-grid="gridOptions",
+    external-scopes="gridScope",
+    ui-grid-selection,
+    ui-grid-pinning,
+    ui-grid-resize-columns,
+    ui-grid-auto-resize,
+    ui-grid-move-columns,
+    ui-grid-exporter,
+    ui-grid-save-state
+  )

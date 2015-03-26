@@ -1,0 +1,55 @@
+.dropdown-toggle {
+  border-radius: 4px!important;
+  border-top-right-radius: 0!important;
+  border-bottom-right-radius: 0!important;
+}
+.dropdown-toggle .caret {
+  margin-left: 10px;
+}
+.dropdown-menu {
+  max-height: 200px;
+  overflow: auto;
+}
+.dropdown-menu li.active {
+  background-color: #F5F5F5;
+}
+.dropdown-menu li > span {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.dropdown-menu li > span:hover {
+  background-color: #F5F5F5;
+}
+
+.sharing-option {
+  position: relative;
+  margin-bottom: 10px;
+  background-color: #F5F5F5;
+}
+.sharing-option .trash {
+  display: inline-block;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  margin-top: -12px;
+  cursor: pointer;
+}
+.sharing-option-inner {
+  padding: 7px 15px 15px 15px;
+}
+.sharing-option-inner .form-group {
+  margin: 0;
+}
+.sharing-options_add {
+  margin-bottom: 15px;
+  text-align: center;
+}
+.button-wrapper {
+  display: inline-block;
+}

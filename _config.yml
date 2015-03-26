@@ -1,0 +1,16 @@
+# Site settings
+title: Aidata.me
+ngAppName: app
+exclude:
+  - "package.json"
+  - "node_modules"
+  - "bower.json"
+  - "gulpfile.js"
+  - "*.coffee"
+  - "*.less"
+  - "*.jade"
+email: yuri.malakhov87@gmail.com
+github: https://github.com/yuriMalakhov/aidata
+description: "Aidata.me : This is a prototype for pixel managing for aidata.me tool."
+baseurl: ""
+url: ""

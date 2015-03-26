@@ -1,0 +1,19 @@
+.ng-hide,
+.ng-cloak {
+  display: block!important;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+.no-margin {
+  margin: 0;
+}
+.to-left {
+  text-align: left;
+}
+.to-right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}

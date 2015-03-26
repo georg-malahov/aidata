@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{site.title}}</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta http-equiv="content-language" content="ru">
+  <meta name="keywords" content="{{site.keywords}}">
+  <meta name="description" content="{{site.description}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/css/dev/libs.concat.css">
+  <link rel="stylesheet" href="/css/dev/app.concat.css">
+  <!-- endinject -->
+  {% include ga.html %}
+</head>
+<body>
+  {{ content }}
+  <script>
+    window.__pixels = {{site.data.table | jsonify}};
+    window.__customers = {{site.data.customers | jsonify}};
+    window.__currencies = {{site.data.currencies | jsonify}};
+  </script>
+  <!-- inject:js -->
+  <script src="/js/dev/libs.concat.js"></script>
+  <script src="/js/dev/app.concat.js"></script>
+  <!-- endinject -->
+</body>
+</html>

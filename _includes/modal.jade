@@ -1,0 +1,86 @@
+script(type="text/ng-template", id="modal.html")
+  div(class="modal-header")
+    h3(class="modal-title") Create new pixel
+  div(class="modal-body")
+    form(role="form", class="pixelCreateForm", id="pixel-form", action="#", method="get")
+      div(class="basic-option row")
+        div(class="form-group col-lg-6 col-md-6")
+          label(class="control-label") Pixel ID
+          input(class="form-control",
+            type="text",
+            name="id",
+            placeholder="Identifier for a new pixel",
+            role="input")
+        div(class="form-group col-lg-6 col-md-6")
+          label(class="control-label") Name
+          input(class="form-control",
+            type="text",
+            name="name",
+            placeholder="Displayed name",
+            role="input")
+      div(class="sharing-options")
+        h4(class="sharing-options_header") Sharing options
+        hr(class="hr")
+        div(class="sharing-option row", ng-repeat="option in options")
+          div(class="sharing-option-inner col-lg-12 col-md-12")
+            div(class="form-group col-lg-6 col-md-6")
+              label(class="control-label") Customer
+              div(class="input-group")
+                div(class="input-group-btn", dropdown)
+                  input(type="hidden",
+                  value="[[selectedCustomer.id]]",
+                  name="id_externals-0-type",
+                  id="id_externals-0-type")
+                  button(type="button", class="btn btn-default dropdown-toggle", dropdown-toggle) [[selectedCustomer.name]]
+                    span(class="caret")
+                  ul(class="dropdown-menu" role="menu")
+                    li(class="",
+                      ng-repeat="customer in customers",
+                      ng-class="{active: $parent.selectedCustomer.id == customer.id }",
+                      ng-click="$parent.selectedCustomer = customer")
+                      span(class="", ng-bind="customer.name")
+                input(class="form-control",
+                  type="text",
+                  id="id_externals-0-customer_id",
+                  name="id_externals-0-customer_id",
+                  data-fv-notempty="true",
+                  data-fv-notempty-message="Customer ID is required.",
+                  data-fv-digits="true",
+                  data-fv-digits-message="Customer ID value can contain only digits.",
+                  placeholder="Customer ID",
+                  role="input")
+            div(class="form-group col-lg-6 col-md-6")
+              label(class="control-label") Cost
+              div(class="input-group")
+                div(class="input-group-btn", dropdown)
+                  input(type="hidden",
+                  value="[[selectedCurrency.id]]",
+                  id="id_externals-0-currency",
+                  name="id_externals-0-currency")
+                  button(type="button", class="btn btn-default dropdown-toggle", dropdown-toggle) [[selectedCurrency.name]]
+                    span(class="caret")
+                  ul(class="dropdown-menu" role="menu")
+                    li(class="",
+                    ng-repeat="currency in currencies",
+                    ng-class="{active: $parent.selectedCurrency.id == currency.id }",
+                    ng-click="$parent.selectedCurrency = currency")
+                      span(class="", ng-bind="currency.name")
+                input(type="text", class="form-control",
+                  role="input",
+                  id="id_externals-0-cost",
+                  data-fv-notempty="true",
+                  data-fv-notempty-message="Cost value is required.",
+                  data-fv-regexp="true"
+                  data-fv-regexp-regexp="^[0-9]*\.?[0-9]{1,2}$"
+                  data-fv-regexp-message="Cost value must be numeric and can't have less than 1 or more than 2 decimal places.",
+                  placeholder="Cost Value",
+                  name="id_externals-0-cost")
+          div(class="trash",
+            ng-click="options.splice($index, 1)",
+            ng-show="options.length > 1")
+            span(class="glyphicon glyphicon-trash", aria-hidden="true")
+        div(class="sharing-options_add")
+          div(class="btn btn-sm btn-success", ng-click="options.push({})") Add Option
+      div(class="modal-footer row")
+        button(class="btn btn-primary", type="submit") OK
+        button(class="btn btn-warning", ng-click="cancel()") Cancel

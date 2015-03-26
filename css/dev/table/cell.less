@@ -1,0 +1,32 @@
+@import "../base/variables";
+.ui-grid-row:nth-child(odd) .ui-grid-cell,
+.ui-grid-row:nth-child(even) .ui-grid-cell
+{
+	background-color: inherit;
+}
+
+.ui-grid-cell {
+	background-color: inherit;
+	border-right: 		1px solid;
+	border-bottom: 		1px solid;
+	border-color: 		@tablegrid-inner-border-color;
+	box-sizing: 			border-box;
+}
+
+//.ui-grid-row:hover
+//{
+//	background-color: #F8FBFC !important;
+//}
+
+.ui-grid-row-selected>[ui-grid-row]>.ui-grid-cell {
+	background-color: #eff5f8 !important;
+}
+
+.ui-grid-selection-row-header-buttons.ui-grid-row-selected
+{
+	opacity: .5;
+}
+
+.ui-grid-pinned-container.ui-grid-pinned-container-left .ui-grid-header-cell:last-child {
+	border-color: #d4d4d4;
+}

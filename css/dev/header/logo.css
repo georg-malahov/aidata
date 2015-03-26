@@ -1,0 +1,12 @@
+.logo {
+  position: relative;
+  display: inline-block;
+  width: 215px;
+  left: 17px;
+  line-height: 70px;
+}
+.logo a {
+  position: relative;
+  top: -2px;
+  line-height: 66px;
+}

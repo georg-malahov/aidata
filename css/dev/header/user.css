@@ -1,0 +1,10 @@
+.user {
+  position: absolute;
+  top: 0;
+  right: 18px;
+  font-size: 13px;
+  line-height: 66px;
+}
+.user_name {
+  margin-right: 10px;
+}

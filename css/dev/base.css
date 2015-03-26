@@ -1,0 +1,59 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  position: relative;
+  min-height: 100%;
+  font-size: 10px;
+}
+body {
+  color: #232830;
+  padding-bottom: 49px;
+  min-height: 100%;
+  margin: 0;
+  background-color: #f3f5f8;
+}
+body p {
+  margin: 0;
+}
+body span {
+  display: inline-block;
+}
+
+.ng-hide,
+.ng-cloak {
+  display: block!important;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+.no-margin {
+  margin: 0;
+}
+.to-left {
+  text-align: left;
+}
+.to-right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+
+.modal-backdrop {
+  bottom: 0;
+}
+.modal-body {
+  padding-bottom: 0;
+}
+.has-feedback .form-control {
+  padding-right: 33px;
+}
+.form-control-feedback {
+  right: 15px;
+}
+.hr {
+  margin-top: 0!important;
+  margin-bottom: 15px;
+}
+

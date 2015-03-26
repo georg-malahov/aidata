@@ -3,15 +3,24 @@ angular.module('app').controller('ModalController', [
   '$scope', '$rootScope', '$modalInstance', '$window', function($scope, $rootScope, $modalInstance, $window) {
     $scope.customers = $window.__customers;
     $scope.currencies = $window.__currencies;
-    $scope.selectedCustomer = {
-      "id": "1",
-      "name": "Google DDP"
+    $scope.pixel = $rootScope.editedPixel || {};
+    $scope.defaultOption = {
+      "new": 1,
+      customer: {
+        type: "1",
+        id: ""
+      },
+      cpm: {
+        currency: "USD",
+        cost: ""
+      }
     };
-    $scope.selectedCurrency = {
-      "name": "United States Dollar",
-      "id": "USD"
+    $scope.getDefaultOption = function() {
+      var defaultOption;
+      defaultOption = angular.fromJson(angular.toJson($scope.defaultOption));
+      return defaultOption;
     };
-    $scope.options = [{}];
+    $scope.pixelOptions = $scope.pixel.options || [$scope.getDefaultOption()];
     $scope.ok = function() {
       return $modalInstance.close();
     };

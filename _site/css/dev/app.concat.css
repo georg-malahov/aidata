@@ -57,6 +57,29 @@ body span {
   margin-top: 0!important;
   margin-bottom: 15px;
 }
+.popover {
+  width: 500px;
+  max-width: 500px;
+}
+.tooltip.in {
+  opacity: .9!important;
+}
+.tooltip-inner {
+  max-width: 300px;
+  padding: 3px 8px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  background-color: #6e8f9e;
+  border-radius: 4px;
+}
+.tooltip.top .tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px 5px 0;
+  border-top-color: #6e8f9e;
+}
 
 
 /* base.css end */
@@ -214,14 +237,6 @@ body span {
   margin-bottom: 10px;
   background-color: #F5F5F5;
 }
-.sharing-option .trash {
-  display: inline-block;
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  margin-top: -12px;
-  cursor: pointer;
-}
 .sharing-option-inner {
   padding: 7px 15px 15px 15px;
 }
@@ -234,6 +249,13 @@ body span {
 }
 .button-wrapper {
   display: inline-block;
+}
+.sharing-option_actions {
+  display: inline-block;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  cursor: pointer;
 }
 
 /* modal.css end */
@@ -369,6 +391,10 @@ body span {
 
 .tablecontrols {
   margin: 0;
+}
+.tablecontrol_wrapper {
+  display: inline-block;
+  margin-left: 10px;
 }
 
 .ui-grid {

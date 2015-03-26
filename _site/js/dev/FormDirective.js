@@ -49,14 +49,26 @@ angular.module('app').directive("pixelCreateForm", [
         };
         $rootScope.updateForm = function() {
           elm.data('formValidation').destroy();
-          return initValidation();
-        };
-        return elm.find(".sharing-options_add, .trash").click(function() {
           return $timeout(function() {
-            $rootScope.updateForm();
-            if (jQuery(this).hasClass(".trash")) {
-              return scope.options.splice($index, 1);
-            }
+            return initValidation();
+          }, 100);
+        };
+        elm.find(".sharing-options_add").click(function() {
+          return $timeout(function() {
+            var fields;
+            fields = jQuery(".sharing-option").last().find(".form-control");
+            return angular.forEach(fields, function(field) {
+              return elm.data('formValidation').addField(jQuery(field));
+            });
+          }, 100);
+        });
+        return elm.find(".sharing-option_action__trash").click(function() {
+          return $timeout(function() {
+            var fields;
+            fields = jQuery(".sharing-option").last().find(".form-control");
+            return angular.forEach(fields, function(field) {
+              return elm.data('formValidation').removeField(jQuery(field));
+            });
           }, 100);
         });
       }

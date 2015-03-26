@@ -1,29 +1,5 @@
 [
   {
-    "name": "Argentine Peso",
-    "id": "ARS"
-  },
-  {
-    "name": "Australian Dollar",
-    "id": "AUD"
-  },
-  {
-    "name": "Bahraini Dinar",
-    "id": "BHD"
-  },
-  {
-    "name": "Bolivian Boliviano",
-    "id": "BOB"
-  },
-  {
-    "name": "Brazilian Real",
-    "id": "BRL"
-  },
-  {
-    "name": "Bulgarian Lev",
-    "id": "BGN"
-  },
-  {
     "name": "British Pound",
     "id": "GBP"
   },
@@ -230,17 +206,5 @@
   {
     "name": "United States Dollar",
     "id": "USD"
-  },
-  {
-    "name": "Uruguay Peso",
-    "id": "UYU"
-  },
-  {
-    "name": "Venezuelan Bolivar",
-    "id": "VEF"
-  },
-  {
-    "name": "Vietnamese Dong",
-    "id": "VND"
   }
 ]

@@ -45,13 +45,24 @@ angular.module('app').directive("pixelCreateForm", ['$rootScope', '$timeout', ($
       elm.data('formValidation').resetForm()
     $rootScope.updateForm = () ->
       elm.data('formValidation').destroy()
-      initValidation()
-
-    elm.find(".sharing-options_add, .trash").click(->
       $timeout(->
-        $rootScope.updateForm()
-        if jQuery(this).hasClass(".trash")
-          scope.options.splice($index, 1)
+        initValidation()
+      , 100)
+
+    elm.find(".sharing-options_add").click(->
+      $timeout(->
+        fields = jQuery(".sharing-option").last().find(".form-control")
+        angular.forEach(fields, (field) ->
+          elm.data('formValidation').addField(jQuery(field))
+        )
+      , 100)
+    )
+    elm.find(".sharing-option_action__trash").click(->
+      $timeout(->
+        fields = jQuery(".sharing-option").last().find(".form-control")
+        angular.forEach(fields, (field) ->
+          elm.data('formValidation').removeField(jQuery(field))
+        )
       , 100)
     )
 ])

@@ -4,6 +4,8 @@ angular.module('app').controller('TableController',
     $scope.gridScope = {}
     $scope.startSym = $interpolate.startSymbol()
     $scope.endSym = $interpolate.endSymbol()
+    editPixelTooltip = "Select at least one pixel from the table."
+    $scope.editPixelTooltip = editPixelTooltip
     console.log("$window.__pixels: ", $window.__pixels)
     console.log("ColumnsService: ", ColumnsService)
     $scope.preloading.page = false
@@ -16,6 +18,7 @@ angular.module('app').controller('TableController',
       enableGridMenu: true
       showGridFooter: false
       showColumnFooter: false
+      multiSelect: false
       data: $window.__pixels
       columnDefs: ColumnsService,
       onRegisterApi: (gridApi) ->
@@ -27,10 +30,12 @@ angular.module('app').controller('TableController',
           angular.element(document.getElementsByClassName('tablegrid_grid')[0]).css('height', 50 * 30 + 45 + 'px')
         gridApi.selection.on.rowSelectionChanged($scope, (row) ->
           selectedRows = gridApi.selection.getSelectedGridRows()
-          console.log("selectedRows: ", selectedRows)
-        )
-        gridApi.selection.on.rowSelectionChangedBatch($scope, (rows) ->
-          selectedRows = gridApi.selection.getSelectedGridRows()
-          console.log("selectedRows: ", selectedRows)
+          if selectedRows.length
+            $rootScope.editedPixel = selectedRows[0].entity
+            $scope.editPixelTooltip = ""
+          else
+            $rootScope.editedPixel = false
+            $scope.editPixelTooltip = editPixelTooltip
+          console.log("selectedRows: ", $rootScope.editedPixel)
         )
 ])

@@ -130,6 +130,10 @@
 .tablecontrols {
   margin: 0;
 }
+.tablecontrol_wrapper {
+  display: inline-block;
+  margin-left: 10px;
+}
 
 .ui-grid {
   font-size: 1.4rem;

@@ -1,1 +1,5 @@
-<div ng-show="gridOptions.data.length" class="tablegrid"><div ui-grid="gridOptions" external-scopes="gridScope" ui-grid-selection="ui-grid-selection" ui-grid-pinning="ui-grid-pinning" ui-grid-resize-columns="ui-grid-resize-columns" ui-grid-auto-resize="ui-grid-auto-resize" ui-grid-move-columns="ui-grid-move-columns" ui-grid-exporter="ui-grid-exporter" ui-grid-save-state="ui-grid-save-state" class="tablegrid_grid"></div></div>
+
+<div ng-class="{'tablegrid__visible': gridOptions.data.length}" class="tablegrid">
+  <div role="alert" ng-hide="gridOptions.data.length" class="alert alert-info"><span>You haven't created any pixels yet! Please, create new one.</span></div>
+  <div ng-show="gridOptions.data.length" ui-grid="gridOptions" external-scopes="gridScope" ui-grid-selection="ui-grid-selection" ui-grid-pinning="ui-grid-pinning" ui-grid-resize-columns="ui-grid-resize-columns" ui-grid-auto-resize="ui-grid-auto-resize" ui-grid-move-columns="ui-grid-move-columns" ui-grid-exporter="ui-grid-exporter" ui-grid-save-state="ui-grid-save-state" class="tablegrid_grid"></div>
+</div>

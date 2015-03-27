@@ -10,6 +10,7 @@ angular.module('app').controller('ModalController', [
     }
     $scope.defaultOption = {
       "new": 1,
+      enabled: true,
       customer: {
         type: "1",
         id: ""

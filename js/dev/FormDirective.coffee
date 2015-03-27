@@ -59,4 +59,16 @@ angular.module('app').directive("pixelCreateForm", ['$rootScope', '$timeout', ($
         )
       , 100)
     )
+]).directive('noEdit', ['$timeout', ($timeout) ->
+  restrict: "A"
+  scope: {noEdit: "="}
+  link: (scope, elm, attrs) ->
+    $timeout(->
+      width = elm.outerWidth()
+      height = elm.outerHeight()
+      position = elm.position()
+      veil = jQuery('<div class="no-edit_veil"></div>')
+      veil.width(width).height(height).css({left: position.left, top: position.top});
+      elm.parent().append(veil)
+    , 200) if scope.noEdit
 ])

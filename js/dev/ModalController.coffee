@@ -6,7 +6,7 @@ angular.module('app').controller('ModalController',
   $rootScope.pixel = $rootScope.pixel or {}
   if $scope.mode is 'edit'
     $rootScope.pixel = $rootScope.editedPixel
-  $scope.defaultOption = {new: 1, customer: {type: "1", id: ""}, cpm: {currency: "USD", cost: ""}}
+  $scope.defaultOption = {new: 1, enabled: true, customer: {type: "1", id: ""}, cpm: {currency: "USD", cost: ""}}
   $scope.getDefaultOption = () ->
     defaultOption = angular.fromJson(angular.toJson($scope.defaultOption))
     return defaultOption

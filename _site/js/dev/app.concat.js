@@ -60,6 +60,7 @@ angular.module('app').controller('ModalController', [
     }
     $scope.defaultOption = {
       "new": 1,
+      enabled: true,
       customer: {
         type: "1",
         id: ""
@@ -243,6 +244,31 @@ angular.module('app').directive("pixelCreateForm", [
             });
           }, 100);
         });
+      }
+    };
+  }
+]).directive('noEdit', [
+  '$timeout', function($timeout) {
+    return {
+      restrict: "A",
+      scope: {
+        noEdit: "="
+      },
+      link: function(scope, elm, attrs) {
+        if (scope.noEdit) {
+          return $timeout(function() {
+            var height, position, veil, width;
+            width = elm.outerWidth();
+            height = elm.outerHeight();
+            position = elm.position();
+            veil = jQuery('<div class="no-edit_veil"></div>');
+            veil.width(width).height(height).css({
+              left: position.left,
+              top: position.top
+            });
+            return elm.parent().append(veil);
+          }, 200);
+        }
       }
     };
   }

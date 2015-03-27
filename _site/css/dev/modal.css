@@ -52,3 +52,10 @@
   top: 50%;
   cursor: pointer;
 }
+.no-edit_veil {
+  position: absolute;
+  background-color: #ddd;
+  opacity: .3;
+  border-radius: 4px;
+  z-index: 2;
+}

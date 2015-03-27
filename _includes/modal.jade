@@ -10,7 +10,7 @@ script(type="text/ng-template", id="modal.html")
             type="text",
             name="id",
             ng-model="pixel.pixel_id",
-            ng-disabled="mode == 'edit'",
+            no-edit="mode == 'edit'",
             placeholder="Identifier for a new pixel",
             role="input")
         div(class="form-group col-lg-6 col-md-6")
@@ -36,7 +36,7 @@ script(type="text/ng-template", id="modal.html")
                   id="id_externals-[[$index]]-type")
                   button(type="button",
                     class="btn btn-default dropdown-toggle",
-                    ng-disabled="mode == 'edit' && !option.new",
+                    no-edit="mode == 'edit' && !option.new",
                     dropdown-toggle) [[(customers | filter: {type:option.customer.type})[0].name]]
                     span(class="caret")
                   ul(class="dropdown-menu" role="menu")
@@ -47,7 +47,7 @@ script(type="text/ng-template", id="modal.html")
                       span(class="", ng-bind="customer.name")
                 input(class="form-control",
                   type="text",
-                  ng-disabled="mode == 'edit' && !option.new",
+                  no-edit="mode == 'edit' && !option.new",
                   id="id_externals-[[$index]]-customer_id",
                   name="id_externals-[[$index]]-customer_id",
                   ng-model="option.customer.id",
@@ -94,6 +94,11 @@ script(type="text/ng-template", id="modal.html")
               span [[option.new]]
               input(type="checkbox",
                 id="id_externals-[[$index]]-enabled",
+                name="id_externals-[[$index]]-enabled",
+                ng-model="option.enabled")
+              input(type="hidden",
+                id="id_externals-[[$index]]-enabled",
+                ng-disabled="!option.enabled",
                 name="id_externals-[[$index]]-enabled",
                 ng-model="option.enabled")
         div(class="sharing-options_add")

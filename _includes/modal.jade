@@ -98,7 +98,7 @@ script(type="text/ng-template", id="modal.html")
                 ng-model="option.enabled")
               input(type="hidden",
                 id="id_externals-[[$index]]-enabled",
-                ng-disabled="!option.enabled",
+                ng-if="!option.enabled",
                 name="id_externals-[[$index]]-enabled",
                 ng-model="option.enabled")
         div(class="sharing-options_add")

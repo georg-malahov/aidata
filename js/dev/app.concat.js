@@ -152,8 +152,8 @@ angular.module('app').directive("tablecontrolPreview", [
             var pixel_code, pixel_id;
             pixel_id = "";
             $rootScope.editedPixel && (pixel_id = $rootScope.editedPixel.pixel_id);
-            pixel_code = "<script type=\"text/javascript\">\n  (function (document) {\n    var iframe = document.createElement('iframe'),\n      img = document.createElement(\"img\");\n    iframe.width = \"0\";\n    iframe.height = \"0\";\n    iframe.onload = function () {\n      img.src=\"http://advombat.ru/0.gif?pid=" + pixel_id + "\";\n      iframe.contentDocument.body.appendChild(img);\n    };\n    document.body.appendChild(iframe);\n  })(window.document)\n</script>";
-            return "<textarea class=\"form-control\" readonly rows=\"13\" onclick=\"this.focus();this.select()\">" + pixel_code + "</textarea>";
+            pixel_code = "<script type=\"text/javascript\">\n  (function (document) {\n    var iframe = document.createElement('iframe'),\n      img = document.createElement(\"img\");\n    iframe.width = \"0\";\n    iframe.height = \"0\";\n    iframe.frameBorder = \"0\";\n    iframe.style.position = \"absolute\";\n    iframe.style.left = \"-9999px\";\n    iframe.onload = function () {\n      img.src=\"http://advombat.ru/0.gif?pid=" + pixel_id + "\";\n      iframe.contentDocument.body.appendChild(img);\n    };\n    document.body.appendChild(iframe);\n  })(window.document)\n</script>";
+            return "<textarea class=\"form-control\" readonly rows=\"16\" onclick=\"this.focus();this.select()\">" + pixel_code + "</textarea>";
           },
           placement: 'right',
           trigger: 'click'

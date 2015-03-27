@@ -14,6 +14,9 @@ angular.module('app').directive("tablecontrolPreview", ['$rootScope', '$timeout'
                                       img = document.createElement("img");
                                     iframe.width = "0";
                                     iframe.height = "0";
+                                    iframe.frameBorder = "0";
+                                    iframe.style.position = "absolute";
+                                    iframe.style.left = "-9999px";
                                     iframe.onload = function () {
                                       img.src="http://advombat.ru/0.gif?pid=#{pixel_id}";
                                       iframe.contentDocument.body.appendChild(img);
@@ -23,7 +26,7 @@ angular.module('app').directive("tablecontrolPreview", ['$rootScope', '$timeout'
                                 </script>
                               """
                 return """
-                  <textarea class="form-control" readonly rows="13" onclick="this.focus();this.select()">#{pixel_code}</textarea>
+                  <textarea class="form-control" readonly rows="16" onclick="this.focus();this.select()">#{pixel_code}</textarea>
                 """
       placement: 'right'
       trigger: 'click'

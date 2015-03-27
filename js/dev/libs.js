@@ -1,7 +1,4 @@
 /* borschik:include:../../bower_components/jquery/jquery.js */
-/* borschik:include:../../libs/jquery-number/jquery.number.js */
-/* borschik:include:../../bower_components/jquery.inputmask/dist/inputmask/jquery.inputmask.min.js */
-/* borschik:include:../../bower_components/jquery.inputmask/dist/inputmask/jquery.inputmask.regex.extensions.min.js */
 /* borschik:include:../../bower_components/angular/angular.min.js */
 /* borschik:include:../../bower_components/bootstrap/dist/js/bootstrap.min.js */
 /* borschik:include:../../bower_components/angular-bootstrap/ui-bootstrap.min.js */

@@ -40,7 +40,7 @@ gulp.task('jsmin', $.shell.task(settings.prod_borschik.js));
 gulp.task('build', ['css', 'js']);
 gulp.task('buildmin', gulpsync.async(['cssmin', 'jsmin']));
 gulp.task('clean', function() {
-	return gulp.src(['./js/prod/*.js', './css/prod/*.css', './prod/templates/*'], { read: false })
+	return gulp.src(settings.clean, { read: false })
 		.pipe($.rimraf());
 });
 gulp.task('cacheboost', function () {
@@ -51,16 +51,16 @@ gulp.task('cacheboost', function () {
 	}
 });
 gulp.task('rmnonmin', function() {
-	return gulp.src(['./js/prod/*.js', '!./js/prod/*.min.js', './css/prod/*.css', '!./css/prod/*.min.css'], { read: false })
+	return gulp.src(settings.rmnonmin, { read: false })
 		.pipe($.rimraf());
 });
 gulp.task('prodinject', function () {
 	setTimeout(function() {
-		injectFiles(settings.prod_files_to_inject.css.concat(settings.prod_files_to_inject.js), './_layouts/default.html');
+		injectFiles(settings.prod_files_to_inject.css.concat(settings.prod_files_to_inject.js), settings.injectTo);
 	}, 500);
 });
 gulp.task('devinject', function () {
-	injectFiles(settings.dev_files.css.concat(settings.dev_files.js), './_layouts/default.html');
+	injectFiles(settings.dev_files.css.concat(settings.dev_files.js), settings.injectTo);
 });
 
 gulp.task('watch', function() {
@@ -101,9 +101,6 @@ gulp.task('watch', function() {
 					}
 					if (stats.isDirectory()) {
 						watch(path, filename, ["*.css"], tech);
-						//fs.readdir(join(path, filename), function (err, files) {
-						//	if (err) {return console.error(err);}
-						//});
 					}
 				})
 			});
@@ -112,11 +109,13 @@ gulp.task('watch', function() {
 	for (var tech in paths) {
 		switch (tech) {
 			case "css":
-				gulp.watch(["./css/dev/**/*.css", "!./css/dev/libs.concat.css", "!./css/dev/app.concat.css"], ['css']);
-				processCSS(paths[tech], tech);
+				gulp.watch(settings.watch.css, ['css']);
+				for (var i = 0; i < paths[tech].length; i++) {
+					processCSS(paths[tech][i], tech);
+				}
 				break;
 			case "js":
-				gulp.watch(["./js/dev/**/*.js", "!./js/dev/libs.concat.js", "!./js/dev/app.concat.js"], ['js']);
+				gulp.watch(settings.watch.js, ['js']);
 				break;
 			default:
 				console.warn("Technology %s has no resolution algorithm.", tech)
@@ -124,25 +123,18 @@ gulp.task('watch', function() {
 	}
 });
 gulp.task('sync', function() {
-	var files = [
-		"./_site/*.html",
-		"./_site/js/dev/app.concat.js",
-		"./_site/js/dev/libs.concat.js",
-		"./_site/css/dev/app.concat.css",
-		"./_site/css/dev/libs.concat.css",
-	];
-
-	var options = {
-		notify: true,
-		open: false,
-		ghostMode: false,
-		injectChanges: true,
-		logLevel: 'debug',
-		minify: false,
-		codeSync: true,
-		reloadDelay: 500,
-		proxy: "localhost:4000"
-	};
+	var files = settings.sync,
+		options = {
+			notify: true,
+			open: false,
+			ghostMode: false,
+			injectChanges: true,
+			logLevel: 'debug',
+			minify: false,
+			codeSync: true,
+			reloadDelay: 500,
+			proxy: "localhost:4000"
+		};
 
 	bsync.init(files, options, function (err, inj) {
 		if (err) throw Error(err);
@@ -150,4 +142,4 @@ gulp.task('sync', function() {
 });
 
 gulp.task('prod', gulpsync.sync(['clean', ['cssmin', 'jsmin'], 'cacheboost', 'rmnonmin', 'prodinject']));
-gulp.task('dev', gulpsync.sync(['devinject', 'build', 'watch', 'sync']));
+gulp.task('dev', gulpsync.sync(['watch', 'build', 'devinject', 'sync']));

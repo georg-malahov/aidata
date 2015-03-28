@@ -19,5 +19,7 @@ angular.module('app').controller('MainController',
       , () ->
         console.info('Modal dismissed at  : ' + new Date());
       )
+    if $window.__user
+      $rootScope.userName = $window.__user.company + ($window.__pixels.length + 1)
     $scope.openModal('lg') if !$window.__pixels.length
 ])

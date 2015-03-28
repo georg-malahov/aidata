@@ -31,19 +31,19 @@ script(type="text/ng-template", id="modal.html")
               div(class="input-group")
                 div(class="input-group-btn", dropdown)
                   input(type="hidden",
-                  value="[[option.customer.type]]",
+                  value="[[$parent.customer_type]]",
                   name="id_externals-[[$index]]-type",
                   id="id_externals-[[$index]]-type")
                   button(type="button",
                     class="btn btn-default dropdown-toggle",
                     no-edit="mode == 'edit' && !option.new",
-                    dropdown-toggle) [[(customers | filter: {type:option.customer.type})[0].name]]
+                    dropdown-toggle) [[(customers | filter: {type:customer_type})[0].name]]
                     span(class="caret")
                   ul(class="dropdown-menu" role="menu")
                     li(class="",
                       ng-repeat="customer in customers",
-                      ng-class="{active: $parent.option.customer.type == customer.type }",
-                      ng-click="$parent.option.customer = customer")
+                      ng-class="{active: $parent.$parent.customer_type == customer.type }",
+                      ng-click="$parent.$parent.customer_type = customer.type")
                       span(class="", ng-bind="customer.name")
                 input(class="form-control",
                   type="text",
@@ -85,6 +85,10 @@ script(type="text/ng-template", id="modal.html")
                   data-fv-regexp-message="Cost value must be numeric and can't have less than 1 or more than 2 decimal places.",
                   placeholder="Cost Value")
           div(class="sharing-option_actions")
+            input(type="hidden",
+              id="id_externals-[[$index]]-id",
+              name="id_externals-[[$index]]-id",
+              value="[[$index]]")
             div(class="sharing-option_action sharing-option_action__trash",
               ng-click="pixelOptions.splice($index, 1)",
               ng-show="option.new && pixelOptions.length > 1")

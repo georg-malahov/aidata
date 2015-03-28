@@ -39,6 +39,9 @@ angular.module('app').controller('MainController', [
         return console.info('Modal dismissed at  : ' + new Date());
       });
     };
+    if ($window.__user) {
+      $rootScope.userName = $window.__user.company + ($window.__pixels.length + 1);
+    }
     if (!$window.__pixels.length) {
       return $scope.openModal('lg');
     }
@@ -75,7 +78,8 @@ angular.module('app').controller('ModalController', [
       defaultOption = angular.fromJson(angular.toJson($scope.defaultOption));
       return defaultOption;
     };
-    $scope.pixelOptions = $rootScope.pixel.options || [$scope.getDefaultOption()];
+    $scope.pixelOptions = $rootScope.pixel.options || [$scope.getDefaultOption(), $scope.getDefaultOption()];
+    $scope.customer_type = $scope.pixelOptions[0].customer.type || "1";
     $scope.ok = function() {
       return $modalInstance.close();
     };

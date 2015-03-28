@@ -25,7 +25,8 @@ angular.module('app').controller('ModalController', [
       defaultOption = angular.fromJson(angular.toJson($scope.defaultOption));
       return defaultOption;
     };
-    $scope.pixelOptions = $rootScope.pixel.options || [$scope.getDefaultOption()];
+    $scope.pixelOptions = $rootScope.pixel.options || [$scope.getDefaultOption(), $scope.getDefaultOption()];
+    $scope.customer_type = $scope.pixelOptions[0].customer.type || "1";
     $scope.ok = function() {
       return $modalInstance.close();
     };

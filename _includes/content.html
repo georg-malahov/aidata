@@ -6,7 +6,7 @@
 <div class="header">
   <div class="header_wrapper">
     <div class="logo"><a ui-sref="dashboard.adaccounts"><img src="img/logo.png" alt="Aidata logo" height="46px;"/></a></div>
-    <div class="user"><a href="{{site.github}}" class="user_name">View on GitHub</a><a href="javascript: void 0;"><img src="img/icons/icon-logout.png" alt="Logout icon" class="log-out-icon"/></a></div>
+    <div class="user"><span class="user_name ng-cloak">[[$root.userName]]</span><a href="javascript: void 0;"><img src="img/icons/icon-logout.png" alt="Logout icon" class="log-out-icon"/></a></div>
   </div>
 </div>
 <div ng-controller="MainController" ng-class="{'content__visible': $root.preloading.page == false}" class="content">
@@ -38,10 +38,10 @@
                       <label class="control-label">Customer</label>
                       <div class="input-group">
                         <div dropdown="dropdown" class="input-group-btn">
-                          <input type="hidden" value="[[option.customer.type]]" name="id_externals-[[$index]]-type" id="id_externals-[[$index]]-type"/>
-                          <button type="button" no-edit="mode == 'edit' &amp;&amp; !option.new" dropdown-toggle="dropdown-toggle" class="btn btn-default dropdown-toggle">[[(customers | filter: {type:option.customer.type})[0].name]]<span class="caret"></span></button>
+                          <input type="hidden" value="[[$parent.customer_type]]" name="id_externals-[[$index]]-type" id="id_externals-[[$index]]-type"/>
+                          <button type="button" no-edit="mode == 'edit' &amp;&amp; !option.new" dropdown-toggle="dropdown-toggle" class="btn btn-default dropdown-toggle">[[(customers | filter: {type:customer_type})[0].name]]<span class="caret"></span></button>
                           <ul role="menu" class="dropdown-menu">
-                            <li ng-repeat="customer in customers" ng-class="{active: $parent.option.customer.type == customer.type }" ng-click="$parent.option.customer = customer"><span ng-bind="customer.name"></span></li>
+                            <li ng-repeat="customer in customers" ng-class="{active: $parent.$parent.customer_type == customer.type }" ng-click="$parent.$parent.customer_type = customer.type"><span ng-bind="customer.name"></span></li>
                           </ul>
                         </div>
                         <input type="text" no-edit="mode == 'edit' &amp;&amp; !option.new" id="id_externals-[[$index]]-customer_id" name="id_externals-[[$index]]-customer_id" ng-model="option.customer.id" data-fv-notempty="true" data-fv-notempty-message="Customer ID is required." data-fv-digits="true" data-fv-digits-message="Customer ID value can contain only digits." placeholder="Customer ID" role="input" class="form-control"/>
@@ -62,6 +62,7 @@
                     </div>
                   </div>
                   <div class="sharing-option_actions">
+                    <input type="hidden" id="id_externals-[[$index]]-id" name="id_externals-[[$index]]-id" value="[[$index]]"/>
                     <div ng-click="pixelOptions.splice($index, 1)" ng-show="option.new &amp;&amp; pixelOptions.length &gt; 1" class="sharing-option_action sharing-option_action__trash"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></div>
                     <div ng-show="!option.new" class="sharing-option_action sharing-option_action__checkbox"><span>[[option.new]]</span>
                       <input type="checkbox" id="id_externals-[[$index]]-enabled" name="id_externals-[[$index]]-enabled" ng-model="option.enabled"/>

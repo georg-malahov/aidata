@@ -30,7 +30,7 @@
 <div class="header">
   <div class="header_wrapper">
     <div class="logo"><a ui-sref="dashboard.adaccounts"><img src="img/logo.png" alt="Aidata logo" height="46px;"/></a></div>
-    <div class="user"><a href="https://github.com/yuriMalakhov/aidata" class="user_name">View on GitHub</a><a href="javascript: void 0;"><img src="img/icons/icon-logout.png" alt="Logout icon" class="log-out-icon"/></a></div>
+    <div class="user"><span class="user_name ng-cloak">[[$root.userName]]</span><a href="javascript: void 0;"><img src="img/icons/icon-logout.png" alt="Logout icon" class="log-out-icon"/></a></div>
   </div>
 </div>
 <div ng-controller="MainController" ng-class="{'content__visible': $root.preloading.page == false}" class="content">
@@ -62,10 +62,10 @@
                       <label class="control-label">Customer</label>
                       <div class="input-group">
                         <div dropdown="dropdown" class="input-group-btn">
-                          <input type="hidden" value="[[option.customer.type]]" name="id_externals-[[$index]]-type" id="id_externals-[[$index]]-type"/>
-                          <button type="button" no-edit="mode == 'edit' &amp;&amp; !option.new" dropdown-toggle="dropdown-toggle" class="btn btn-default dropdown-toggle">[[(customers | filter: {type:option.customer.type})[0].name]]<span class="caret"></span></button>
+                          <input type="hidden" value="[[$parent.customer_type]]" name="id_externals-[[$index]]-type" id="id_externals-[[$index]]-type"/>
+                          <button type="button" no-edit="mode == 'edit' &amp;&amp; !option.new" dropdown-toggle="dropdown-toggle" class="btn btn-default dropdown-toggle">[[(customers | filter: {type:customer_type})[0].name]]<span class="caret"></span></button>
                           <ul role="menu" class="dropdown-menu">
-                            <li ng-repeat="customer in customers" ng-class="{active: $parent.option.customer.type == customer.type }" ng-click="$parent.option.customer = customer"><span ng-bind="customer.name"></span></li>
+                            <li ng-repeat="customer in customers" ng-class="{active: $parent.$parent.customer_type == customer.type }" ng-click="$parent.$parent.customer_type = customer.type"><span ng-bind="customer.name"></span></li>
                           </ul>
                         </div>
                         <input type="text" no-edit="mode == 'edit' &amp;&amp; !option.new" id="id_externals-[[$index]]-customer_id" name="id_externals-[[$index]]-customer_id" ng-model="option.customer.id" data-fv-notempty="true" data-fv-notempty-message="Customer ID is required." data-fv-digits="true" data-fv-digits-message="Customer ID value can contain only digits." placeholder="Customer ID" role="input" class="form-control"/>
@@ -86,6 +86,7 @@
                     </div>
                   </div>
                   <div class="sharing-option_actions">
+                    <input type="hidden" id="id_externals-[[$index]]-id" name="id_externals-[[$index]]-id" value="[[$index]]"/>
                     <div ng-click="pixelOptions.splice($index, 1)" ng-show="option.new &amp;&amp; pixelOptions.length &gt; 1" class="sharing-option_action sharing-option_action__trash"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></div>
                     <div ng-show="!option.new" class="sharing-option_action sharing-option_action__checkbox"><span>[[option.new]]</span>
                       <input type="checkbox" id="id_externals-[[$index]]-enabled" name="id_externals-[[$index]]-enabled" ng-model="option.enabled"/>
@@ -127,12 +128,13 @@
   <script>
     window.__pixels =
       [{"pixel_id":"PURINA-ONE","status":"Approved","name":"Nestle Purina One App","options":[{"e":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183},{"pixel_id":"PURINA","status":"Approved","name":"Nestle Purina One Web Site","options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913},{"pixel_id":"NESTLE-001","status":"Approved","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"size":1300000,"created":1427356218075},{"pixel_id":"NESTLE-002","status":"Not Approved","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":0,"created":1427356255975},{"pixel_id":"NESTLE-003","status":"Rejected","name":"Nestle Test 3","size":0,"created":1427356305766},{"pixel_id":"NESTLE-004","status":"Rejected","name":"Nestle Test 4","size":0,"created":1427356361774}];
+    window.__user = {"company": "Aidata"}
     window.__customers = [{"type":"1","name":"Google DDP"},{"type":"2","name":"AppNexus"},{"type":"3","name":"Audience Science"},{"type":"4","name":"Videology"}];
     window.__currencies = [{"name":"British Pound","id":"GBP"},{"name":"Canadian Dollar","id":"CAD"},{"name":"Chilean Peso","id":"CLP"},{"name":"Chinese Yuan","id":"CNY"},{"name":"Colombian Peso","id":"COP"},{"name":"Costa Rican Colon","id":"CRC"},{"name":"Croatian Kuna","id":"HRK"},{"name":"Czech Koruna","id":"CZK"},{"name":"Danish Krone","id":"DKK"},{"name":"Dominican Peso","id":"DOP"},{"name":"Egyptian Pound","id":"EGP"},{"name":"Estonian Kroon","id":"EEK"},{"name":"Euro","id":"EUR"},{"name":"Guatemalan Quetza","id":"GTQ"},{"name":"Honduran Lempira","id":"HNL"},{"name":"Hong Kong Dollar","id":"HKD"},{"name":"Hungarian Forint","id":"HUF"},{"name":"Iceland Krona","id":"ISK"},{"name":"Indian Rupee","id":"INR"},{"name":"Indonesian Rupiah","id":"IDR"},{"name":"Israeli New Shekel","id":"ILS"},{"name":"Japanese Yen","id":"JPY"},{"name":"Jordanian Dinar","id":"JOD"},{"name":"Korean Won","id":"KRW"},{"name":"Latvian Lats","id":"LVL"},{"name":"Lithuanian Litas","id":"LTL"},{"name":"Macau Patacas","id":"MOP"},{"name":"Malaysian Ringgit","id":"MYR"},{"name":"Mexican Peso","id":"MXN"},{"name":"New Zealand Dollar","id":"NZD"},{"name":"Nicaraguan Cordoba","id":"NIO"},{"name":"Norwegian Krone","id":"NOK"},{"name":"Paraguayan Guarani","id":"PYG"},{"name":"Peruvian Nuevo Sol","id":"PEN"},{"name":"Philippine Peso","id":"PHP"},{"name":"Polish Zloty","id":"PLN"},{"name":"Qatari Rials","id":"QAR"},{"name":"Romanian Leu","id":"RON"},{"name":"Russian Ruble","id":"RUB"},{"name":"Saudi Arabian Riyal","id":"SAR"},{"name":"Serbian Dinar","id":"RSD"},{"name":"Singapore Dollar","id":"SGD"},{"name":"Slovak Koruna","id":"SKK"},{"name":"South African Rand","id":"ZAR"},{"name":"Swedish Krona","id":"SEK"},{"name":"Swiss Franc","id":"CHF"},{"name":"Taiwan Dollar","id":"TWD"},{"name":"Thai Baht","id":"THB"},{"name":"Turkish Lira","id":"TRY"},{"name":"Uae Dirham","id":"AED"},{"name":"Ukrainian Hryvnia","id":"UAH"},{"name":"United States Dollar","id":"USD"}];
   </script>
   <!-- inject:js -->
   <script src="js/prod/2ebfc908646aeb0.libs.min.js"></script>
-  <script src="js/prod/b65a4d29992cda3.app.min.js"></script>
+  <script src="js/prod/25f9b601318fb9c.app.min.js"></script>
   <!-- endinject -->
 </body>
 </html>

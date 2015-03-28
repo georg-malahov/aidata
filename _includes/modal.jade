@@ -31,19 +31,19 @@ script(type="text/ng-template", id="modal.html")
               div(class="input-group")
                 div(class="input-group-btn", dropdown)
                   input(type="hidden",
-                  value="[[$parent.customer_type]]",
+                  value="[[option.customer.type]]",
                   name="id_externals-[[$index]]-type",
                   id="id_externals-[[$index]]-type")
                   button(type="button",
                     class="btn btn-default dropdown-toggle",
                     no-edit="mode == 'edit' && !option.new",
-                    dropdown-toggle) [[(customers | filter: {type:customer_type})[0].name]]
+                    dropdown-toggle) [[(customers | filter: {type:option.customer.type})[0].name]]
                     span(class="caret")
                   ul(class="dropdown-menu" role="menu")
                     li(class="",
                       ng-repeat="customer in customers",
-                      ng-class="{active: $parent.$parent.customer_type == customer.type }",
-                      ng-click="$parent.$parent.customer_type = customer.type")
+                      ng-class="{active: $parent.option.customer.type == customer.type }",
+                      ng-click="$parent.option.customer = customer")
                       span(class="", ng-bind="customer.name")
                 input(class="form-control",
                   type="text",

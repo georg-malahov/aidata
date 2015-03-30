@@ -80,8 +80,11 @@ script(type="text/ng-template", id="modal.html")
                   ng-model="option.cpm.cost",
                   data-fv-notempty="true",
                   data-fv-notempty-message="Cost value is required.",
+                  data-fv-lessthan="true",
+                  data-fv-lessthan-inclusive="true",
+                  data-fv-lessthan-value="99999.99",
                   data-fv-regexp="true"
-                  data-fv-regexp-regexp="^[0-9]{1,5}\.?[0-9]{1,2}$"
+                  data-fv-regexp-regexp="^[0-9]{0,5}\.?[0-9]{1,2}$"
                   data-fv-regexp-message="Cost value must be numeric and can't have less than 1 or more than 2 decimal places.",
                   placeholder="Cost Value")
             div(class="sharing-option_actions form-group col-lg-1 col-md-1")

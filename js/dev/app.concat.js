@@ -57,7 +57,11 @@ angular.module('app').controller('ModalController', [
     $scope.customers = $window.__customers;
     $scope.currencies = $window.__currencies;
     $scope.mode = $modalInstance.mode;
-    $rootScope.pixel = $rootScope.pixel || {};
+    $rootScope.pixels = {
+      'edit': {},
+      'create': {}
+    };
+    $rootScope.pixel = $rootScope.pixels[$scope.mode] || {};
     if ($scope.mode === 'edit') {
       $rootScope.pixel = $rootScope.editedPixel;
     }
@@ -78,7 +82,7 @@ angular.module('app').controller('ModalController', [
       defaultOption = angular.fromJson(angular.toJson($scope.defaultOption));
       return defaultOption;
     };
-    $scope.pixelOptions = $rootScope.pixel.options || [$scope.getDefaultOption(), $scope.getDefaultOption()];
+    $scope.pixelOptions = $rootScope.pixel.options || [$scope.getDefaultOption()];
     $scope.ok = function() {
       return $modalInstance.close();
     };

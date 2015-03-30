@@ -9,6 +9,10 @@ angular.module('app').directive("pixelCreateForm", ['$rootScope', '$timeout', ($
           invalid: 'glyphicon glyphicon-remove',
           validating: 'glyphicon glyphicon-refresh'
         },
+        button: {
+          selector: '[type="submit"]',
+          disabled: ''
+        }
         fields: {
           id: {
             validators: {
@@ -41,23 +45,18 @@ angular.module('app').directive("pixelCreateForm", ['$rootScope', '$timeout', ($
 
     $timeout(->
       initValidation()
+      jQuery(".sharing-options_add").click(->
+        $timeout(->
+          fields = jQuery(".sharing-option").last().find(".form-control")
+          angular.forEach(fields, (field) ->
+            elm.data('formValidation').addField(jQuery(field))
+          )
+        , 100)
+        jQuery('[type="submit"]').removeClass("disabled").removeAttr("disabled")
+      )
     , 100)
-
-    elm.find(".sharing-options_add").click(->
-      $timeout(->
-        fields = jQuery(".sharing-option").last().find(".form-control")
-        angular.forEach(fields, (field) ->
-          elm.data('formValidation').addField(jQuery(field))
-        )
-      , 100)
-    )
-    elm.find(".sharing-option_action__trash").click(->
-      $timeout(->
-        fields = jQuery(".sharing-option").last().find(".form-control")
-        angular.forEach(fields, (field) ->
-          elm.data('formValidation').removeField(jQuery(field))
-        )
-      , 100)
+    scope.$on("removeOption", () ->
+      jQuery('[type="submit"]').removeClass("disabled").removeAttr("disabled")
     )
 ]).directive('noEdit', ['$timeout', ($timeout) ->
   restrict: "A"

@@ -33,8 +33,12 @@ angular.module('app').controller('ModalController', [
     $scope.ok = function() {
       return $modalInstance.close();
     };
-    return $scope.cancel = function() {
+    $scope.cancel = function() {
       return $modalInstance.dismiss('cancel');
+    };
+    return $scope.removeOption = function(index) {
+      $scope.pixelOptions.length > 1 && $scope.pixelOptions.splice(index, 1);
+      return $rootScope.$broadcast("removeOption");
     };
   }
 ]);

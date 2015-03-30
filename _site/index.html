@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- inject:css -->
   <link rel="stylesheet" href="css/prod/e947e9ab5aa16ec.libs.min.css">
-  <link rel="stylesheet" href="css/prod/8da671861d86e94.app.min.css">
+  <link rel="stylesheet" href="css/prod/5e8354e42027958.app.min.css">
   <!-- endinject -->
   
 <script>
@@ -71,7 +71,7 @@
                         <input type="text" no-edit="mode == 'edit' &amp;&amp; !option.new" id="id_externals-[[$index]]-customer_id" name="id_externals-[[$index]]-customer_id" ng-model="option.customer.id" data-fv-notempty="true" data-fv-notempty-message="Customer ID is required." data-fv-digits="true" data-fv-digits-message="Customer ID value can contain only digits." placeholder="Customer ID" role="input" class="form-control"/>
                       </div>
                     </div>
-                    <div class="form-group col-lg-6 col-md-6">
+                    <div class="form-group col-lg-5 col-md-5">
                       <label class="control-label">Cost</label>
                       <div class="input-group">
                         <div dropdown="dropdown" class="input-group-btn">
@@ -81,16 +81,18 @@
                             <li ng-repeat="currency in currencies" ng-class="{active: $parent.option.cpm.currency == currency.id }" ng-click="$parent.option.cpm.currency = currency.id"><span ng-bind="currency.name"></span></li>
                           </ul>
                         </div>
-                        <input type="text" role="input" id="id_externals-[[$index]]-cost" name="id_externals-[[$index]]-cost" ng-model="option.cpm.cost" data-fv-notempty="true" data-fv-notempty-message="Cost value is required." data-fv-regexp="true" data-fv-regexp-regexp="^[0-9]*.?[0-9]{1,2}$" data-fv-regexp-message="Cost value must be numeric and can't have less than 1 or more than 2 decimal places." placeholder="Cost Value" class="form-control"/>
+                        <input type="text" role="input" id="id_externals-[[$index]]-cost" name="id_externals-[[$index]]-cost" ng-model="option.cpm.cost" data-fv-notempty="true" data-fv-notempty-message="Cost value is required." data-fv-regexp="true" data-fv-regexp-regexp="^([0-9]{1,5}|[0-9]{1,5}.[0-9]{1,2})$" data-fv-regexp-message="Cost value must be numeric and can't have less than 1 or more than 2 decimal places." placeholder="Cost Value" class="form-control"/>
                       </div>
                     </div>
-                  </div>
-                  <div class="sharing-option_actions">
-                    <input type="hidden" id="id_externals-[[$index]]-id" name="id_externals-[[$index]]-id" value="[[option.id || 0]]"/>
-                    <div ng-click="pixelOptions.splice($index, 1)" ng-show="option.new &amp;&amp; pixelOptions.length &gt; 1" class="sharing-option_action sharing-option_action__trash"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></div>
-                    <div ng-show="!option.new" class="sharing-option_action sharing-option_action__checkbox"><span>[[option.new]]</span>
-                      <input type="checkbox" id="id_externals-[[$index]]-enabled" name="id_externals-[[$index]]-enabled" ng-model="option.enabled"/>
-                      <input type="hidden" id="id_externals-[[$index]]-enabled" ng-if="!option.enabled" name="id_externals-[[$index]]-enabled" ng-model="option.enabled"/>
+                    <div class="sharing-option_actions form-group col-lg-1 col-md-1">
+                      <label ng-show="option.new" class="control-label">Remove</label>
+                      <label ng-show="!option.new" for="id_externals-[[$index]]-enabled" class="control-label">Active</label>
+                      <input type="hidden" id="id_externals-[[$index]]-id" name="id_externals-[[$index]]-id" value="[[option.id || 0]]"/>
+                      <div ng-class="{'sharing-option_action__disabled': pixelOptions.length &lt; 2}" ng-click="removeOption($index)" ng-show="option.new" class="sharing-option_action sharing-option_action__trash"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></div>
+                      <div ng-show="!option.new" class="sharing-option_action sharing-option_action__checkbox">
+                        <input type="checkbox" id="id_externals-[[$index]]-enabled" name="id_externals-[[$index]]-enabled" ng-model="option.enabled"/>
+                        <input type="hidden" id="id_externals-[[$index]]-enabled" ng-if="!option.enabled" name="id_externals-[[$index]]-enabled" ng-model="option.enabled"/>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -99,7 +101,7 @@
                 </div>
               </div>
               <input id="id_externals-TOTAL_FORMS" name="externals-TOTAL_FORMS" type="hidden" value="[[pixelOptions.length]]" autocomplete="off"/>
-              <input id="id_externals-INITIAL_FORMS" name="externals-INITIAL_FORMS" type="hidden" ng-init="optionsCountInitial = pixelOptions.length" value="[[optionsCountInitial]]"/>
+              <input id="id_externals-INITIAL_FORMS" name="externals-INITIAL_FORMS" type="hidden" value="0"/>
               <input id="id_externals-MIN_NUM_FORMS" name="externals-MIN_NUM_FORMS" type="hidden" value="0"/>
               <input id="id_externals-MAX_NUM_FORMS" name="externals-MAX_NUM_FORMS" type="hidden" value="1000"/>
               <div class="modal-footer row">
@@ -138,7 +140,7 @@
   </script>
   <!-- inject:js -->
   <script src="js/prod/2ebfc908646aeb0.libs.min.js"></script>
-  <script src="js/prod/4418bacd5b2ebec.app.min.js"></script>
+  <script src="js/prod/2d5d956e2531f9d.app.min.js"></script>
   <!-- endinject -->
 </body>
 </html>

@@ -251,11 +251,15 @@ body span {
   display: inline-block;
 }
 .sharing-option_actions {
-  display: inline-block;
   position: absolute;
-  right: 8px;
-  top: 50%;
-  cursor: pointer;
+  height: 100%;
+  top: 0;
+  right: 0;
+  padding: 7px 15px 15px 0;
+  text-align: center;
+}
+.sharing-option_actions .control-label {
+  margin-bottom: 10px;
 }
 .no-edit_veil {
   position: absolute;
@@ -263,6 +267,15 @@ body span {
   opacity: .3;
   border-radius: 4px;
   z-index: 2;
+}
+.sharing-option_action {
+  cursor: pointer;
+}
+.sharing-option_action__disabled {
+  cursor: auto;
+}
+.sharing-option_action__checkbox {
+  cursor: auto;
 }
 
 /* modal.css end */

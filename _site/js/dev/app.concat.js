@@ -86,8 +86,12 @@ angular.module('app').controller('ModalController', [
     $scope.ok = function() {
       return $modalInstance.close();
     };
-    return $scope.cancel = function() {
+    $scope.cancel = function() {
       return $modalInstance.dismiss('cancel');
+    };
+    return $scope.removeOption = function(index) {
+      $scope.pixelOptions.length > 1 && $scope.pixelOptions.splice(index, 1);
+      return $rootScope.$broadcast("removeOption");
     };
   }
 ]);
@@ -200,6 +204,10 @@ angular.module('app').directive("pixelCreateForm", [
               invalid: 'glyphicon glyphicon-remove',
               validating: 'glyphicon glyphicon-refresh'
             },
+            button: {
+              selector: '[type="submit"]',
+              disabled: ''
+            },
             fields: {
               id: {
                 validators: {
@@ -231,25 +239,20 @@ angular.module('app').directive("pixelCreateForm", [
           });
         };
         $timeout(function() {
-          return initValidation();
+          initValidation();
+          return jQuery(".sharing-options_add").click(function() {
+            $timeout(function() {
+              var fields;
+              fields = jQuery(".sharing-option").last().find(".form-control");
+              return angular.forEach(fields, function(field) {
+                return elm.data('formValidation').addField(jQuery(field));
+              });
+            }, 100);
+            return jQuery('[type="submit"]').removeClass("disabled").removeAttr("disabled");
+          });
         }, 100);
-        elm.find(".sharing-options_add").click(function() {
-          return $timeout(function() {
-            var fields;
-            fields = jQuery(".sharing-option").last().find(".form-control");
-            return angular.forEach(fields, function(field) {
-              return elm.data('formValidation').addField(jQuery(field));
-            });
-          }, 100);
-        });
-        return elm.find(".sharing-option_action__trash").click(function() {
-          return $timeout(function() {
-            var fields;
-            fields = jQuery(".sharing-option").last().find(".form-control");
-            return angular.forEach(fields, function(field) {
-              return elm.data('formValidation').removeField(jQuery(field));
-            });
-          }, 100);
+        return scope.$on("removeOption", function() {
+          return jQuery('[type="submit"]').removeClass("disabled").removeAttr("disabled");
         });
       }
     };

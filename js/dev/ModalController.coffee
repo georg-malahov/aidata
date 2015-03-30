@@ -16,4 +16,7 @@ angular.module('app').controller('ModalController',
     $modalInstance.close();
   $scope.cancel = ->
     $modalInstance.dismiss('cancel');
+  $scope.removeOption = (index) ->
+    $scope.pixelOptions.length > 1 && $scope.pixelOptions.splice(index, 1)
+    $rootScope.$broadcast("removeOption")
 ])

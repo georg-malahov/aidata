@@ -62,7 +62,7 @@
                     </div>
                   </div>
                   <div class="sharing-option_actions">
-                    <input type="hidden" id="id_externals-[[$index]]-id" name="id_externals-[[$index]]-id" value="[[option.id]]"/>
+                    <input type="hidden" id="id_externals-[[$index]]-id" name="id_externals-[[$index]]-id" value="[[option.id || 0]]"/>
                     <div ng-click="pixelOptions.splice($index, 1)" ng-show="option.new &amp;&amp; pixelOptions.length &gt; 1" class="sharing-option_action sharing-option_action__trash"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></div>
                     <div ng-show="!option.new" class="sharing-option_action sharing-option_action__checkbox"><span>[[option.new]]</span>
                       <input type="checkbox" id="id_externals-[[$index]]-enabled" name="id_externals-[[$index]]-enabled" ng-model="option.enabled"/>

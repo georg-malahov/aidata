@@ -1,0 +1,102 @@
+/* brandico */
+[class*="brandico-"]:before {
+  font-family: 'brandico', sans-serif;
+}
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+/* openwebicons */
+[class*="openwebicons-"]:before {
+  font-family: 'OpenWeb Icons', sans-serif;
+}
+/* zocial */
+[class*="zocial-"]:before {
+  font-family: 'zocial', sans-serif;
+}
+.form-signin {
+  max-width: 367px;
+  width: 367px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.signup-input {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.signup-input-confirm {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.input-group-addon {
+  top: 0;
+}
+.more-info {
+  margin-top: 50px;
+  border-top: 1px solid #dfe0e6;
+}
+.line-thru {
+  display: block;
+  font-size: .875em;
+  margin: 15px 0;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+.line-thru:before {
+  width: 40px;
+  height: 10px;
+  background-color: #fff;
+  content: '';
+  margin: -5px 0 0 -20px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  z-index: -1;
+}
+.line-thru:after {
+  border-bottom: 1px solid #dfe0e6;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 49%;
+  width: 100%;
+  z-index: -2;
+}
+.create-account {
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.btn-center {
+  width: 50%;
+  text-align: center;
+  margin: inherit;
+}
+html,
+body {
+  height: 100%;
+  position: relative;
+}
+#sign-in-logo {
+  background-image: url("/aidata/img/logo.png");
+  width: 165px;
+  height: 159px;
+  margin-left: 85px;
+  margin-bottom: 50px;
+}
+.buttons {
+  margin-top: 20px;
+}

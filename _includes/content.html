@@ -74,6 +74,10 @@
                   <div ng-click="pixelOptions.push(getDefaultOption())" class="btn btn-sm btn-success">Add Option</div>
                 </div>
               </div>
+              <input id="id_externals-TOTAL_FORMS" name="externals-TOTAL_FORMS" type="hidden" value="[[pixelOptions.length]]" autocomplete="off"/>
+              <input id="id_externals-INITIAL_FORMS" name="externals-INITIAL_FORMS" type="hidden" ng-init="optionsCountInitial = pixelOptions.length" value="[[optionsCountInitial]]"/>
+              <input id="id_externals-MIN_NUM_FORMS" name="externals-MIN_NUM_FORMS" type="hidden" value="0"/>
+              <input id="id_externals-MAX_NUM_FORMS" name="externals-MAX_NUM_FORMS" type="hidden" value="1000"/>
               <div class="modal-footer row">
                 <button type="submit" class="btn btn-primary">OK</button>
                 <button ng-click="cancel()" class="btn btn-warning">Cancel</button>

@@ -107,6 +107,10 @@ script(type="text/ng-template", id="modal.html")
                 ng-model="option.enabled")
         div(class="sharing-options_add")
           div(class="btn btn-sm btn-success", ng-click="pixelOptions.push(getDefaultOption())") Add Option
+      input(id="id_externals-TOTAL_FORMS", name="externals-TOTAL_FORMS", type="hidden", value="[[pixelOptions.length]]", autocomplete="off")
+      input(id="id_externals-INITIAL_FORMS", name="externals-INITIAL_FORMS", type="hidden", ng-init="optionsCountInitial = pixelOptions.length", value="[[optionsCountInitial]]")
+      input(id="id_externals-MIN_NUM_FORMS", name="externals-MIN_NUM_FORMS", type="hidden", value="0")
+      input(id="id_externals-MAX_NUM_FORMS", name="externals-MAX_NUM_FORMS", type="hidden", value="1000")
       div(class="modal-footer row")
         button(class="btn btn-primary", type="submit") OK
         button(class="btn btn-warning", ng-click="cancel()") Cancel

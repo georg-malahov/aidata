@@ -3,7 +3,7 @@ angular.module('app').controller('ModalController',
   $scope.customers = $window.__customers
   $scope.currencies = $window.__currencies
   $scope.mode = $modalInstance.mode
-  $rootScope.pixels = {'edit': {}, 'create': {}}
+  $rootScope.pixels = {'edit': {}, 'create': {pixel_id: $rootScope.userName}}
   $rootScope.pixel = $rootScope.pixels[$scope.mode] or {}
   if $scope.mode is 'edit'
     $rootScope.pixel = $rootScope.editedPixel
@@ -11,12 +11,12 @@ angular.module('app').controller('ModalController',
   $scope.getDefaultOption = () ->
     defaultOption = angular.fromJson(angular.toJson($scope.defaultOption))
     return defaultOption
-  $scope.pixelOptions = $rootScope.pixel.options || [$scope.getDefaultOption()]
+  $scope.pixelOptions = $rootScope.pixel.options || []
   $scope.ok = ->
     $modalInstance.close();
   $scope.cancel = ->
     $modalInstance.dismiss('cancel');
   $scope.removeOption = (index) ->
-    $scope.pixelOptions.length > 1 && $scope.pixelOptions.splice(index, 1)
+    $scope.pixelOptions.splice(index, 1)
     $rootScope.$broadcast("removeOption")
 ])

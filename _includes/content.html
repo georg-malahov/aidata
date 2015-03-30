@@ -64,7 +64,7 @@
                       <label ng-show="option.new" class="control-label">Remove</label>
                       <label ng-show="!option.new" for="id_externals-[[$index]]-enabled" class="control-label">Active</label>
                       <input type="hidden" id="id_externals-[[$index]]-id" name="id_externals-[[$index]]-id" value="[[option.id || 0]]"/>
-                      <div ng-class="{'sharing-option_action__disabled': pixelOptions.length &lt; 2}" ng-click="removeOption($index)" ng-show="option.new" class="sharing-option_action sharing-option_action__trash"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></div>
+                      <div ng-click="removeOption($index)" ng-show="option.new" class="sharing-option_action sharing-option_action__trash"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></div>
                       <div ng-show="!option.new" class="sharing-option_action sharing-option_action__checkbox">
                         <input type="checkbox" id="id_externals-[[$index]]-enabled" name="id_externals-[[$index]]-enabled" ng-model="option.enabled"/>
                         <input type="hidden" id="id_externals-[[$index]]-enabled" ng-if="!option.enabled" name="id_externals-[[$index]]-enabled" ng-model="option.enabled"/>
@@ -77,7 +77,7 @@
                 </div>
               </div>
               <input id="id_externals-TOTAL_FORMS" name="externals-TOTAL_FORMS" type="hidden" value="[[pixelOptions.length]]" autocomplete="off"/>
-              <input id="id_externals-INITIAL_FORMS" name="externals-INITIAL_FORMS" type="hidden" ng-init="mode == 'edit' &amp;&amp; (optionsCountInitial = pixelOptions.length)" value="[[optionsCountInitial || 0]]"/>
+              <input id="id_externals-INITIAL_FORMS" name="externals-INITIAL_FORMS" type="hidden" ng-init="optionsCountInitial = pixelOptions.length" value="[[optionsCountInitial]]"/>
               <input id="id_externals-MIN_NUM_FORMS" name="externals-MIN_NUM_FORMS" type="hidden" value="0"/>
               <input id="id_externals-MAX_NUM_FORMS" name="externals-MAX_NUM_FORMS" type="hidden" value="1000"/>
               <div class="modal-footer row">

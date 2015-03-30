@@ -6,7 +6,9 @@ angular.module('app').controller('ModalController', [
     $scope.mode = $modalInstance.mode;
     $rootScope.pixels = {
       'edit': {},
-      'create': {}
+      'create': {
+        pixel_id: $rootScope.userName
+      }
     };
     $rootScope.pixel = $rootScope.pixels[$scope.mode] || {};
     if ($scope.mode === 'edit') {
@@ -29,7 +31,7 @@ angular.module('app').controller('ModalController', [
       defaultOption = angular.fromJson(angular.toJson($scope.defaultOption));
       return defaultOption;
     };
-    $scope.pixelOptions = $rootScope.pixel.options || [$scope.getDefaultOption()];
+    $scope.pixelOptions = $rootScope.pixel.options || [];
     $scope.ok = function() {
       return $modalInstance.close();
     };
@@ -37,7 +39,7 @@ angular.module('app').controller('ModalController', [
       return $modalInstance.dismiss('cancel');
     };
     return $scope.removeOption = function(index) {
-      $scope.pixelOptions.length > 1 && $scope.pixelOptions.splice(index, 1);
+      $scope.pixelOptions.splice(index, 1);
       return $rootScope.$broadcast("removeOption");
     };
   }

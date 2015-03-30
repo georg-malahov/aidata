@@ -71,7 +71,7 @@ angular.module('app').controller('ModalController', [
       "new": 1,
       enabled: true,
       customer: {
-        type: "1",
+        type: "google_ddp",
         id: ""
       },
       cpm: {

@@ -4,6 +4,7 @@ angular.module('app').directive("tablecontrolPreview", ['$rootScope', '$timeout'
     elm.popover({
       html: true
       container: 'body'
+      title: 'Should be inserted before closing &lt;/body&gt; tag'
       content:  () ->
                 pixel_id = ""
                 $rootScope.editedPixel and (pixel_id = $rootScope.editedPixel.pixel_id)

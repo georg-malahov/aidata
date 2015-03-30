@@ -162,6 +162,7 @@ angular.module('app').directive("tablecontrolPreview", [
         elm.popover({
           html: true,
           container: 'body',
+          title: 'Should be inserted before closing &lt;/body&gt; tag',
           content: function() {
             var pixel_code, pixel_id;
             pixel_id = "";

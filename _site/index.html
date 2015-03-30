@@ -81,7 +81,7 @@
                             <li ng-repeat="currency in currencies" ng-class="{active: $parent.option.cpm.currency == currency.id }" ng-click="$parent.option.cpm.currency = currency.id"><span ng-bind="currency.name"></span></li>
                           </ul>
                         </div>
-                        <input type="text" role="input" id="id_externals-[[$index]]-cost" name="id_externals-[[$index]]-cost" ng-model="option.cpm.cost" data-fv-notempty="true" data-fv-notempty-message="Cost value is required." data-fv-regexp="true" data-fv-regexp-regexp="^([0-9]{1,5}|[0-9]{1,5}.[0-9]{1,2})$" data-fv-regexp-message="Cost value must be numeric and can't have less than 1 or more than 2 decimal places." placeholder="Cost Value" class="form-control"/>
+                        <input type="text" role="input" id="id_externals-[[$index]]-cost" name="id_externals-[[$index]]-cost" ng-model="option.cpm.cost" data-fv-notempty="true" data-fv-notempty-message="Cost value is required." data-fv-regexp="true" data-fv-regexp-regexp="^[0-9]{1,5}.?[0-9]{1,2}$" data-fv-regexp-message="Cost value must be numeric and can't have less than 1 or more than 2 decimal places." placeholder="Cost Value" class="form-control"/>
                       </div>
                     </div>
                     <div class="sharing-option_actions form-group col-lg-1 col-md-1">
@@ -101,7 +101,7 @@
                 </div>
               </div>
               <input id="id_externals-TOTAL_FORMS" name="externals-TOTAL_FORMS" type="hidden" value="[[pixelOptions.length]]" autocomplete="off"/>
-              <input id="id_externals-INITIAL_FORMS" name="externals-INITIAL_FORMS" type="hidden" value="0"/>
+              <input id="id_externals-INITIAL_FORMS" name="externals-INITIAL_FORMS" type="hidden" ng-init="mode == 'edit' &amp;&amp; (optionsCountInitial = pixelOptions.length)" value="[[optionsCountInitial || 0]]"/>
               <input id="id_externals-MIN_NUM_FORMS" name="externals-MIN_NUM_FORMS" type="hidden" value="0"/>
               <input id="id_externals-MAX_NUM_FORMS" name="externals-MAX_NUM_FORMS" type="hidden" value="1000"/>
               <div class="modal-footer row">

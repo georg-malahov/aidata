@@ -1,6 +1,6 @@
 script(type="text/ng-template", id="modal.html")
   div(class="modal-header")
-    h3(class="modal-title") Create new pixel
+    h3(class="modal-title") [[modalTitle]]
   div(class="modal-body")
     form(role="form", class="pixelCreateForm", id="pixel-form", action="#", method="get")
       div(class="basic-option row")
@@ -9,6 +9,8 @@ script(type="text/ng-template", id="modal.html")
           input(class="form-control",
             type="text",
             name="id",
+            data-fv-server="[[!!pixel.errors.id]]",
+            data-fv-server-message="[[pixel.errors.id]]",
             ng-model="pixel.pixel_id",
             no-edit="mode == 'edit'",
             placeholder="Identifier for a new pixel",
@@ -18,6 +20,8 @@ script(type="text/ng-template", id="modal.html")
           input(class="form-control",
             type="text",
             name="name",
+            data-fv-server="[[!!pixel.errors.name]]",
+            data-fv-server-message="[[pixel.errors.name]]",
             ng-model="pixel.name",
             placeholder="Displayed name",
             role="input")
@@ -29,11 +33,19 @@ script(type="text/ng-template", id="modal.html")
             div(class="form-group col-lg-6 col-md-6")
               label(class="control-label") Customer
               div(class="input-group")
+                input(type="hidden",
+                  class="form-control",
+                  disabled="disabled",
+                  name="unique[]",
+                  value="[[option.customer.unique]]")
                 div(class="input-group-btn", dropdown)
                   input(type="hidden",
-                  value="[[option.customer.type]]",
-                  name="id_externals-[[$index]]-type",
-                  id="id_externals-[[$index]]-type")
+                    class="form-control",
+                    data-fv-server="[[!!option.errors.type]]",
+                    data-fv-server-message="[[option.errors.type]]",
+                    value="[[option.customer.type]]",
+                    name="id_externals-[[$index]]-type",
+                    id="id_externals-[[$index]]-type")
                   button(type="button",
                     class="btn btn-default dropdown-toggle",
                     no-edit="mode == 'edit' && !option.new",
@@ -45,12 +57,14 @@ script(type="text/ng-template", id="modal.html")
                       ng-class="{active: $parent.option.customer.type == customer.type }",
                       ng-click="$parent.option.customer = customer")
                       span(class="", ng-bind="customer.name")
-                input(class="form-control",
+                input(class="form-control form-control__custom",
                   type="text",
                   no-edit="mode == 'edit' && !option.new",
                   id="id_externals-[[$index]]-customer_id",
                   name="id_externals-[[$index]]-customer_id",
                   ng-model="option.customer.id",
+                  data-fv-server="[[!!option.errors.customer_id]]",
+                  data-fv-server-message="[[option.errors.customer_id]]",
                   data-fv-notempty="true",
                   data-fv-notempty-message="Customer ID is required.",
                   data-fv-digits="true",
@@ -62,10 +76,16 @@ script(type="text/ng-template", id="modal.html")
               div(class="input-group")
                 div(class="input-group-btn", dropdown)
                   input(type="hidden",
+                  class="form-control",
                   value="[[option.cpm.currency]]",
+                  data-fv-server="[[!!option.errors.currency]]",
+                  data-fv-server-message="[[option.errors.currency]]",
                   id="id_externals-[[$index]]-currency",
                   name="id_externals-[[$index]]-currency")
-                  button(type="button", class="btn btn-default dropdown-toggle", dropdown-toggle) [[(currencies | filter: {id:option.cpm.currency})[0].name]]
+                  button(type="button",
+                    class="btn btn-default dropdown-toggle",
+                    no-edit="mode == 'edit' && !option.new",
+                    dropdown-toggle) [[(currencies | filter: {id:option.cpm.currency})[0].name]]
                     span(class="caret")
                   ul(class="dropdown-menu" role="menu")
                     li(class="",
@@ -73,19 +93,22 @@ script(type="text/ng-template", id="modal.html")
                     ng-class="{active: $parent.option.cpm.currency == currency.id }",
                     ng-click="$parent.option.cpm.currency = currency.id")
                       span(class="", ng-bind="currency.name")
-                input(type="text", class="form-control",
+                input(type="text", class="form-control form-control__custom",
                   role="input",
                   id="id_externals-[[$index]]-cost",
                   name="id_externals-[[$index]]-cost",
                   ng-model="option.cpm.cost",
+                  data-fv-server="[[!!option.errors.cost]]",
+                  data-fv-server-message="[[option.errors.cost]]",
                   data-fv-notempty="true",
                   data-fv-notempty-message="Cost value is required.",
-                  data-fv-lessthan="true",
-                  data-fv-lessthan-inclusive="true",
-                  data-fv-lessthan-value="99999.99",
                   data-fv-regexp="true"
                   data-fv-regexp-regexp="^[0-9]{0,5}\.?[0-9]{1,2}$"
                   data-fv-regexp-message="Cost value must be numeric and can't have less than 1 or more than 2 decimal places.",
+                  data-fv-lessthan="true",
+                  data-fv-lessthan-inclusive="true",
+                  data-fv-lessthan-value="99999.99",
+                  data-fv-lessthan-message="Please enter a value less than or equal to 99999.99",
                   placeholder="Cost Value")
             div(class="sharing-option_actions form-group col-lg-1 col-md-1")
               label(class="control-label", ng-show="option.new") Remove

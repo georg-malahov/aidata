@@ -22,4 +22,7 @@ angular.module('app').controller('MainController',
     if $window.__user
       $rootScope.userName = $window.__user.company + ($window.__pixels.length + 1)
     $scope.openModal('lg') if !$window.__pixels.length
+    if angular.isDefined($window.__postedPixel)
+      $rootScope.editedPixel = $window.__postedPixel
+      $scope.openModal('lg', 'edit')
 ])

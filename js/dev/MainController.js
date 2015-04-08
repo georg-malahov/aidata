@@ -25,7 +25,11 @@ angular.module('app').controller('MainController', [
       $rootScope.userName = $window.__user.company + ($window.__pixels.length + 1);
     }
     if (!$window.__pixels.length) {
-      return $scope.openModal('lg');
+      $scope.openModal('lg');
+    }
+    if (angular.isDefined($window.__postedPixel)) {
+      $rootScope.editedPixel = $window.__postedPixel;
+      return $scope.openModal('lg', 'edit');
     }
   }
 ]);

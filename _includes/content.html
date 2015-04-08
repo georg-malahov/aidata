@@ -15,18 +15,18 @@
       <div ng-show="!$root.preloading.page" class="tablecontrols ng-cloak">
         <script type="text/ng-template" id="modal.html">
           <div class="modal-header">
-            <h3 class="modal-title">Create new pixel</h3>
+            <h3 class="modal-title">[[modalTitle]]</h3>
           </div>
           <div class="modal-body">
             <form role="form" id="pixel-form" action="#" method="get" class="pixelCreateForm">
               <div class="basic-option row">
                 <div class="form-group col-lg-6 col-md-6">
                   <label class="control-label">Pixel ID</label>
-                  <input type="text" name="id" ng-model="pixel.pixel_id" no-edit="mode == 'edit'" placeholder="Identifier for a new pixel" role="input" class="form-control"/>
+                  <input type="text" name="id" data-fv-server="[[!!pixel.errors.id]]" data-fv-server-message="[[pixel.errors.id]]" ng-model="pixel.pixel_id" no-edit="mode == 'edit'" placeholder="Identifier for a new pixel" role="input" class="form-control"/>
                 </div>
                 <div class="form-group col-lg-6 col-md-6">
                   <label class="control-label">Name</label>
-                  <input type="text" name="name" ng-model="pixel.name" placeholder="Displayed name" role="input" class="form-control"/>
+                  <input type="text" name="name" data-fv-server="[[!!pixel.errors.name]]" data-fv-server-message="[[pixel.errors.name]]" ng-model="pixel.name" placeholder="Displayed name" role="input" class="form-control"/>
                 </div>
               </div>
               <div class="sharing-options">
@@ -37,27 +37,28 @@
                     <div class="form-group col-lg-6 col-md-6">
                       <label class="control-label">Customer</label>
                       <div class="input-group">
+                        <input type="hidden" disabled="disabled" name="unique[]" value="[[option.customer.unique]]" class="form-control"/>
                         <div dropdown="dropdown" class="input-group-btn">
-                          <input type="hidden" value="[[option.customer.type]]" name="id_externals-[[$index]]-type" id="id_externals-[[$index]]-type"/>
+                          <input type="hidden" data-fv-server="[[!!option.errors.type]]" data-fv-server-message="[[option.errors.type]]" value="[[option.customer.type]]" name="id_externals-[[$index]]-type" id="id_externals-[[$index]]-type" class="form-control"/>
                           <button type="button" no-edit="mode == 'edit' &amp;&amp; !option.new" dropdown-toggle="dropdown-toggle" class="btn btn-default dropdown-toggle">[[(customers | filter: {type:option.customer.type})[0].name]]<span class="caret"></span></button>
                           <ul role="menu" class="dropdown-menu">
                             <li ng-repeat="customer in customers" ng-class="{active: $parent.option.customer.type == customer.type }" ng-click="$parent.option.customer = customer"><span ng-bind="customer.name"></span></li>
                           </ul>
                         </div>
-                        <input type="text" no-edit="mode == 'edit' &amp;&amp; !option.new" id="id_externals-[[$index]]-customer_id" name="id_externals-[[$index]]-customer_id" ng-model="option.customer.id" data-fv-notempty="true" data-fv-notempty-message="Customer ID is required." data-fv-digits="true" data-fv-digits-message="Customer ID value can contain only digits." placeholder="Customer ID" role="input" class="form-control"/>
+                        <input type="text" no-edit="mode == 'edit' &amp;&amp; !option.new" id="id_externals-[[$index]]-customer_id" name="id_externals-[[$index]]-customer_id" ng-model="option.customer.id" data-fv-server="[[!!option.errors.customer_id]]" data-fv-server-message="[[option.errors.customer_id]]" data-fv-notempty="true" data-fv-notempty-message="Customer ID is required." data-fv-digits="true" data-fv-digits-message="Customer ID value can contain only digits." placeholder="Customer ID" role="input" class="form-control form-control__custom"/>
                       </div>
                     </div>
                     <div class="form-group col-lg-5 col-md-5">
                       <label class="control-label">Cost</label>
                       <div class="input-group">
                         <div dropdown="dropdown" class="input-group-btn">
-                          <input type="hidden" value="[[option.cpm.currency]]" id="id_externals-[[$index]]-currency" name="id_externals-[[$index]]-currency"/>
-                          <button type="button" dropdown-toggle="dropdown-toggle" class="btn btn-default dropdown-toggle">[[(currencies | filter: {id:option.cpm.currency})[0].name]]<span class="caret"></span></button>
+                          <input type="hidden" value="[[option.cpm.currency]]" data-fv-server="[[!!option.errors.currency]]" data-fv-server-message="[[option.errors.currency]]" id="id_externals-[[$index]]-currency" name="id_externals-[[$index]]-currency" class="form-control"/>
+                          <button type="button" no-edit="mode == 'edit' &amp;&amp; !option.new" dropdown-toggle="dropdown-toggle" class="btn btn-default dropdown-toggle">[[(currencies | filter: {id:option.cpm.currency})[0].name]]<span class="caret"></span></button>
                           <ul role="menu" class="dropdown-menu">
                             <li ng-repeat="currency in currencies" ng-class="{active: $parent.option.cpm.currency == currency.id }" ng-click="$parent.option.cpm.currency = currency.id"><span ng-bind="currency.name"></span></li>
                           </ul>
                         </div>
-                        <input type="text" role="input" id="id_externals-[[$index]]-cost" name="id_externals-[[$index]]-cost" ng-model="option.cpm.cost" data-fv-notempty="true" data-fv-notempty-message="Cost value is required." data-fv-lessthan="true" data-fv-lessthan-inclusive="true" data-fv-lessthan-value="99999.99" data-fv-regexp="true" data-fv-regexp-regexp="^[0-9]{0,5}.?[0-9]{1,2}$" data-fv-regexp-message="Cost value must be numeric and can't have less than 1 or more than 2 decimal places." placeholder="Cost Value" class="form-control"/>
+                        <input type="text" role="input" id="id_externals-[[$index]]-cost" name="id_externals-[[$index]]-cost" ng-model="option.cpm.cost" data-fv-server="[[!!option.errors.cost]]" data-fv-server-message="[[option.errors.cost]]" data-fv-notempty="true" data-fv-notempty-message="Cost value is required." data-fv-regexp="true" data-fv-regexp-regexp="^[0-9]{0,5}.?[0-9]{1,2}$" data-fv-regexp-message="Cost value must be numeric and can't have less than 1 or more than 2 decimal places." data-fv-lessthan="true" data-fv-lessthan-inclusive="true" data-fv-lessthan-value="99999.99" data-fv-lessthan-message="Please enter a value less than or equal to 99999.99" placeholder="Cost Value" class="form-control form-control__custom"/>
                       </div>
                     </div>
                     <div class="sharing-option_actions form-group col-lg-1 col-md-1">

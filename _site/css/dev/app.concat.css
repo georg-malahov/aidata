@@ -183,6 +183,15 @@ body {
   border-width: 5px 5px 0;
   border-top-color: #6e8f9e;
 }
+.has-error .input-group-btn,
+.has-error button {
+  border-color: #A94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.has-error .glyphicon-ok {
+  display: none!important;
+}
 
 
 /* base.css end */
@@ -333,6 +342,13 @@ body {
 }
 .dropdown-menu li > span:hover {
   background-color: #F5F5F5;
+}
+.form-control__custom {
+  position: relative;
+  border-radius: 4px!important;
+  border-top-left-radius: 0!important;
+  border-bottom-left-radius: 0!important;
+  left: -2px !important;
 }
 
 .sharing-option {

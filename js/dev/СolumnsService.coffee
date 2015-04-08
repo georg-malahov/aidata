@@ -33,6 +33,14 @@ angular.module('app').factory('ColumnsService', ->
       minWidth: 100
     }
     {
+      field: 'updated'
+      displayName: 'Updated'
+      cellClass: 'center'
+      headerCellClass: "center"
+      cellFilter: 'date : "yyyy-MM-dd HH:mm"',
+      minWidth: 100
+    }
+    {
       field: 'created'
       displayName: 'Created'
       cellClass: 'center'

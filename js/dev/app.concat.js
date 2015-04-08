@@ -106,19 +106,17 @@ angular.module('app').controller('ModalController', [
       return $rootScope.$broadcast("removeOption");
     };
     return $scope.$watch("pixelOptions", function(newVal, oldVal) {
-      var customerIds, customerTypes;
+      var customerOptions;
       if (angular.equals(newVal, oldVal) && angular.isDefined(oldVal)) {
         return;
       }
       if (newVal.length < 2) {
         return;
       }
-      customerTypes = [];
-      customerIds = [];
+      customerOptions = [];
       angular.forEach(newVal, function(option) {
-        option.customer.unique = !~customerIds.indexOf(option.customer.id) && !~customerTypes.indexOf(option.customer.type);
-        customerIds.push(option.customer.id);
-        return customerTypes.push(option.customer.type);
+        option.customer.unique = !~customerOptions.indexOf([option.customer.type, option.customer.id].join("."));
+        return customerOptions.push([option.customer.type, option.customer.id].join("."));
       });
       return $timeout(function() {
         return $rootScope.$broadcast("revalidateField", "unique[]");
@@ -298,7 +296,7 @@ angular.module('app').directive("body", [
                 validators: {
                   unique: {
                     enabled: true,
-                    message: "Different options can't have the same customer Type or ID"
+                    message: "Not allowed to share to the same customer id of the same type"
                   }
                 }
               }

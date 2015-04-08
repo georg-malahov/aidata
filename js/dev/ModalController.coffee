@@ -24,12 +24,10 @@ angular.module('app').controller('ModalController',
   $scope.$watch("pixelOptions", (newVal, oldVal) ->
     return if angular.equals(newVal, oldVal) and angular.isDefined(oldVal)
     return if newVal.length < 2
-    customerTypes = []
-    customerIds = []
+    customerOptions = []
     angular.forEach(newVal, (option) ->
-      option.customer.unique = !~customerIds.indexOf(option.customer.id) and !~customerTypes.indexOf(option.customer.type)
-      customerIds.push(option.customer.id)
-      customerTypes.push(option.customer.type)
+      option.customer.unique = !~customerOptions.indexOf([option.customer.type, option.customer.id].join("."))
+      customerOptions.push([option.customer.type, option.customer.id].join("."))
     )
     $timeout(->
       $rootScope.$broadcast("revalidateField", "unique[]")

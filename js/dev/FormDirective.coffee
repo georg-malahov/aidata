@@ -60,7 +60,7 @@ angular.module('app').directive("body", [() ->
             validators: {
               unique: {
                 enabled: true
-                message: "Different options can't have the same customer Type or ID"
+                message: "Not allowed to share to the same customer id of the same type"
               }
             }
           }

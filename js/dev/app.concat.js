@@ -36,7 +36,11 @@ angular.module('app').controller('MainController', [
       return modalInstance.result.then(function(selectedItem) {
         return $scope.selected = selectedItem;
       }, function() {
-        return console.info('Modal dismissed at  : ' + new Date());
+        console.info('Modal dismissed at  : ' + new Date());
+        if (angular.isDefined($window.__postedPixel)) {
+          delete $window.__postedPixel;
+          return $rootScope.editedPixel = false;
+        }
       });
     };
     if ($window.__user) {

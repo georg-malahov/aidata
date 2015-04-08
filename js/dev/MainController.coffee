@@ -18,6 +18,9 @@ angular.module('app').controller('MainController',
         $scope.selected = selectedItem;
       , () ->
         console.info('Modal dismissed at  : ' + new Date());
+        if angular.isDefined($window.__postedPixel)
+          delete $window.__postedPixel
+          $rootScope.editedPixel = false
       )
     if $window.__user
       $rootScope.userName = $window.__user.company + ($window.__pixels.length + 1)

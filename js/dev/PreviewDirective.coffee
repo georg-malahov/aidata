@@ -4,11 +4,11 @@ angular.module('app').directive("tablecontrolPreview", ['$rootScope', '$timeout'
     elm.popover({
       html: true
       container: 'body'
-      title: 'Should be inserted before closing &lt;/body&gt; tag'
+      title: 'Use these pixel code snippets'
       content:  () ->
                 pixel_id = ""
                 $rootScope.editedPixel and (pixel_id = $rootScope.editedPixel.pixel_id)
-                pixel_code =  """
+                pixel_code_website =  """
                                 <script type="text/javascript">
                                   (function (document) {
                                     var iframe = document.createElement('iframe'),
@@ -26,8 +26,15 @@ angular.module('app').directive("tablecontrolPreview", ['$rootScope', '$timeout'
                                   })(window.document)
                                 </script>
                               """
+
+                pixel_code_advertizing =  """
+                                            <img src="http://advombat.ru/0.gif?pid=#{pixel_id}" style="position: absolute; left: -9999px;" />
+                                          """
                 return """
-                  <textarea class="form-control" readonly rows="16" onclick="this.focus();this.select()">#{pixel_code}</textarea>
+                  <h5><u>For websites</u> (should be inserted before closing &lt;/body&gt; tag):</h5>
+                  <textarea class="form-control" readonly rows="16" onclick="this.focus();this.select()">#{pixel_code_website}</textarea>
+                  <h5><u>For banners</u>:</h5>
+                  <textarea class="form-control" readonly rows="2" onclick="this.focus();this.select()">#{pixel_code_advertizing}</textarea>
                 """
       placement: 'right'
       trigger: 'click'

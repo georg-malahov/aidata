@@ -192,6 +192,11 @@ body {
 .has-error .glyphicon-ok {
   display: none!important;
 }
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  cursor: pointer!important;
+}
 
 
 /* base.css end */

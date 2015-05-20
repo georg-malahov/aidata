@@ -2,14 +2,191 @@
   "data":
   [
     {
-      "affinity": 20.1,
+      "affinity (%)": 20.1,
+      "segment": "Proposal of services_l",
       "status": "ACTIVE",
-      "segment": "Proposal of services_l"
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
     },
     {
-      "affinity": 19.2,
+      "affinity (%)": 19.2,
+      "segment": "Mobile goods",
       "status": "PAUSED",
-      "segment": "Mobile goods"
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
+    },
+    {
+      "affinity (%)": 19.2,
+      "segment": "Mobile goods",
+      "status": "PAUSED",
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
+    },
+    {
+      "affinity (%)": 19.2,
+      "segment": "Mobile goods",
+      "status": "PAUSED",
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
+    },
+    {
+      "affinity (%)": 19.2,
+      "segment": "Mobile goods",
+      "status": "PAUSED",
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
+    },
+    {
+      "affinity (%)": 19.2,
+      "segment": "Mobile goods",
+      "status": "PAUSED",
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
+    },
+    {
+      "affinity (%)": 19.2,
+      "segment": "Mobile goods",
+      "status": "PAUSED",
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
+    },
+    {
+      "affinity (%)": 19.2,
+      "segment": "Mobile goods",
+      "status": "PAUSED",
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
+    },
+    {
+      "affinity (%)": 19.2,
+      "segment": "Mobile goods",
+      "status": "PAUSED",
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
+    },
+    {
+      "affinity (%)": 19.2,
+      "segment": "Mobile goods",
+      "status": "PAUSED",
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
+    },
+    {
+      "affinity (%)": 19.2,
+      "segment": "Mobile goods",
+      "status": "PAUSED",
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
+    },
+    {
+      "affinity (%)": 19.2,
+      "segment": "Mobile goods",
+      "status": "PAUSED",
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
+    },
+    {
+      "affinity (%)": 19.2,
+      "segment": "Mobile goods",
+      "status": "PAUSED",
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
+    },
+    {
+      "affinity (%)": 19.2,
+      "segment": "Mobile goods",
+      "status": "PAUSED",
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
+    },
+    {
+      "affinity (%)": 19.2,
+      "segment": "Mobile goods",
+      "status": "PAUSED",
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
+    },
+    {
+      "affinity (%)": 19.2,
+      "segment": "Mobile goods",
+      "status": "PAUSED",
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
+    },
+    {
+      "affinity (%)": 19.2,
+      "segment": "Mobile goods",
+      "status": "PAUSED",
+      "created": "18.05.2015",
+      "updated": "20.05.2015",
+      "started": "19.05.2015",
+      "population": "1 000 000",
+      "name": "new test name",
+      "is ready": "yes"
     }
   ],
   "status": "success"

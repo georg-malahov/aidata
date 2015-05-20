@@ -2,7 +2,7 @@
   bottom: 0;
 }
 .modal-body {
-  padding-bottom: 0;
+  overflow-x: auto;
 }
 .has-feedback .form-control {
   padding-right: 33px!important;

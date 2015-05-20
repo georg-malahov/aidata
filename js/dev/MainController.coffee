@@ -1,5 +1,5 @@
 angular.module('app').controller('MainController',
-[ '$scope', '$rootScope', '$modal', '$window', '$http', ( $scope, $rootScope, $modal, $window, $http) ->
+[ '$scope', '$rootScope', '$modal', '$window', '$http', '$q', ( $scope, $rootScope, $modal, $window, $http, $q) ->
     $rootScope.preloading.page = false
     $scope.openModal = (size, mode) ->
       switch mode
@@ -14,6 +14,10 @@ angular.module('app').controller('MainController',
           modalInstance.mode = mode
         when 'segments'
           $rootScope.preloading.page = true
+          deferred = $q.defer()
+          $http.get("pixel/#{$rootScope.editedPixel.pixel_id}/affinity.json").success((response) ->
+            deferred.resolve(response)
+          ).error((response) -> deferred.resolve({status: 'error', data: response}))
           modalInstance = $modal.open({
             templateUrl: 'modal__segments.html'
             controller: 'ModalSegmentsController'
@@ -21,8 +25,7 @@ angular.module('app').controller('MainController',
           #        keyboard: false
             size: size
             resolve: {
-              segments: ->
-                return $http.get("pixel/#{$rootScope.editedPixel.pixel_id}/affinity.json")
+              segments: -> deferred.promise
             }
           })
       modalInstance.result.then((result) ->

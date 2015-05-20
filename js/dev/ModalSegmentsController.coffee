@@ -3,11 +3,11 @@ angular.module('app').controller('ModalSegmentsController',
   $rootScope.preloading.page = false
   $scope.modalTitle = "Similar Segments"
   console.info("Segments to show: ", segments)
-  $scope.message = "Unknown error occured when requesting segments!"
-  if segments.data.status == 'success'
-    $scope.segments = segments.data.data
+  message = "Unknown error occured when requesting segments!"
+  if segments.status == 'success'
+    $scope.segments = segments.data
   else
-    $scope.message = segments.data.message
+    $scope.message = segments.message || message
   $scope.ok = ->
     $modalInstance.close();
   $scope.cancel = ->

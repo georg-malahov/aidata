@@ -11,9 +11,9 @@ div(class="tablecontrols ng-cloak", ng-show="!$root.preloading.page")
   div(class="tablecontrol_wrapper", tooltip="[[editPixelTooltip]]",
     ng-show="gridOptions.data.length")
     button(class="btn btn-success btn-md tablecontrol__preview",
-      ng-disabled="!$root.editedPixel") View Pixel Code
+      ng-disabled="!$root.editedPixel || $root.editedPixel.type.toLowerCase() == 'lookalike'") View Pixel Code
   div(class="tablecontrol_wrapper", tooltip="[[editPixelTooltip]]",
     ng-show="gridOptions.data.length")
     button(class="btn btn-success btn-md tablecontrol__segments",
-      ng-disabled="!$root.editedPixel",
+      ng-disabled="!$root.editedPixel || $root.editedPixel.type.toLowerCase() == 'lookalike'",
       ng-click="openModal('lg', 'segments')") Similar Segments

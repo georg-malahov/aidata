@@ -426,6 +426,13 @@ angular.module('app').factory('ColumnsService', function() {
       minWidth: 100,
       width: "*"
     }, {
+      field: 'type',
+      displayName: 'Type',
+      cellClass: 'to-left',
+      headerCellClass: "to-left",
+      minWidth: 100,
+      width: "*"
+    }, {
       field: 'name',
       displayName: 'Name',
       cellClass: 'to-left',

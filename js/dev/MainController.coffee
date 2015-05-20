@@ -22,7 +22,7 @@ angular.module('app').controller('MainController',
             size: size
             resolve: {
               segments: ->
-                return $http.get("/pixel/#{$rootScope.editedPixel.pixel_id}/affinity.json")
+                return $http.get("pixel/#{$rootScope.editedPixel.pixel_id}/affinity.json")
             }
           })
       modalInstance.result.then((result) ->

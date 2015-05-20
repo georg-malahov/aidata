@@ -88,12 +88,39 @@
             </form>
           </div>
         </script>
+        <script type="text/ng-template" id="modal__segments.html">
+          <div class="modal-header">
+            <h3 class="modal-title">[[modalTitle]]</h3>
+          </div>
+          <div class="modal-body">
+            <table ng-show="segments.length" class="table table-condensed table-responsive">
+              <thead>
+                <tr>
+                  <th ng-repeat="(columnName, value) in segments[0]" ng-bind="columnName.slice(0,1).toUpperCase() + columnName.slice(1)"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="segment in segments">
+                  <td ng-repeat="(columnName, value) in segment" ng-bind="value"></td>
+                </tr>
+              </tbody>
+            </table>
+            <p ng-bind="message" ng-hide="segments.length" class="alert alert-warning"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">OK</button>
+            <button ng-click="cancel()" class="btn btn-warning">Cancel</button>
+          </div>
+        </script>
         <button ng-click="openModal('lg', 'create')" class="btn btn-success btn-md tablecontrol__create">Create Pixel</button>
         <div tooltip="[[editPixelTooltip]]" ng-show="gridOptions.data.length" class="tablecontrol_wrapper">
           <button ng-disabled="!$root.editedPixel" ng-click="openModal('lg', 'edit')" class="btn btn-success btn-md tablecontrol__edit">Edit Pixel</button>
         </div>
         <div tooltip="[[editPixelTooltip]]" ng-show="gridOptions.data.length" class="tablecontrol_wrapper">
           <button ng-disabled="!$root.editedPixel" class="btn btn-success btn-md tablecontrol__preview">View Pixel Code</button>
+        </div>
+        <div tooltip="[[editPixelTooltip]]" ng-show="gridOptions.data.length" class="tablecontrol_wrapper">
+          <button ng-disabled="!$root.editedPixel" ng-click="openModal('lg', 'segments')" class="btn btn-success btn-md tablecontrol__segments">Similar Segments</button>
         </div>
       </div>
       <div ng-class="{'tablegrid__visible': gridOptions.data.length}" class="tablegrid">

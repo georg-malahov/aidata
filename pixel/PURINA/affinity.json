@@ -1,0 +1,16 @@
+{
+  "data":
+  [
+    {
+      "affinity": 20.1,
+      "status": "ACTIVE",
+      "segment": "Proposal of services_l"
+    },
+    {
+      "affinity": 19.2,
+      "status": "PAUSED",
+      "segment": "Mobile goods"
+    }
+  ],
+  "status": "success"
+}

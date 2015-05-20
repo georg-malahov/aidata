@@ -80,7 +80,7 @@
   },
   "injectTo": "./_layouts/default.html",
   "sync": [
-    "./_site/*.html",
+    "./_site/index.html",
     "./_site/js/dev/app.concat.js",
     "./_site/js/dev/libs.concat.js",
     "./_site/css/dev/app.concat.css",

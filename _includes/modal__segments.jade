@@ -1,0 +1,15 @@
+script(type="text/ng-template", id="modal__segments.html")
+  div(class="modal-header")
+    h3(class="modal-title") [[modalTitle]]
+  div(class="modal-body")
+    table(class="table table-condensed table-responsive", ng-show="segments.length")
+      thead
+        tr
+          th(ng-repeat="(columnName, value) in segments[0]", ng-bind="columnName.slice(0,1).toUpperCase() + columnName.slice(1)")
+      tbody
+        tr(ng-repeat="segment in segments")
+          td(ng-repeat="(columnName, value) in segment", ng-bind="value")
+    p(class="alert alert-warning", ng-bind="message", ng-hide="segments.length")
+  div(class="modal-footer")
+    button(class="btn btn-primary", type="submit") OK
+    button(class="btn btn-warning", ng-click="cancel()") Cancel

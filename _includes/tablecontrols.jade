@@ -1,5 +1,6 @@
 div(class="tablecontrols ng-cloak", ng-show="!$root.preloading.page")
   include modal
+  include modal__segments
   button(class="btn btn-success btn-md tablecontrol__create",
     ng-click="openModal('lg', 'create')") Create Pixel
   div(class="tablecontrol_wrapper", tooltip="[[editPixelTooltip]]",
@@ -11,3 +12,8 @@ div(class="tablecontrols ng-cloak", ng-show="!$root.preloading.page")
     ng-show="gridOptions.data.length")
     button(class="btn btn-success btn-md tablecontrol__preview",
       ng-disabled="!$root.editedPixel") View Pixel Code
+  div(class="tablecontrol_wrapper", tooltip="[[editPixelTooltip]]",
+    ng-show="gridOptions.data.length")
+    button(class="btn btn-success btn-md tablecontrol__segments",
+      ng-disabled="!$root.editedPixel",
+      ng-click="openModal('lg', 'segments')") Similar Segments

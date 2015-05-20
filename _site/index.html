@@ -112,12 +112,39 @@
             </form>
           </div>
         </script>
+        <script type="text/ng-template" id="modal__segments.html">
+          <div class="modal-header">
+            <h3 class="modal-title">[[modalTitle]]</h3>
+          </div>
+          <div class="modal-body">
+            <table ng-show="segments.length" class="table table-condensed table-responsive">
+              <thead>
+                <tr>
+                  <th ng-repeat="(columnName, value) in segments[0]" ng-bind="columnName.slice(0,1).toUpperCase() + columnName.slice(1)"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="segment in segments">
+                  <td ng-repeat="(columnName, value) in segment" ng-bind="value"></td>
+                </tr>
+              </tbody>
+            </table>
+            <p ng-bind="message" ng-hide="segments.length" class="alert alert-warning"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">OK</button>
+            <button ng-click="cancel()" class="btn btn-warning">Cancel</button>
+          </div>
+        </script>
         <button ng-click="openModal('lg', 'create')" class="btn btn-success btn-md tablecontrol__create">Create Pixel</button>
         <div tooltip="[[editPixelTooltip]]" ng-show="gridOptions.data.length" class="tablecontrol_wrapper">
           <button ng-disabled="!$root.editedPixel" ng-click="openModal('lg', 'edit')" class="btn btn-success btn-md tablecontrol__edit">Edit Pixel</button>
         </div>
         <div tooltip="[[editPixelTooltip]]" ng-show="gridOptions.data.length" class="tablecontrol_wrapper">
           <button ng-disabled="!$root.editedPixel" class="btn btn-success btn-md tablecontrol__preview">View Pixel Code</button>
+        </div>
+        <div tooltip="[[editPixelTooltip]]" ng-show="gridOptions.data.length" class="tablecontrol_wrapper">
+          <button ng-disabled="!$root.editedPixel" ng-click="openModal('lg', 'segments')" class="btn btn-success btn-md tablecontrol__segments">Similar Segments</button>
         </div>
       </div>
       <div ng-class="{'tablegrid__visible': gridOptions.data.length}" class="tablegrid">
@@ -138,11 +165,12 @@
     window.__user = {"company": "Aidata"};
     window.__customers = [{"type":"google_ddp","name":"Google DDP"},{"type":"2","name":"AppNexus"},{"type":"3","name":"Audience Science"},{"type":"4","name":"Videology"}];
     window.__currencies = [{"name":"British Pound","id":"GBP"},{"name":"Canadian Dollar","id":"CAD"},{"name":"Chilean Peso","id":"CLP"},{"name":"Chinese Yuan","id":"CNY"},{"name":"Colombian Peso","id":"COP"},{"name":"Costa Rican Colon","id":"CRC"},{"name":"Croatian Kuna","id":"HRK"},{"name":"Czech Koruna","id":"CZK"},{"name":"Danish Krone","id":"DKK"},{"name":"Dominican Peso","id":"DOP"},{"name":"Egyptian Pound","id":"EGP"},{"name":"Estonian Kroon","id":"EEK"},{"name":"Euro","id":"EUR"},{"name":"Guatemalan Quetza","id":"GTQ"},{"name":"Honduran Lempira","id":"HNL"},{"name":"Hong Kong Dollar","id":"HKD"},{"name":"Hungarian Forint","id":"HUF"},{"name":"Iceland Krona","id":"ISK"},{"name":"Indian Rupee","id":"INR"},{"name":"Indonesian Rupiah","id":"IDR"},{"name":"Israeli New Shekel","id":"ILS"},{"name":"Japanese Yen","id":"JPY"},{"name":"Jordanian Dinar","id":"JOD"},{"name":"Korean Won","id":"KRW"},{"name":"Latvian Lats","id":"LVL"},{"name":"Lithuanian Litas","id":"LTL"},{"name":"Macau Patacas","id":"MOP"},{"name":"Malaysian Ringgit","id":"MYR"},{"name":"Mexican Peso","id":"MXN"},{"name":"New Zealand Dollar","id":"NZD"},{"name":"Nicaraguan Cordoba","id":"NIO"},{"name":"Norwegian Krone","id":"NOK"},{"name":"Paraguayan Guarani","id":"PYG"},{"name":"Peruvian Nuevo Sol","id":"PEN"},{"name":"Philippine Peso","id":"PHP"},{"name":"Polish Zloty","id":"PLN"},{"name":"Qatari Rials","id":"QAR"},{"name":"Romanian Leu","id":"RON"},{"name":"Russian Ruble","id":"RUB"},{"name":"Saudi Arabian Riyal","id":"SAR"},{"name":"Serbian Dinar","id":"RSD"},{"name":"Singapore Dollar","id":"SGD"},{"name":"Slovak Koruna","id":"SKK"},{"name":"South African Rand","id":"ZAR"},{"name":"Swedish Krona","id":"SEK"},{"name":"Swiss Franc","id":"CHF"},{"name":"Taiwan Dollar","id":"TWD"},{"name":"Thai Baht","id":"THB"},{"name":"Turkish Lira","id":"TRY"},{"name":"Uae Dirham","id":"AED"},{"name":"Ukrainian Hryvnia","id":"UAH"},{"name":"United States Dollar","id":"USD"}];
-    window.__postedPixel = {"pixel_id": "Aidata2", "errors": {}, "name": "fff", "options": [{"customer": {"type": "google_ddp", "id": "1234"}, "errors": {"cost": "Enter a number"}, "enabled": true, "id": "38", "cpm": {"currency": "USD", "cost": "khj"}}]};
+    //window.__postedPixel = {"pixel_id": "Aidata2", "errors": {}, "name": "fff", "options": [{"customer": {"type": "google_ddp", "id": "1234"}, "errors":
+    //{"cost":"Enter a number"}, "enabled": true, "id": "38", "cpm": {"currency": "USD", "cost": "khj"}}]};
   </script>
   <!-- inject:js -->
   <script src="js/prod/2ebfc908646aeb0.libs.min.js"></script>
-  <script src="js/prod/fb694335ced03ec.app.min.js"></script>
+  <script src="js/prod/75d720e283af8e1.app.min.js"></script>
   <!-- endinject -->
 </body>
 </html>

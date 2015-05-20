@@ -1,21 +1,32 @@
 angular.module('app').controller('MainController',
-[ '$scope', '$rootScope', '$modal', '$window', ( $scope, $rootScope, $modal, $window) ->
+[ '$scope', '$rootScope', '$modal', '$window', '$http', ( $scope, $rootScope, $modal, $window, $http) ->
     $rootScope.preloading.page = false
     $scope.openModal = (size, mode) ->
-      modalInstance = $modal.open({
-        templateUrl: 'modal.html'
-        controller: 'ModalController'
-#        backdrop: 'static'
-#        keyboard: false
-        size: size
-        resolve: {
-          items: ->
-            return $scope.items
-        }
-      })
-      modalInstance.mode = mode
-      modalInstance.result.then((selectedItem) ->
-        $scope.selected = selectedItem;
+      switch mode
+        when 'create', 'edit'
+          modalInstance = $modal.open({
+            templateUrl: 'modal.html'
+            controller: 'ModalController'
+    #        backdrop: 'static'
+    #        keyboard: false
+            size: size
+          })
+          modalInstance.mode = mode
+        when 'segments'
+          $rootScope.preloading.page = true
+          modalInstance = $modal.open({
+            templateUrl: 'modal__segments.html'
+            controller: 'ModalSegmentsController'
+          #        backdrop: 'static'
+          #        keyboard: false
+            size: size
+            resolve: {
+              segments: ->
+                return $http.get("/pixel/#{$rootScope.editedPixel.pixel_id}/affinity.json")
+            }
+          })
+      modalInstance.result.then((result) ->
+        $scope.result = result;
       , () ->
         console.info('Modal dismissed at  : ' + new Date());
         if angular.isDefined($window.__postedPixel)

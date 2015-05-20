@@ -1,0 +1,22 @@
+{
+  "data":
+  [
+    {
+      "affinity": 72.69,
+      "segment": "News"
+    },
+    {
+      "affinity": 31.28,
+      "segment": "Transport_l"
+    },
+    {
+      "affinity": 20.1,
+      "segment": "Proposal of services_l"
+    },
+    {
+      "affinity": 19.2,
+      "segment": "Mobile goods"
+    }
+  ],
+  "status": "success"
+}

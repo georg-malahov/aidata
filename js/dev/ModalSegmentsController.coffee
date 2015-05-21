@@ -6,7 +6,7 @@ angular.module('app').controller('ModalSegmentsController',
   message = "Unknown error occured when requesting segments!"
   if segments.status == 'success'
     $scope.segments = segments.data
-    $scope.message = "No similar segments found" if angular.isArray(segments.data) and !segments.data.length
+    $scope.message = "No recommended segments found" if angular.isArray(segments.data) and !segments.data.length
   else
     $scope.message = segments.message || message
   $scope.ok = ->

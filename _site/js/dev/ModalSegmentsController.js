@@ -9,7 +9,7 @@ angular.module('app').controller('ModalSegmentsController', [
     if (segments.status === 'success') {
       $scope.segments = segments.data;
       if (angular.isArray(segments.data) && !segments.data.length) {
-        $scope.message = "No similar segments found";
+        $scope.message = "No recommended segments found";
       }
     } else {
       $scope.message = segments.message || message;

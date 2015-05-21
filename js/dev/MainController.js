@@ -50,7 +50,7 @@ angular.module('app').controller('MainController', [
       $rootScope.userName = $window.__user.company + ($window.__pixels.length + 1);
     }
     if (!$window.__pixels.length) {
-      $scope.openModal('lg');
+      $scope.openModal('lg', 'create');
     }
     if (angular.isDefined($window.__postedPixel)) {
       $rootScope.editedPixel = $window.__postedPixel;

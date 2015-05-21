@@ -68,7 +68,7 @@ angular.module('app').controller('MainController', [
       $rootScope.userName = $window.__user.company + ($window.__pixels.length + 1);
     }
     if (!$window.__pixels.length) {
-      $scope.openModal('lg');
+      $scope.openModal('lg', 'create');
     }
     if (angular.isDefined($window.__postedPixel)) {
       $rootScope.editedPixel = $window.__postedPixel;
@@ -160,7 +160,7 @@ angular.module('app').controller('ModalSegmentsController', [
     if (segments.status === 'success') {
       $scope.segments = segments.data;
       if (angular.isArray(segments.data) && !segments.data.length) {
-        $scope.message = "No similar segments found";
+        $scope.message = "No recommended segments found";
       }
     } else {
       $scope.message = segments.message || message;

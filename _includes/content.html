@@ -122,7 +122,7 @@
           <button ng-disabled="!$root.editedPixel || $root.editedPixel.type.toLowerCase() == 'look-a-like'" ng-click="openModal('lg', 'segments')" class="btn btn-success btn-md tablecontrol__segments">Recommended Segments</button>
         </div>
         <div tooltip="[[editPixelTooltip]]" ng-show="gridOptions.data.length" class="tablecontrol_wrapper">
-          <button ng-disabled="!$root.editedPixel || $root.editedPixel.type.toLowerCase() == 'lookalike'" class="btn btn-success btn-md tablecontrol__lookalike">Look-a-like</button>
+          <button ng-disabled="!$root.editedPixel || $root.editedPixel.type.toLowerCase() == 'look-a-like'" class="btn btn-success btn-md tablecontrol__lookalike">Look-a-like</button>
         </div>
       </div>
       <div ng-class="{'tablegrid__visible': gridOptions.data.length}" class="tablegrid">

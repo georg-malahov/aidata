@@ -3,10 +3,11 @@ angular.module('app').directive("tablecontrolPreview", ['$rootScope', '$timeout'
   link: (scope, elm, attrs) ->
     elm.popover({
       html: true
-      container: '.content_inner'
-      viewport: {
-        selector: '.content_inner'
-      }
+      container: 'body'
+    #      container: '.content_inner'
+    #      viewport: {
+    #        selector: '.content_inner'
+    #      }
       title: 'Use these pixel code snippets'
       content:  () ->
                 pixel_id = ""
@@ -38,7 +39,7 @@ angular.module('app').directive("tablecontrolPreview", ['$rootScope', '$timeout'
                     <tr>
                       <td width="50%" style="padding: 0 1%; vertical-align: top;">
                         <h5><u>For websites</u> (should be inserted before closing &lt;/body&gt; tag):</h5>
-                        <textarea class="form-control" readonly rows="16" onclick="this.focus();this.select()">#{pixel_code_website}</textarea>
+                        <textarea class="form-control" readonly rows="17" onclick="this.focus();this.select()">#{pixel_code_website}</textarea>
                       </td>
                       <td width="50%" style="padding: 0 1%; vertical-align: top;">
                         <h5><u>For banners</u>:</h5>
@@ -47,7 +48,7 @@ angular.module('app').directive("tablecontrolPreview", ['$rootScope', '$timeout'
                     </tr>
                   </table>
                 """
-      placement: 'bottom'
+#      placement: 'bottom'
       trigger: 'click'
     })
     onClick = (e) ->

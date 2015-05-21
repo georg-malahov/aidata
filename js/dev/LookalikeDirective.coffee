@@ -25,11 +25,12 @@ angular.module('app').directive("tablecontrolLookalike", ['$rootScope', '$compil
       )
     elm.popover({
       html: true
-      container: '.content_inner'
-      viewport: {
-        selector: '.content_inner'
-      }
-      title: 'Set your lookalike audience!'
+      container: 'body'
+#      container: '.content_inner'
+#      viewport: {
+#        selector: '.content_inner'
+#      }
+      title: () -> return $compile("""<span>Set your look-a-like audience based on \'[[editedPixel.id]]\'!</span>""")($rootScope)
       content:  () ->
                 pixel_id = ""
                 $rootScope.editedPixel and (pixel_id = $rootScope.editedPixel.id)
@@ -42,17 +43,17 @@ angular.module('app').directive("tablecontrolLookalike", ['$rootScope', '$compil
                     <hr/>
                     <div class="audience-setter">
                       <div class="slider_wrapper">
-                        <div class="slider_title slider_title__low">All</div>
+                        <div class="slider_title slider_title__low">Reach</div>
                         <div class="slider_content">
-                          <div ui-slider="{orientation: 'horizontal', range: 'min'}"  min="0" max="100" step="10" ng-model="lookalikePercent"></div>
+                          <div ui-slider="{orientation: 'horizontal', range: 'min'}"  min="0" max="100" step="5" ng-model="lookalikePercent"></div>
                         </div>
-                        <div class="slider_title slider_title__high">Similar</div>
+                        <div class="slider_title slider_title__high">Similarity</div>
                       </div>
                       <hr/>
                       <div class="clearfix">
-                        <div class="selected-size"><span class="selected-size-title">Selected value: </span><span class="selected-size-value">[[lookalikePercent]]</span></div>
+                        <div class="selected-size"><span class="selected-size-title">Selected value: </span><span class="selected-size-value">[[lookalikePercent]]%</span></div>
                         <div class="selected-btn">
-                          <button class="btn btn-block btn-primary" ng-click="createLookalike(lookalikePercent, '#{pixel_id}')">Create New Lookalike Pixel</button>
+                          <button class="btn btn-block btn-primary" ng-click="createLookalike(lookalikePercent, '#{pixel_id}')">Create new look-a-like audience</button>
                         </div>
                       </div>
                       <div class="lookalike-error" ng-show="lookalikeMessage">

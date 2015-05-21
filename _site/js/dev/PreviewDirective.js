@@ -7,10 +7,7 @@ angular.module('app').directive("tablecontrolPreview", [
         var onClick;
         elm.popover({
           html: true,
-          container: '.content_inner',
-          viewport: {
-            selector: '.content_inner'
-          },
+          container: 'body',
           title: 'Use these pixel code snippets',
           content: function() {
             var pixel_code_advertizing, pixel_code_website, pixel_id;
@@ -18,9 +15,8 @@ angular.module('app').directive("tablecontrolPreview", [
             $rootScope.editedPixel && (pixel_id = $rootScope.editedPixel.pixel_id);
             pixel_code_website = "<script type=\"text/javascript\">\n  (function (document) {\n    var iframe = document.createElement('iframe'),\n      img = document.createElement(\"img\");\n    iframe.width = \"0\";\n    iframe.height = \"0\";\n    iframe.frameBorder = \"0\";\n    iframe.style.position = \"absolute\";\n    iframe.style.left = \"-9999px\";\n    iframe.onload = function () {\n      img.src=\"http://advombat.ru/0.gif?pid=" + pixel_id + "\";\n      iframe.contentDocument.body.appendChild(img);\n    };\n    document.body.appendChild(iframe);\n  })(window.document)\n</script>";
             pixel_code_advertizing = "<img src=\"http://advombat.ru/0.gif?pid=" + pixel_id + "\" style=\"position: absolute; left: -9999px;\" />";
-            return "<table width=\"100%\">\n  <tr>\n    <td width=\"50%\" style=\"padding: 0 1%; vertical-align: top;\">\n      <h5><u>For websites</u> (should be inserted before closing &lt;/body&gt; tag):</h5>\n      <textarea class=\"form-control\" readonly rows=\"16\" onclick=\"this.focus();this.select()\">" + pixel_code_website + "</textarea>\n    </td>\n    <td width=\"50%\" style=\"padding: 0 1%; vertical-align: top;\">\n      <h5><u>For banners</u>:</h5>\n      <textarea class=\"form-control\" readonly rows=\"2\" onclick=\"this.focus();this.select()\">" + pixel_code_advertizing + "</textarea>\n    </td>\n  </tr>\n</table>";
+            return "<table width=\"100%\">\n  <tr>\n    <td width=\"50%\" style=\"padding: 0 1%; vertical-align: top;\">\n      <h5><u>For websites</u> (should be inserted before closing &lt;/body&gt; tag):</h5>\n      <textarea class=\"form-control\" readonly rows=\"17\" onclick=\"this.focus();this.select()\">" + pixel_code_website + "</textarea>\n    </td>\n    <td width=\"50%\" style=\"padding: 0 1%; vertical-align: top;\">\n      <h5><u>For banners</u>:</h5>\n      <textarea class=\"form-control\" readonly rows=\"2\" onclick=\"this.focus();this.select()\">" + pixel_code_advertizing + "</textarea>\n    </td>\n  </tr>\n</table>";
           },
-          placement: 'bottom',
           trigger: 'click'
         });
         onClick = function(e) {

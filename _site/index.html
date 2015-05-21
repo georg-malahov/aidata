@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- inject:css -->
   <link rel="stylesheet" href="css/prod/92c0be505ab9966.libs.min.css">
-  <link rel="stylesheet" href="css/prod/13560f063d98240.app.min.css">
+  <link rel="stylesheet" href="css/prod/24ec6b2edb1beda.app.min.css">
   <!-- endinject -->
   
 <script>
@@ -140,13 +140,13 @@
           <button ng-disabled="!$root.editedPixel" ng-click="openModal('lg', 'edit')" class="btn btn-success btn-md tablecontrol__edit">Edit Pixel</button>
         </div>
         <div tooltip="[[editPixelTooltip]]" ng-show="gridOptions.data.length" class="tablecontrol_wrapper">
-          <button ng-disabled="!$root.editedPixel || $root.editedPixel.type.toLowerCase() == 'lookalike'" class="btn btn-success btn-md tablecontrol__preview">View Pixel Code</button>
+          <button ng-disabled="!$root.editedPixel || $root.editedPixel.type.toLowerCase() == 'look-a-like'" class="btn btn-success btn-md tablecontrol__preview">View Pixel Code</button>
         </div>
         <div tooltip="[[editPixelTooltip]]" ng-show="gridOptions.data.length" class="tablecontrol_wrapper">
-          <button ng-disabled="!$root.editedPixel || $root.editedPixel.type.toLowerCase() == 'lookalike'" ng-click="openModal('lg', 'segments')" class="btn btn-success btn-md tablecontrol__segments">Similar Segments</button>
+          <button ng-disabled="!$root.editedPixel || $root.editedPixel.type.toLowerCase() == 'look-a-like'" ng-click="openModal('lg', 'segments')" class="btn btn-success btn-md tablecontrol__segments">Recommended Segments</button>
         </div>
         <div tooltip="[[editPixelTooltip]]" ng-show="gridOptions.data.length" class="tablecontrol_wrapper">
-          <button ng-disabled="!$root.editedPixel || $root.editedPixel.type.toLowerCase() == 'lookalike'" class="btn btn-success btn-md tablecontrol__lookalike">Lookalike</button>
+          <button ng-disabled="!$root.editedPixel || $root.editedPixel.type.toLowerCase() == 'lookalike'" class="btn btn-success btn-md tablecontrol__lookalike">Look-a-like</button>
         </div>
       </div>
       <div ng-class="{'tablegrid__visible': gridOptions.data.length}" class="tablegrid">
@@ -364,7 +364,7 @@
   </script>
   <!-- inject:js -->
   <script src="js/prod/6618478f7f6b5e0.libs.min.js"></script>
-  <script src="js/prod/f2a07a0ce006256.app.min.js"></script>
+  <script src="js/prod/626a80f9960e456.app.min.js"></script>
   <!-- endinject -->
 </body>
 </html>

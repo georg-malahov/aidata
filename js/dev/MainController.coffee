@@ -15,7 +15,7 @@ angular.module('app').controller('MainController',
         when 'segments'
           $rootScope.preloading.page = true
           deferred = $q.defer()
-          $http.get("pixel/#{$rootScope.editedPixel.pixel_id}/affinity.json").success((response) ->
+          $http.get("pixel/#{$rootScope.editedPixel.id}/affinity.json").success((response) ->
             deferred.resolve(response)
           ).error((response) -> deferred.resolve({status: 'error', data: response}))
           modalInstance = $modal.open({

@@ -1,4 +1,5 @@
 angular.module('app', [
+  'ui.slider',
   'ui.grid',
   'ui.grid.edit',
   'ui.grid.autoResize',

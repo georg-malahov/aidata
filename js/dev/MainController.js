@@ -17,7 +17,7 @@ angular.module('app').controller('MainController', [
         case 'segments':
           $rootScope.preloading.page = true;
           deferred = $q.defer();
-          $http.get("pixel/" + $rootScope.editedPixel.pixel_id + "/affinity.json").success(function(response) {
+          $http.get("pixel/" + $rootScope.editedPixel.id + "/affinity.json").success(function(response) {
             return deferred.resolve(response);
           }).error(function(response) {
             return deferred.resolve({

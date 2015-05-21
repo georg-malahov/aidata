@@ -11,5 +11,4 @@ script(type="text/ng-template", id="modal__segments.html")
           td(ng-repeat="(columnName, value) in segment", ng-bind="value")
     p(class="alert alert-warning", ng-bind="message", ng-hide="segments.length")
   div(class="modal-footer")
-    button(class="btn btn-primary", type="submit") OK
-    button(class="btn btn-warning", ng-click="cancel()") Cancel
+    button(class="btn btn-primary", ng-click="cancel()") OK

@@ -142,4 +142,4 @@ gulp.task('sync', function() {
 });
 
 gulp.task('prod', gulpsync.sync(['clean', ['cssmin', 'jsmin'], 'cacheboost', 'rmnonmin', 'prodinject']));
-gulp.task('dev', gulpsync.sync(['watch', 'build', 'devinject', 'sync']));
+gulp.task('dev', gulpsync.sync(['watch', 'build', 'devinject']));

@@ -1,4 +1,5 @@
 /*Common files*/
 @import url("../../bower_components/bootstrap/dist/css/bootstrap.css");
+@import url("../../bower_components/jquery-ui/themes/smoothness/jquery-ui.css");
 @import url("../../libs/bootstrapValidation/formValidation.min.css");
 @import url("../../libs/ui-grid-unstable/ui-grid-unstable.min.css");

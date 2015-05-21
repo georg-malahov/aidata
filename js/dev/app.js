@@ -4,6 +4,7 @@
 /* borschik:include:./ModalSegmentsController.js */
 /* borschik:include:./TableController.js */
 /* borschik:include:./PreviewDirective.js */
+/* borschik:include:./LookalikeDirective.js */
 /* borschik:include:./FormDirective.js */
 /* borschik:include:./СolumnsService.js */
 /* borschik:include:./bootstrapApp.js */

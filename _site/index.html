@@ -8,8 +8,8 @@
   <meta name="description" content="Aidata.me : This is a prototype for pixel managing for aidata.me tool.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- inject:css -->
-  <link rel="stylesheet" href="css/prod/e947e9ab5aa16ec.libs.min.css">
-  <link rel="stylesheet" href="css/prod/74ee5067ebe4817.app.min.css">
+  <link rel="stylesheet" href="css/prod/92c0be505ab9966.libs.min.css">
+  <link rel="stylesheet" href="css/prod/13560f063d98240.app.min.css">
   <!-- endinject -->
   
 <script>
@@ -132,8 +132,7 @@
             <p ng-bind="message" ng-hide="segments.length" class="alert alert-warning"></p>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">OK</button>
-            <button ng-click="cancel()" class="btn btn-warning">Cancel</button>
+            <button ng-click="cancel()" class="btn btn-primary">OK</button>
           </div>
         </script>
         <button ng-click="openModal('lg', 'create')" class="btn btn-success btn-md tablecontrol__create">Create Pixel</button>
@@ -145,6 +144,9 @@
         </div>
         <div tooltip="[[editPixelTooltip]]" ng-show="gridOptions.data.length" class="tablecontrol_wrapper">
           <button ng-disabled="!$root.editedPixel || $root.editedPixel.type.toLowerCase() == 'lookalike'" ng-click="openModal('lg', 'segments')" class="btn btn-success btn-md tablecontrol__segments">Similar Segments</button>
+        </div>
+        <div tooltip="[[editPixelTooltip]]" ng-show="gridOptions.data.length" class="tablecontrol_wrapper">
+          <button ng-disabled="!$root.editedPixel || $root.editedPixel.type.toLowerCase() == 'lookalike'" class="btn btn-success btn-md tablecontrol__lookalike">Lookalike</button>
         </div>
       </div>
       <div ng-class="{'tablegrid__visible': gridOptions.data.length}" class="tablegrid">
@@ -163,6 +165,7 @@
     window.__pixels =
       [
         {
+          "id": "PURINA-ONE",
           "pixel_id": "PURINA-ONE",
           "status": "Approved",
           "type": "normal",
@@ -197,6 +200,7 @@
           "$$hashKey": "uiGrid-00B"
         },
         {
+          "id": "PURINA",
           "pixel_id": "PURINA",
           "status": "Approved",
           "type": "normal",
@@ -242,6 +246,7 @@
           "$$hashKey": "uiGrid-00D"
         },
         {
+          "id": "NESTLE-001",
           "pixel_id": "NESTLE-001",
           "status": "Approved",
           "type": "lookalike",
@@ -297,6 +302,7 @@
           "$$hashKey": "uiGrid-00F"
         },
         {
+          "id": "NESTLE-002",
           "pixel_id": "NESTLE-002",
           "status": "Not Approved",
           "type": "lookalike",
@@ -330,6 +336,7 @@
           "$$hashKey": "uiGrid-00H"
         },
         {
+          "id": "NESTLE-003",
           "pixel_id": "NESTLE-003",
           "status": "Rejected",
           "type": "lookalike",
@@ -339,6 +346,7 @@
           "$$hashKey": "uiGrid-00J"
         },
         {
+          "id": "NESTLE-004",
           "pixel_id": "NESTLE-004",
           "status": "Rejected",
           "type": "lookalike",
@@ -355,8 +363,8 @@
     //{"cost":"Enter a number"}, "enabled": true, "id": "38", "cpm": {"currency": "USD", "cost": "khj"}}]};
   </script>
   <!-- inject:js -->
-  <script src="js/prod/2ebfc908646aeb0.libs.min.js"></script>
-  <script src="js/prod/53d0b6d79353cd3.app.min.js"></script>
+  <script src="js/prod/6618478f7f6b5e0.libs.min.js"></script>
+  <script src="js/prod/ea385666dfb06d5.app.min.js"></script>
   <!-- endinject -->
 </body>
 </html>

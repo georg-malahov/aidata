@@ -108,8 +108,7 @@
             <p ng-bind="message" ng-hide="segments.length" class="alert alert-warning"></p>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">OK</button>
-            <button ng-click="cancel()" class="btn btn-warning">Cancel</button>
+            <button ng-click="cancel()" class="btn btn-primary">OK</button>
           </div>
         </script>
         <button ng-click="openModal('lg', 'create')" class="btn btn-success btn-md tablecontrol__create">Create Pixel</button>
@@ -121,6 +120,9 @@
         </div>
         <div tooltip="[[editPixelTooltip]]" ng-show="gridOptions.data.length" class="tablecontrol_wrapper">
           <button ng-disabled="!$root.editedPixel || $root.editedPixel.type.toLowerCase() == 'lookalike'" ng-click="openModal('lg', 'segments')" class="btn btn-success btn-md tablecontrol__segments">Similar Segments</button>
+        </div>
+        <div tooltip="[[editPixelTooltip]]" ng-show="gridOptions.data.length" class="tablecontrol_wrapper">
+          <button ng-disabled="!$root.editedPixel || $root.editedPixel.type.toLowerCase() == 'lookalike'" class="btn btn-success btn-md tablecontrol__lookalike">Lookalike</button>
         </div>
       </div>
       <div ng-class="{'tablegrid__visible': gridOptions.data.length}" class="tablegrid">

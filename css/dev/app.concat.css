@@ -162,8 +162,15 @@ body {
   margin-bottom: 15px;
 }
 .popover {
-  width: 500px;
-  max-width: 500px;
+  width: 1096px;
+  max-width: 1096px;
+  left: 15px!important;
+}
+.popover-content {
+  padding: 10px;
+}
+.popover-title {
+  font-size: 16px;
 }
 .tooltip.in {
   opacity: .9!important;
@@ -245,6 +252,67 @@ fieldset[disabled] .form-control {
 
 /* header.css end */
 /* content.css begin */
+.ui-slider-handle {
+  cursor: pointer;
+}
+.ui-slider-handle:focus {
+  outline: none;
+}
+.audience-wrapper {
+  position: relative;
+  font-size: 0;
+}
+.slider_title,
+.slider_content {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+}
+.slider_title {
+  width: 10%;
+  text-align: center;
+  font-weight: bold;
+}
+.slider_title__hight {
+  float: right;
+}
+.slider_content {
+  width: 79%;
+}
+.selected-size {
+  font-size: 14px;
+}
+.selected-size,
+.selected-btn {
+  height: 34px;
+}
+.selected-size {
+  float: left;
+  width: 65%;
+  line-height: 34px;
+  font-size: 20px;
+}
+.selected-size .selected-size-title {
+  vertical-align: top;
+}
+.selected-size .selected-size-value {
+  display: inline-block;
+  padding-left: 15px;
+  font-size: 30px;
+  font-weight: bold;
+  vertical-align: top;
+}
+.selected-btn {
+  float: right;
+  width: 35%;
+}
+.lookalike-error {
+  margin-top: 15px;
+}
+.lookalike-error p {
+  margin: 0;
+}
+
 .content {
   display: block;
   width: 100%;

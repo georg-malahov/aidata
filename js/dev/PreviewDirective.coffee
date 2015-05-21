@@ -35,7 +35,7 @@ angular.module('app').directive("tablecontrolPreview", ['$rootScope', '$timeout'
                                             <img src="http://advombat.ru/0.gif?pid=#{pixel_id}" style="position: absolute; left: -9999px;" />
                                           """
                 return """
-                          <div  width="500px">
+                          <div style="width:500px;">
                             <h5><u>For websites</u> (should be inserted before closing &lt;/body&gt; tag):</h5>
                             <textarea class="form-control" readonly rows="16" onclick="this.focus();this.select()">#{pixel_code_website}</textarea>
                             <h5><u>For banners</u>:</h5>

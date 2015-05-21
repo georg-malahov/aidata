@@ -3,7 +3,7 @@ angular.module('app').controller('ModalSegmentsController', [
   '$scope', '$rootScope', '$modalInstance', 'segments', function($scope, $rootScope, $modalInstance, segments) {
     var message;
     $rootScope.preloading.page = false;
-    $scope.modalTitle = "Similar Segments";
+    $scope.modalTitle = "Recommended Segments";
     console.info("Segments to show: ", segments);
     message = "Unknown error occured when requesting segments!";
     if (segments.status === 'success') {

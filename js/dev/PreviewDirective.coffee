@@ -35,19 +35,13 @@ angular.module('app').directive("tablecontrolPreview", ['$rootScope', '$timeout'
                                             <img src="http://advombat.ru/0.gif?pid=#{pixel_id}" style="position: absolute; left: -9999px;" />
                                           """
                 return """
-                  <table width="100%">
-                    <tr>
-                      <td width="50%" style="padding: 0 1%; vertical-align: top;">
-                        <h5><u>For websites</u> (should be inserted before closing &lt;/body&gt; tag):</h5>
-                        <textarea class="form-control" readonly rows="17" onclick="this.focus();this.select()">#{pixel_code_website}</textarea>
-                      </td>
-                      <td width="50%" style="padding: 0 1%; vertical-align: top;">
-                        <h5><u>For banners</u>:</h5>
-                        <textarea class="form-control" readonly rows="2" onclick="this.focus();this.select()">#{pixel_code_advertizing}</textarea>
-                      </td>
-                    </tr>
-                  </table>
-                """
+                          <div  width="500px">
+                            <h5><u>For websites</u> (should be inserted before closing &lt;/body&gt; tag):</h5>
+                            <textarea class="form-control" readonly rows="16" onclick="this.focus();this.select()">#{pixel_code_website}</textarea>
+                            <h5><u>For banners</u>:</h5>
+                            <textarea class="form-control" readonly rows="2" onclick="this.focus();this.select()">#{pixel_code_advertizing}</textarea>
+                          </div>
+                        """
 #      placement: 'bottom'
       trigger: 'click'
     })

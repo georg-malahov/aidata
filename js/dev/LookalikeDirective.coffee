@@ -35,7 +35,7 @@ angular.module('app').directive("tablecontrolLookalike", ['$rootScope', '$compil
                 pixel_id = ""
                 $rootScope.editedPixel and (pixel_id = $rootScope.editedPixel.id)
                 return $compile("""
-                  <div class="audience">
+                  <div class="audience" width="800px">
                     <p class="alert alert-success">
                       Size range is based on the total audience. Smaller audiences most closely match your source audience.
                       Creating a larger audience increases your potential reach, but reduces the level of similarity to your source.

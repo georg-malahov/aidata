@@ -1,7 +1,11 @@
-.ui-slider-handle {
-  cursor: pointer;
+.ui-slider {
+  cursor: pointer !important;
 }
-.ui-slider-handle:focus {
+.ui-slider .ui-slider-handle {
+  cursor: -moz-grabbing !important;
+  cursor: -webkit-grabbing !important;
+}
+.ui-slider .ui-slider-handle:focus {
   outline: none;
 }
 .audience-wrapper {

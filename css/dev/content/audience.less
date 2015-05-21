@@ -3,10 +3,14 @@
 .audience {
 
 }
-.ui-slider-handle {
-	cursor: 		pointer;
-	&:focus {
-		outline: 	none;
+.ui-slider {
+	cursor: pointer !important;
+	.ui-slider-handle {
+		cursor: -moz-grabbing!important;
+		cursor: -webkit-grabbing !important;
+		&:focus {
+			outline: none;
+		}
 	}
 }
 .audience-wrapper {

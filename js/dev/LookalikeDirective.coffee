@@ -1,4 +1,4 @@
-angular.module('app').directive("tablecontrolLookalike", ['$rootScope', '$compile', '$http', ($rootScope, $compile, $http) ->
+angular.module('app').directive("tablecontrolLookalike", ['$rootScope', '$compile', '$http', '$timeout', ($rootScope, $compile, $http, $timeout) ->
   restrict: "CA"
   link: (scope, elm, attrs) ->
     scope.lookalikePercent = 0
@@ -67,7 +67,7 @@ angular.module('app').directive("tablecontrolLookalike", ['$rootScope', '$compil
     onClick = (e) ->
       elm.popover("hide") if !jQuery(e.target).parents(".popover").length
     elm.on("shown.bs.popover", () ->
-      scope.lookalikeMessage = ""
+      $timeout(-> scope.$apply(-> scope.lookalikeMessage = "" ))
       jQuery("body").bind("click", onClick)
     )
     elm.on("hidden.bs.popover", () ->

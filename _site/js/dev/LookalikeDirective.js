@@ -33,7 +33,7 @@ angular.module('app').directive("tablecontrolLookalike", [
           html: true,
           container: 'body',
           title: function() {
-            return $compile("<span>Set your look-a-like audience based on \'[[editedPixel.pixel_id]]\'!</span>")($rootScope);
+            return $compile("<span>Set your look-a-like audience based on \'[[editedPixel.pixel_id]]\' pixel!</span>")($rootScope);
           },
           content: function() {
             var pixel_id;

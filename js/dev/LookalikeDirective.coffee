@@ -30,7 +30,7 @@ angular.module('app').directive("tablecontrolLookalike", ['$rootScope', '$compil
 #      viewport: {
 #        selector: '.content_inner'
 #      }
-      title: () -> return $compile("""<span>Set your look-a-like audience based on \'[[editedPixel.pixel_id]]\'!</span>""")($rootScope)
+      title: () -> return $compile("""<span>Set your look-a-like audience based on \'[[editedPixel.pixel_id]]\' pixel!</span>""")($rootScope)
       content:  () ->
                 pixel_id = ""
                 $rootScope.editedPixel and (pixel_id = $rootScope.editedPixel.id)

@@ -154,7 +154,7 @@ angular.module('app').controller('ModalSegmentsController', [
   '$scope', '$rootScope', '$modalInstance', 'segments', function($scope, $rootScope, $modalInstance, segments) {
     var message;
     $rootScope.preloading.page = false;
-    $scope.modalTitle = "Recommended Segments";
+    $scope.modalTitle = "Recommended Segments for '" + $rootScope.editedPixel.pixel_id + "' pixel";
     console.info("Segments to show: ", segments);
     message = "Unknown error occured when requesting segments!";
     if (segments.status === 'success') {
@@ -303,7 +303,7 @@ angular.module('app').directive("tablecontrolLookalike", [
           html: true,
           container: 'body',
           title: function() {
-            return $compile("<span>Set your look-a-like audience based on \'[[editedPixel.pixel_id]]\'!</span>")($rootScope);
+            return $compile("<span>Set your look-a-like audience based on \'[[editedPixel.pixel_id]]\' pixel!</span>")($rootScope);
           },
           content: function() {
             var pixel_id;

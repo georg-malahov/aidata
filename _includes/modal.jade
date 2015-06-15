@@ -8,7 +8,7 @@ script(type="text/ng-template", id="modal.html")
           label(class="control-label") Pixel ID
           input(class="form-control",
             type="text",
-            name="id",
+            name="pid",
             data-fv-server="[[!!pixel.errors.id]]",
             data-fv-server-message="[[pixel.errors.id]]",
             ng-model="pixel.pixel_id",
@@ -19,7 +19,7 @@ script(type="text/ng-template", id="modal.html")
           label(class="control-label") Name
           input(class="form-control",
             type="text",
-            name="name",
+            name="description",
             data-fv-server="[[!!pixel.errors.name]]",
             data-fv-server-message="[[pixel.errors.name]]",
             ng-model="pixel.name",

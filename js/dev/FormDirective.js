@@ -46,7 +46,7 @@ angular.module('app').directive("body", [
               disabled: ''
             },
             fields: {
-              id: {
+              pid: {
                 validators: {
                   notEmpty: {
                     message: 'Pixel ID is required'
@@ -57,7 +57,7 @@ angular.module('app').directive("body", [
                   }
                 }
               },
-              name: {
+              description: {
                 validators: {
                   notEmpty: {
                     message: 'Pixel Name is required'

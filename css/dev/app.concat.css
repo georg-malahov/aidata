@@ -129,11 +129,6 @@ body span {
   text-align: center;
   margin: inherit;
 }
-html,
-body {
-  height: 100%;
-  position: relative;
-}
 #sign-in-logo {
   background-image: url("/aidata/img/logo.png");
   width: 165px;

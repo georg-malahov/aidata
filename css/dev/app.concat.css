@@ -199,6 +199,15 @@ body span {
 fieldset[disabled] .form-control {
   cursor: pointer!important;
 }
+.control-label {
+  font-size: 14px;
+}
+.fv-form-bootstrap .help-block {
+  font-size: 12px;
+}
+.form-control-feedback {
+  font-size: 12px;
+}
 
 
 /* base.css end */
@@ -423,6 +432,11 @@ fieldset[disabled] .form-control {
   left: -2px !important;
 }
 
+.modal .table {
+  font-size: 14px;
+  margin-top: 25px;
+}
+
 .sharing-option {
   position: relative;
   margin-bottom: 10px;
@@ -444,6 +458,7 @@ fieldset[disabled] .form-control {
 .sharing-option_actions {
   position: absolute;
   height: 100%;
+  font-size: 14px;
   top: 0;
   right: 0;
   padding: 7px 15px 15px 0;
@@ -464,6 +479,24 @@ fieldset[disabled] .form-control {
 }
 .sharing-option_action__checkbox {
   cursor: auto;
+}
+.notice {
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.modal-body.create {
+  overflow-x: auto;
+  padding-bottom: 0;
+}
+.modal-footer {
+  position: relative;
+}
+.policy {
+  position: absolute;
+  font-weight: bold;
+  font-size: 12px;
+  top: 23px;
 }
 
 /* modal.css end */
@@ -610,6 +643,7 @@ fieldset[disabled] .form-control {
 }
 .ui-grid-canvas {
   padding-top: 0px;
+  height: auto !important;
 }
 .tablegrid {
   position: relative;
@@ -650,6 +684,10 @@ fieldset[disabled] .form-control {
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   z-index: 1;
+}
+.ui-grid-viewport {
+  overflow-x: hidden!important;
+  overflow-y: auto;
 }
 
 /* table.css end */

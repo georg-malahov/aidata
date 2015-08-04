@@ -30,6 +30,20 @@ angular.module('app').factory('ColumnsService', function() {
       minWidth: 100,
       width: "*"
     }, {
+      field: 'total_impressions',
+      displayName: 'Impressions',
+      cellClass: 'to-right',
+      headerCellClass: "center",
+      cellFilter: 'number',
+      minWidth: 100
+    }, {
+      field: 'total_cost',
+      displayName: 'Cost',
+      cellClass: 'to-right',
+      headerCellClass: "center",
+      cellFilter: 'number',
+      minWidth: 100
+    }, {
       field: 'size',
       displayName: 'Size',
       cellClass: 'to-right',

@@ -2,7 +2,8 @@ script(type="text/ng-template", id="modal__segments.html")
   div(class="modal-header")
     h3(class="modal-title") [[modalTitle]]
   div(class="modal-body")
-    table(class="table table-condensed table-responsive", ng-show="segments.length")
+    h5 Affinity discribes a similarity metric between two segments expressed as a percent of mutual uniqs.
+    table(class="table table-bordered table-striped table-condensed table-responsive", ng-show="segments.length")
       thead
         tr
           th(ng-repeat="(columnName, value) in segments[0]", ng-bind="columnName.slice(0,1).toUpperCase() + columnName.slice(1)")

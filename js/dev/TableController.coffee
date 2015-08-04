@@ -5,6 +5,7 @@ angular.module('app').controller('TableController',
     $scope.startSym = $interpolate.startSymbol()
     $scope.endSym = $interpolate.endSymbol()
     editPixelTooltip = "Select at least one pixel from the table."
+    date = new Date()
     $scope.editPixelTooltip = editPixelTooltip
     $scope.preloading.page = false
     $scope.gridOptions =
@@ -17,6 +18,11 @@ angular.module('app').controller('TableController',
       showGridFooter: false
       showColumnFooter: false
       multiSelect: false
+      exporterCsvFilename: "pixels_(#{date.toISOString()}).csv"
+      exporterFieldCallback: (grid, row, col, value) ->
+        if col.name is 'updated' or col.name is 'created'
+         value = $filter('date')(value, "yyyy-MM-dd HH:mm")
+        return value;
       data: $window.__pixels
       columnDefs: ColumnsService,
       onRegisterApi: (gridApi) ->
@@ -26,6 +32,9 @@ angular.module('app').controller('TableController',
           angular.element(document.getElementsByClassName('tablegrid_grid')[0]).css('height', count * 30 + 45 + 'px')
         else
           angular.element(document.getElementsByClassName('tablegrid_grid')[0]).css('height', 50 * 30 + 45 + 'px')
+        $timeout(() ->
+          angular.element(document.getElementsByClassName('ui-grid-canvas')[1]).css('height', 'auto')
+        , 100)
         gridApi.selection.on.rowSelectionChanged($scope, (row) ->
           selectedRows = gridApi.selection.getSelectedGridRows()
           if selectedRows.length

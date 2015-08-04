@@ -6,6 +6,7 @@
 }
 .ui-grid-canvas {
   padding-top: 0px;
+  height: auto !important;
 }
 .tablegrid {
   position: relative;
@@ -46,4 +47,8 @@
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   z-index: 1;
+}
+.ui-grid-viewport {
+  overflow-x: hidden!important;
+  overflow-y: auto;
 }

@@ -56,9 +56,6 @@
 .ui-grid-header-viewport .ui-grid-selection-row-header-buttons {
   margin-top: 4px;
 }
-.ui-grid-viewport {
-  overflow: hidden!important;
-}
 .ui-grid-pinned-container.ui-grid-pinned-container-left .ui-grid-header-cell:last-child .ui-grid-vertical-bar {
   background-color: #D4D4D4;
 }
@@ -143,6 +140,7 @@
 }
 .ui-grid-canvas {
   padding-top: 0px;
+  height: auto !important;
 }
 .tablegrid {
   position: relative;
@@ -183,4 +181,8 @@
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   z-index: 1;
+}
+.ui-grid-viewport {
+  overflow-x: hidden!important;
+  overflow-y: auto;
 }

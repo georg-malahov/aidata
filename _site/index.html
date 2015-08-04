@@ -8,8 +8,8 @@
   <meta name="description" content="Aidata.me : This is a prototype for pixel managing for aidata.me tool.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- inject:css -->
-  <link rel="stylesheet" href="css/dev/libs.concat.css">
-  <link rel="stylesheet" href="css/dev/app.concat.css">
+  <link rel="stylesheet" href="css/prod/9f01589cd3c776a.libs.min.css">
+  <link rel="stylesheet" href="css/prod/c4cafb7fd618972.app.min.css">
   <!-- endinject -->
   
 <script>
@@ -39,18 +39,19 @@
       <div ng-show="!$root.preloading.page" class="tablecontrols ng-cloak">
         <script type="text/ng-template" id="modal.html">
           <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-label="Close" ng-click="cancel()" class="close"><span aria-hidden="true">×</span></button>
             <h3 class="modal-title">[[modalTitle]]</h3>
           </div>
-          <div class="modal-body">
+          <div class="modal-body create">
             <form role="form" id="pixel-form" action="#" method="get" class="pixelCreateForm">
               <div class="basic-option row">
                 <div class="form-group col-lg-6 col-md-6">
                   <label class="control-label">Pixel ID</label>
-                  <input type="text" name="id" data-fv-server="[[!!pixel.errors.id]]" data-fv-server-message="[[pixel.errors.id]]" ng-model="pixel.pixel_id" no-edit="mode == 'edit'" placeholder="Identifier for a new pixel" role="input" class="form-control"/>
+                  <input type="text" name="pid" data-fv-server="[[!!pixel.errors.id]]" data-fv-server-message="[[pixel.errors.id]]" ng-model="pixel.pixel_id" no-edit="mode == 'edit'" placeholder="Identifier for a new pixel" role="input" class="form-control"/>
                 </div>
                 <div class="form-group col-lg-6 col-md-6">
                   <label class="control-label">Name</label>
-                  <input type="text" name="name" data-fv-server="[[!!pixel.errors.name]]" data-fv-server-message="[[pixel.errors.name]]" ng-model="pixel.name" placeholder="Displayed name" role="input" class="form-control"/>
+                  <input type="text" name="description" data-fv-server="[[!!pixel.errors.name]]" data-fv-server-message="[[pixel.errors.name]]" ng-model="pixel.name" placeholder="Displayed name" role="input" class="form-control"/>
                 </div>
               </div>
               <div class="sharing-options">
@@ -63,40 +64,32 @@
                       <div class="input-group">
                         <input type="hidden" disabled="disabled" name="unique[]" value="[[option.customer.unique]]" class="form-control"/>
                         <div dropdown="dropdown" class="input-group-btn">
-                          <input type="hidden" data-fv-server="[[!!option.errors.type]]" data-fv-server-message="[[option.errors.type]]" value="[[option.customer.type]]" name="id_externals-[[$index]]-type" id="id_externals-[[$index]]-type" class="form-control"/>
+                          <input type="hidden" data-fv-server="[[!!option.errors.type]]" data-fv-server-message="[[option.errors.type]]" value="[[option.customer.type]]" name="externals-[[$index]]-type" id="id_externals-[[$index]]-type" class="form-control"/>
                           <button type="button" no-edit="mode == 'edit' &amp;&amp; !option.new" dropdown-toggle="dropdown-toggle" class="btn btn-default dropdown-toggle">[[(customers | filter: {type:option.customer.type})[0].name]]<span class="caret"></span></button>
                           <ul role="menu" class="dropdown-menu">
                             <li ng-repeat="customer in customers" ng-class="{active: $parent.option.customer.type == customer.type }" ng-click="$parent.option.customer = customer"><span ng-bind="customer.name"></span></li>
                           </ul>
                         </div>
-                        <input type="text" no-edit="mode == 'edit' &amp;&amp; !option.new" id="id_externals-[[$index]]-customer_id" name="id_externals-[[$index]]-customer_id" ng-model="option.customer.id" data-fv-server="[[!!option.errors.customer_id]]" data-fv-server-message="[[option.errors.customer_id]]" data-fv-notempty="true" data-fv-notempty-message="Customer ID is required." data-fv-digits="true" data-fv-digits-message="Customer ID value can contain only digits." placeholder="Customer ID" role="input" class="form-control form-control__custom"/>
+                        <input type="text" no-edit="mode == 'edit' &amp;&amp; !option.new" id="id_externals-[[$index]]-eid" name="externals-[[$index]]-eid" ng-model="option.customer.id" data-fv-server="[[!!option.errors.customer_id]]" data-fv-server-message="[[option.errors.customer_id]]" data-fv-notempty="true" data-fv-notempty-message="Customer ID is required." data-fv-digits="true" data-fv-digits-message="Customer ID value can contain only digits." placeholder="Customer ID" role="input" class="form-control form-control__custom"/>
                       </div>
                     </div>
                     <div class="form-group col-lg-5 col-md-5">
                       <label class="control-label">Cost</label>
-                      <div class="input-group">
-                        <div dropdown="dropdown" class="input-group-btn">
-                          <input type="hidden" value="[[option.cpm.currency]]" data-fv-server="[[!!option.errors.currency]]" data-fv-server-message="[[option.errors.currency]]" id="id_externals-[[$index]]-currency" name="id_externals-[[$index]]-currency" class="form-control"/>
-                          <button type="button" no-edit="mode == 'edit' &amp;&amp; !option.new" dropdown-toggle="dropdown-toggle" class="btn btn-default dropdown-toggle">[[(currencies | filter: {id:option.cpm.currency})[0].name]]<span class="caret"></span></button>
-                          <ul role="menu" class="dropdown-menu">
-                            <li ng-repeat="currency in currencies" ng-class="{active: $parent.option.cpm.currency == currency.id }" ng-click="$parent.option.cpm.currency = currency.id"><span ng-bind="currency.name"></span></li>
-                          </ul>
-                        </div>
-                        <input type="text" role="input" id="id_externals-[[$index]]-cost" name="id_externals-[[$index]]-cost" ng-model="option.cpm.cost" data-fv-server="[[!!option.errors.cost]]" data-fv-server-message="[[option.errors.cost]]" data-fv-notempty="true" data-fv-notempty-message="Cost value is required." data-fv-regexp="true" data-fv-regexp-regexp="^[0-9]{0,5}.?[0-9]{1,2}$" data-fv-regexp-message="Cost value must be numeric and can't have less than 1 or more than 2 decimal places." data-fv-lessthan="true" data-fv-lessthan-inclusive="true" data-fv-lessthan-value="99999.99" data-fv-lessthan-message="Please enter a value less than or equal to 99999.99" placeholder="Cost Value" class="form-control form-control__custom"/>
-                      </div>
+                      <input type="text" role="input" id="id_externals-[[$index]]-cost_0" name="externals-[[$index]]-cost_0" no-edit="mode == 'edit' &amp;&amp; !option.new" ng-model="option.cpm.cost" data-fv-server="[[!!option.errors.cost]]" data-fv-server-message="[[option.errors.cost]]" data-fv-notempty="true" data-fv-notempty-message="Cost value is required." data-fv-regexp="true" data-fv-regexp-regexp="^[0-9]{0,5}.?[0-9]{1,2}$" data-fv-regexp-message="Cost value must be numeric and can't have less than 1 or more than 2 decimal places." data-fv-lessthan="true" data-fv-lessthan-inclusive="true" data-fv-lessthan-value="99999.99" data-fv-lessthan-message="Please enter a value less than or equal to 99999.99" placeholder="Cost Value" class="form-control"/>
                     </div>
                     <div class="sharing-option_actions form-group col-lg-1 col-md-1">
                       <label ng-show="option.new" class="control-label">Remove</label>
                       <label ng-show="!option.new" for="id_externals-[[$index]]-enabled" class="control-label">Active</label>
-                      <input type="hidden" id="id_externals-[[$index]]-id" name="id_externals-[[$index]]-id" value="[[option.id || 0]]"/>
+                      <input type="hidden" id="id_externals-[[$index]]-id" name="externals-[[$index]]-id" value="[[option.id || 0]]"/>
                       <div ng-click="removeOption($index)" ng-show="option.new" class="sharing-option_action sharing-option_action__trash"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></div>
                       <div ng-show="!option.new" class="sharing-option_action sharing-option_action__checkbox">
-                        <input type="checkbox" id="id_externals-[[$index]]-enabled" name="id_externals-[[$index]]-enabled" ng-model="option.enabled"/>
+                        <input type="checkbox" id="id_externals-[[$index]]-enabled" name="externals-[[$index]]-enabled" ng-model="option.enabled"/>
                         <input type="hidden" id="id_externals-[[$index]]-enabled" ng-if="!option.enabled" name="id_externals-[[$index]]-enabled" ng-model="option.enabled"/>
                       </div>
                     </div>
                   </div>
                 </div>
+                <p ng-show="pixelOptions.length" class="notice">* Please note that the entered cost has the currency of the specified account.</p>
                 <div class="sharing-options_add">
                   <div ng-click="pixelOptions.push(getDefaultOption())" class="btn btn-sm btn-success">Add Option</div>
                 </div>
@@ -106,6 +99,7 @@
               <input id="id_externals-MIN_NUM_FORMS" name="externals-MIN_NUM_FORMS" type="hidden" value="0"/>
               <input id="id_externals-MAX_NUM_FORMS" name="externals-MAX_NUM_FORMS" type="hidden" value="1000"/>
               <div class="modal-footer row">
+                <div class="policy"><span>I agree with &nbsp;</span><a href="http://my.aidata.me/data/docs/Google_Data_Policies.pdf" target="_blank">Google Data Platform Policies.</a></div>
                 <button type="submit" class="btn btn-primary">OK</button>
                 <button ng-click="cancel()" class="btn btn-warning">Cancel</button>
               </div>
@@ -117,7 +111,8 @@
             <h3 class="modal-title">[[modalTitle]]</h3>
           </div>
           <div class="modal-body">
-            <table ng-show="segments.length" class="table table-condensed table-responsive">
+            <h5>Affinity discribes a similarity metric between two segments expressed as a percent of mutual uniqs.</h5>
+            <table ng-show="segments.length" class="table table-bordered table-striped table-condensed table-responsive">
               <thead>
                 <tr>
                   <th ng-repeat="(columnName, value) in segments[0]" ng-bind="columnName.slice(0,1).toUpperCase() + columnName.slice(1)"></th>
@@ -162,200 +157,7 @@
   </div>
 </div>
   <script>
-    window.__pixels = [];
-//      [
-//        {
-//          "id": "PURINA-ONE",
-//          "pixel_id": "PURINA-ONE",
-//          "status": "Approved",
-//          "type": "normal",
-//          "name": "Nestle Purina One App",
-//          "options": [
-//            {
-//              "enabled": true,
-//              "customer": {
-//                "id": "2817463",
-//                "type": "2"
-//              },
-//              "cpm": {
-//                "currency": "USD",
-//                "cost": "200.50"
-//              }
-//            },
-//            {
-//              "enabled": true,
-//              "customer": {
-//                "id": "32374",
-//                "type": "3"
-//              },
-//              "cpm": {
-//                "currency": "RUB",
-//                "cost": "300.50"
-//              }
-//            }
-//          ],
-//          "size": 750000,
-//          "created": 1427356032183,
-//          "updated": "N/A",
-//          "$$hashKey": "uiGrid-00B"
-//        },
-//        {
-//          "id": "PURINA",
-//          "pixel_id": "PURINA",
-//          "status": "Approved",
-//          "type": "normal",
-//          "name": "Nestle Purina One Web Site",
-//          "options": [
-//            {
-//              "enabled": true,
-//              "customer": {
-//                "id": "23265",
-//                "type": "2"
-//              },
-//              "cpm": {
-//                "currency": "USD",
-//                "cost": "200.50"
-//              }
-//            },
-//            {
-//              "enabled": true,
-//              "customer": {
-//                "id": "17953",
-//                "type": "1"
-//              },
-//              "cpm": {
-//                "currency": "USD",
-//                "cost": "100.50"
-//              }
-//            },
-//            {
-//              "enabled": true,
-//              "customer": {
-//                "id": "34398",
-//                "type": "3"
-//              },
-//              "cpm": {
-//                "currency": "RUB",
-//                "cost": "300.50"
-//              }
-//            }
-//          ],
-//          "size": 3500000,
-//          "created": 1427356176913,
-//          "updated": 1427356176913,
-//          "$$hashKey": "uiGrid-00D"
-//        },
-//        {
-//          "id": "NESTLE-001",
-//          "pixel_id": "NESTLE-001",
-//          "status": "Approved",
-//          "type": "lookalike",
-//          "name": "Nestle Test 1",
-//          "options": [
-//            {
-//              "enabled": true,
-//              "customer": {
-//                "id": "223",
-//                "type": "2"
-//              },
-//              "cpm": {
-//                "currency": "USD",
-//                "cost": "200.50"
-//              }
-//            },
-//            {
-//              "enabled": true,
-//              "customer": {
-//                "id": "3345",
-//                "type": "3"
-//              },
-//              "cpm": {
-//                "currency": "RUB",
-//                "cost": "300.50"
-//              }
-//            },
-//            {
-//              "enabled": true,
-//              "customer": {
-//                "id": "48347",
-//                "type": "4"
-//              },
-//              "cpm": {
-//                "currency": "RUB",
-//                "cost": "400.50"
-//              }
-//            },
-//            {
-//              "enabled": true,
-//              "customer": {
-//                "id": "123654",
-//                "type": "1"
-//              },
-//              "cpm": {
-//                "currency": "PHP",
-//                "cost": "100.50"
-//              }
-//            }
-//          ],
-//          "size": 1300000,
-//          "created": 1427356218075,
-//          "$$hashKey": "uiGrid-00F"
-//        },
-//        {
-//          "id": "NESTLE-002",
-//          "pixel_id": "NESTLE-002",
-//          "status": "Not Approved",
-//          "type": "lookalike",
-//          "name": "Nestle Test 2",
-//          "options": [
-//            {
-//              "enabled": true,
-//              "customer": {
-//                "id": "2284756",
-//                "type": "2"
-//              },
-//              "cpm": {
-//                "currency": "USD",
-//                "cost": "200.50"
-//              }
-//            },
-//            {
-//              "enabled": true,
-//              "customer": {
-//                "id": "3376",
-//                "type": "3"
-//              },
-//              "cpm": {
-//                "currency": "RUB",
-//                "cost": "300.50"
-//              }
-//            }
-//          ],
-//          "size": 0,
-//          "created": 1427356255975,
-//          "$$hashKey": "uiGrid-00H"
-//        },
-//        {
-//          "id": "NESTLE-003",
-//          "pixel_id": "NESTLE-003",
-//          "status": "Rejected",
-//          "type": "lookalike",
-//          "name": "Nestle Test 3",
-//          "size": 0,
-//          "created": 1427356305766,
-//          "$$hashKey": "uiGrid-00J"
-//        },
-//        {
-//          "id": "NESTLE-004",
-//          "pixel_id": "NESTLE-004",
-//          "status": "Rejected",
-//          "type": "lookalike",
-//          "name": "Nestle Test 4",
-//          "size": 0,
-//          "created": 1427356361774,
-//          "$$hashKey": "uiGrid-00L"
-//        }
-//      ];
+    window.__pixels = [{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"PURINA-ONE","pixel_id":"PURINA-ONE","status":"Approved","type":"normal","name":"Nestle Purina One App","total_impressions":123,"total_cost":150.45,"options":[{"enabled":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183,"updated":"N/A"},{"id":"PURINA","pixel_id":"PURINA","status":"Approved","type":"normal","name":"Nestle Purina One Web Site","total_impressions":1230,"total_cost":170.45,"options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913,"updated":1427356176913},{"id":"NESTLE-001","pixel_id":"NESTLE-001","status":"Approved","type":"lookalike","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"total_impressions":123,"total_cost":150.45,"size":1300000,"created":1427356218075},{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"NESTLE-003","pixel_id":"NESTLE-003","status":"Rejected","type":"lookalike","name":"Nestle Test 3","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356305766},{"id":"NESTLE-004","pixel_id":"NESTLE-004","status":"Rejected","type":"lookalike","name":"Nestle Test 4","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356361774},{"id":"PURINA-ONE","pixel_id":"PURINA-ONE","status":"Approved","type":"normal","name":"Nestle Purina One App","total_impressions":123,"total_cost":150.45,"options":[{"enabled":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183,"updated":"N/A"},{"id":"PURINA","pixel_id":"PURINA","status":"Approved","type":"normal","name":"Nestle Purina One Web Site","total_impressions":1230,"total_cost":170.45,"options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913,"updated":1427356176913},{"id":"NESTLE-001","pixel_id":"NESTLE-001","status":"Approved","type":"lookalike","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"total_impressions":123,"total_cost":150.45,"size":1300000,"created":1427356218075},{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"NESTLE-003","pixel_id":"NESTLE-003","status":"Rejected","type":"lookalike","name":"Nestle Test 3","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356305766},{"id":"NESTLE-004","pixel_id":"NESTLE-004","status":"Rejected","type":"lookalike","name":"Nestle Test 4","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356361774},{"id":"PURINA-ONE","pixel_id":"PURINA-ONE","status":"Approved","type":"normal","name":"Nestle Purina One App","total_impressions":123,"total_cost":150.45,"options":[{"enabled":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183,"updated":"N/A"},{"id":"PURINA","pixel_id":"PURINA","status":"Approved","type":"normal","name":"Nestle Purina One Web Site","total_impressions":1230,"total_cost":170.45,"options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913,"updated":1427356176913},{"id":"NESTLE-001","pixel_id":"NESTLE-001","status":"Approved","type":"lookalike","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"total_impressions":123,"total_cost":150.45,"size":1300000,"created":1427356218075},{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"NESTLE-003","pixel_id":"NESTLE-003","status":"Rejected","type":"lookalike","name":"Nestle Test 3","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356305766},{"id":"NESTLE-004","pixel_id":"NESTLE-004","status":"Rejected","type":"lookalike","name":"Nestle Test 4","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356361774},{"id":"PURINA-ONE","pixel_id":"PURINA-ONE","status":"Approved","type":"normal","name":"Nestle Purina One App","total_impressions":123,"total_cost":150.45,"options":[{"enabled":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183,"updated":"N/A"},{"id":"PURINA","pixel_id":"PURINA","status":"Approved","type":"normal","name":"Nestle Purina One Web Site","total_impressions":1230,"total_cost":170.45,"options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913,"updated":1427356176913},{"id":"NESTLE-001","pixel_id":"NESTLE-001","status":"Approved","type":"lookalike","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"total_impressions":123,"total_cost":150.45,"size":1300000,"created":1427356218075},{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"NESTLE-003","pixel_id":"NESTLE-003","status":"Rejected","type":"lookalike","name":"Nestle Test 3","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356305766},{"id":"NESTLE-004","pixel_id":"NESTLE-004","status":"Rejected","type":"lookalike","name":"Nestle Test 4","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356361774},{"id":"PURINA-ONE","pixel_id":"PURINA-ONE","status":"Approved","type":"normal","name":"Nestle Purina One App","total_impressions":123,"total_cost":150.45,"options":[{"enabled":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183,"updated":"N/A"},{"id":"PURINA","pixel_id":"PURINA","status":"Approved","type":"normal","name":"Nestle Purina One Web Site","total_impressions":1230,"total_cost":170.45,"options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913,"updated":1427356176913},{"id":"NESTLE-001","pixel_id":"NESTLE-001","status":"Approved","type":"lookalike","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"total_impressions":123,"total_cost":150.45,"size":1300000,"created":1427356218075},{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"NESTLE-003","pixel_id":"NESTLE-003","status":"Rejected","type":"lookalike","name":"Nestle Test 3","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356305766},{"id":"NESTLE-004","pixel_id":"NESTLE-004","status":"Rejected","type":"lookalike","name":"Nestle Test 4","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356361774},{"id":"PURINA-ONE","pixel_id":"PURINA-ONE","status":"Approved","type":"normal","name":"Nestle Purina One App","total_impressions":123,"total_cost":150.45,"options":[{"enabled":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183,"updated":"N/A"},{"id":"PURINA","pixel_id":"PURINA","status":"Approved","type":"normal","name":"Nestle Purina One Web Site","total_impressions":1230,"total_cost":170.45,"options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913,"updated":1427356176913},{"id":"NESTLE-001","pixel_id":"NESTLE-001","status":"Approved","type":"lookalike","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"total_impressions":123,"total_cost":150.45,"size":1300000,"created":1427356218075},{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"NESTLE-003","pixel_id":"NESTLE-003","status":"Rejected","type":"lookalike","name":"Nestle Test 3","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356305766},{"id":"NESTLE-004","pixel_id":"NESTLE-004","status":"Rejected","type":"lookalike","name":"Nestle Test 4","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356361774},{"id":"PURINA-ONE","pixel_id":"PURINA-ONE","status":"Approved","type":"normal","name":"Nestle Purina One App","total_impressions":123,"total_cost":150.45,"options":[{"enabled":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183,"updated":"N/A"},{"id":"PURINA","pixel_id":"PURINA","status":"Approved","type":"normal","name":"Nestle Purina One Web Site","total_impressions":1230,"total_cost":170.45,"options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913,"updated":1427356176913},{"id":"NESTLE-001","pixel_id":"NESTLE-001","status":"Approved","type":"lookalike","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"total_impressions":123,"total_cost":150.45,"size":1300000,"created":1427356218075},{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"NESTLE-003","pixel_id":"NESTLE-003","status":"Rejected","type":"lookalike","name":"Nestle Test 3","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356305766},{"id":"NESTLE-004","pixel_id":"NESTLE-004","status":"Rejected","type":"lookalike","name":"Nestle Test 4","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356361774},{"id":"PURINA-ONE","pixel_id":"PURINA-ONE","status":"Approved","type":"normal","name":"Nestle Purina One App","total_impressions":123,"total_cost":150.45,"options":[{"enabled":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183,"updated":"N/A"},{"id":"PURINA","pixel_id":"PURINA","status":"Approved","type":"normal","name":"Nestle Purina One Web Site","total_impressions":1230,"total_cost":170.45,"options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913,"updated":1427356176913},{"id":"NESTLE-001","pixel_id":"NESTLE-001","status":"Approved","type":"lookalike","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"total_impressions":123,"total_cost":150.45,"size":1300000,"created":1427356218075},{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"NESTLE-003","pixel_id":"NESTLE-003","status":"Rejected","type":"lookalike","name":"Nestle Test 3","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356305766},{"id":"NESTLE-004","pixel_id":"NESTLE-004","status":"Rejected","type":"lookalike","name":"Nestle Test 4","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356361774},{"id":"PURINA-ONE","pixel_id":"PURINA-ONE","status":"Approved","type":"normal","name":"Nestle Purina One App","total_impressions":123,"total_cost":150.45,"options":[{"enabled":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183,"updated":"N/A"},{"id":"PURINA","pixel_id":"PURINA","status":"Approved","type":"normal","name":"Nestle Purina One Web Site","total_impressions":1230,"total_cost":170.45,"options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913,"updated":1427356176913},{"id":"NESTLE-001","pixel_id":"NESTLE-001","status":"Approved","type":"lookalike","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"total_impressions":123,"total_cost":150.45,"size":1300000,"created":1427356218075},{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"NESTLE-003","pixel_id":"NESTLE-003","status":"Rejected","type":"lookalike","name":"Nestle Test 3","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356305766},{"id":"NESTLE-004","pixel_id":"NESTLE-004","status":"Rejected","type":"lookalike","name":"Nestle Test 4","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356361774},{"id":"PURINA-ONE","pixel_id":"PURINA-ONE","status":"Approved","type":"normal","name":"Nestle Purina One App","total_impressions":123,"total_cost":150.45,"options":[{"enabled":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183,"updated":"N/A"},{"id":"PURINA","pixel_id":"PURINA","status":"Approved","type":"normal","name":"Nestle Purina One Web Site","total_impressions":1230,"total_cost":170.45,"options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913,"updated":1427356176913},{"id":"NESTLE-001","pixel_id":"NESTLE-001","status":"Approved","type":"lookalike","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"total_impressions":123,"total_cost":150.45,"size":1300000,"created":1427356218075},{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"NESTLE-003","pixel_id":"NESTLE-003","status":"Rejected","type":"lookalike","name":"Nestle Test 3","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356305766},{"id":"NESTLE-004","pixel_id":"NESTLE-004","status":"Rejected","type":"lookalike","name":"Nestle Test 4","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356361774},{"id":"PURINA-ONE","pixel_id":"PURINA-ONE","status":"Approved","type":"normal","name":"Nestle Purina One App","total_impressions":123,"total_cost":150.45,"options":[{"enabled":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183,"updated":"N/A"},{"id":"PURINA","pixel_id":"PURINA","status":"Approved","type":"normal","name":"Nestle Purina One Web Site","total_impressions":1230,"total_cost":170.45,"options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913,"updated":1427356176913},{"id":"NESTLE-001","pixel_id":"NESTLE-001","status":"Approved","type":"lookalike","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"total_impressions":123,"total_cost":150.45,"size":1300000,"created":1427356218075},{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"NESTLE-003","pixel_id":"NESTLE-003","status":"Rejected","type":"lookalike","name":"Nestle Test 3","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356305766},{"id":"NESTLE-004","pixel_id":"NESTLE-004","status":"Rejected","type":"lookalike","name":"Nestle Test 4","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356361774},{"id":"PURINA-ONE","pixel_id":"PURINA-ONE","status":"Approved","type":"normal","name":"Nestle Purina One App","total_impressions":123,"total_cost":150.45,"options":[{"enabled":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183,"updated":"N/A"},{"id":"PURINA","pixel_id":"PURINA","status":"Approved","type":"normal","name":"Nestle Purina One Web Site","total_impressions":1230,"total_cost":170.45,"options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913,"updated":1427356176913},{"id":"NESTLE-001","pixel_id":"NESTLE-001","status":"Approved","type":"lookalike","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"total_impressions":123,"total_cost":150.45,"size":1300000,"created":1427356218075},{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"NESTLE-003","pixel_id":"NESTLE-003","status":"Rejected","type":"lookalike","name":"Nestle Test 3","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356305766},{"id":"NESTLE-004","pixel_id":"NESTLE-004","status":"Rejected","type":"lookalike","name":"Nestle Test 4","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356361774},{"id":"PURINA-ONE","pixel_id":"PURINA-ONE","status":"Approved","type":"normal","name":"Nestle Purina One App","total_impressions":123,"total_cost":150.45,"options":[{"enabled":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183,"updated":"N/A"},{"id":"PURINA","pixel_id":"PURINA","status":"Approved","type":"normal","name":"Nestle Purina One Web Site","total_impressions":1230,"total_cost":170.45,"options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913,"updated":1427356176913},{"id":"NESTLE-001","pixel_id":"NESTLE-001","status":"Approved","type":"lookalike","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"total_impressions":123,"total_cost":150.45,"size":1300000,"created":1427356218075},{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"NESTLE-003","pixel_id":"NESTLE-003","status":"Rejected","type":"lookalike","name":"Nestle Test 3","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356305766},{"id":"NESTLE-004","pixel_id":"NESTLE-004","status":"Rejected","type":"lookalike","name":"Nestle Test 4","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356361774},{"id":"PURINA-ONE","pixel_id":"PURINA-ONE","status":"Approved","type":"normal","name":"Nestle Purina One App","total_impressions":123,"total_cost":150.45,"options":[{"enabled":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183,"updated":"N/A"},{"id":"PURINA","pixel_id":"PURINA","status":"Approved","type":"normal","name":"Nestle Purina One Web Site","total_impressions":1230,"total_cost":170.45,"options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913,"updated":1427356176913},{"id":"NESTLE-001","pixel_id":"NESTLE-001","status":"Approved","type":"lookalike","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"total_impressions":123,"total_cost":150.45,"size":1300000,"created":1427356218075},{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"NESTLE-003","pixel_id":"NESTLE-003","status":"Rejected","type":"lookalike","name":"Nestle Test 3","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356305766},{"id":"NESTLE-004","pixel_id":"NESTLE-004","status":"Rejected","type":"lookalike","name":"Nestle Test 4","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356361774},{"id":"PURINA-ONE","pixel_id":"PURINA-ONE","status":"Approved","type":"normal","name":"Nestle Purina One App","total_impressions":123,"total_cost":150.45,"options":[{"enabled":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183,"updated":"N/A"},{"id":"PURINA","pixel_id":"PURINA","status":"Approved","type":"normal","name":"Nestle Purina One Web Site","total_impressions":1230,"total_cost":170.45,"options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913,"updated":1427356176913},{"id":"NESTLE-001","pixel_id":"NESTLE-001","status":"Approved","type":"lookalike","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"total_impressions":123,"total_cost":150.45,"size":1300000,"created":1427356218075},{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"NESTLE-003","pixel_id":"NESTLE-003","status":"Rejected","type":"lookalike","name":"Nestle Test 3","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356305766},{"id":"NESTLE-004","pixel_id":"NESTLE-004","status":"Rejected","type":"lookalike","name":"Nestle Test 4","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356361774},{"id":"PURINA-ONE","pixel_id":"PURINA-ONE","status":"Approved","type":"normal","name":"Nestle Purina One App","total_impressions":123,"total_cost":150.45,"options":[{"enabled":true,"customer":{"id":"2817463","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"32374","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":750000,"created":1427356032183,"updated":"N/A"},{"id":"PURINA","pixel_id":"PURINA","status":"Approved","type":"normal","name":"Nestle Purina One Web Site","total_impressions":1230,"total_cost":170.45,"options":[{"enabled":true,"customer":{"id":"23265","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"17953","type":"1"},"cpm":{"currency":"USD","cost":"100.50"}},{"enabled":true,"customer":{"id":"34398","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"size":3500000,"created":1427356176913,"updated":1427356176913},{"id":"NESTLE-001","pixel_id":"NESTLE-001","status":"Approved","type":"lookalike","name":"Nestle Test 1","options":[{"enabled":true,"customer":{"id":"223","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3345","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}},{"enabled":true,"customer":{"id":"48347","type":"4"},"cpm":{"currency":"RUB","cost":"400.50"}},{"enabled":true,"customer":{"id":"123654","type":"1"},"cpm":{"currency":"PHP","cost":"100.50"}}],"total_impressions":123,"total_cost":150.45,"size":1300000,"created":1427356218075},{"id":"NESTLE-002","pixel_id":"NESTLE-002","status":"Not Approved","type":"lookalike","name":"Nestle Test 2","options":[{"enabled":true,"customer":{"id":"2284756","type":"2"},"cpm":{"currency":"USD","cost":"200.50"}},{"enabled":true,"customer":{"id":"3376","type":"3"},"cpm":{"currency":"RUB","cost":"300.50"}}],"total_impressions":123,"total_cost":150.45,"size":0,"created":1427356255975},{"id":"NESTLE-003","pixel_id":"NESTLE-003","status":"Rejected","type":"lookalike","name":"Nestle Test 3","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356305766},{"id":"NESTLE-004","pixel_id":"NESTLE-004","status":"Rejected","type":"lookalike","name":"Nestle Test 4","total_impressions":123,"total_cost":150.45,"size":0,"created":1427356361774}];
     window.__user = {"company": "Aidata"};
     window.__customers = [{"type":"google_ddp","name":"Google DDP"},{"type":"2","name":"AppNexus"},{"type":"3","name":"Audience Science"},{"type":"4","name":"Videology"}];
     window.__currencies = [{"name":"British Pound","id":"GBP"},{"name":"Canadian Dollar","id":"CAD"},{"name":"Chilean Peso","id":"CLP"},{"name":"Chinese Yuan","id":"CNY"},{"name":"Colombian Peso","id":"COP"},{"name":"Costa Rican Colon","id":"CRC"},{"name":"Croatian Kuna","id":"HRK"},{"name":"Czech Koruna","id":"CZK"},{"name":"Danish Krone","id":"DKK"},{"name":"Dominican Peso","id":"DOP"},{"name":"Egyptian Pound","id":"EGP"},{"name":"Estonian Kroon","id":"EEK"},{"name":"Euro","id":"EUR"},{"name":"Guatemalan Quetza","id":"GTQ"},{"name":"Honduran Lempira","id":"HNL"},{"name":"Hong Kong Dollar","id":"HKD"},{"name":"Hungarian Forint","id":"HUF"},{"name":"Iceland Krona","id":"ISK"},{"name":"Indian Rupee","id":"INR"},{"name":"Indonesian Rupiah","id":"IDR"},{"name":"Israeli New Shekel","id":"ILS"},{"name":"Japanese Yen","id":"JPY"},{"name":"Jordanian Dinar","id":"JOD"},{"name":"Korean Won","id":"KRW"},{"name":"Latvian Lats","id":"LVL"},{"name":"Lithuanian Litas","id":"LTL"},{"name":"Macau Patacas","id":"MOP"},{"name":"Malaysian Ringgit","id":"MYR"},{"name":"Mexican Peso","id":"MXN"},{"name":"New Zealand Dollar","id":"NZD"},{"name":"Nicaraguan Cordoba","id":"NIO"},{"name":"Norwegian Krone","id":"NOK"},{"name":"Paraguayan Guarani","id":"PYG"},{"name":"Peruvian Nuevo Sol","id":"PEN"},{"name":"Philippine Peso","id":"PHP"},{"name":"Polish Zloty","id":"PLN"},{"name":"Qatari Rials","id":"QAR"},{"name":"Romanian Leu","id":"RON"},{"name":"Russian Ruble","id":"RUB"},{"name":"Saudi Arabian Riyal","id":"SAR"},{"name":"Serbian Dinar","id":"RSD"},{"name":"Singapore Dollar","id":"SGD"},{"name":"Slovak Koruna","id":"SKK"},{"name":"South African Rand","id":"ZAR"},{"name":"Swedish Krona","id":"SEK"},{"name":"Swiss Franc","id":"CHF"},{"name":"Taiwan Dollar","id":"TWD"},{"name":"Thai Baht","id":"THB"},{"name":"Turkish Lira","id":"TRY"},{"name":"Uae Dirham","id":"AED"},{"name":"Ukrainian Hryvnia","id":"UAH"},{"name":"United States Dollar","id":"USD"}];
@@ -363,8 +165,8 @@
     //{"cost":"Enter a number"}, "enabled": true, "id": "38", "cpm": {"currency": "USD", "cost": "khj"}}]};
   </script>
   <!-- inject:js -->
-  <script src="js/dev/libs.concat.js"></script>
-  <script src="js/dev/app.concat.js"></script>
+  <script src="js/prod/e3e9a88595f09b9.libs.min.js"></script>
+  <script src="js/prod/b818e6537f9c25f.app.min.js"></script>
   <!-- endinject -->
 </body>
 </html>

@@ -1,4 +1,4 @@
-angular.module('app').directive("tablecontrolPreview", ['$rootScope', '$timeout', ($rootScope, $timeout) ->
+angular.module('app').directive("tablecontrolPreview", ['$rootScope', '$window', ($rootScope, $window) ->
   restrict: "CA"
   link: (scope, elm, attrs) ->
     elm.popover({
@@ -14,20 +14,21 @@ angular.module('app').directive("tablecontrolPreview", ['$rootScope', '$timeout'
                 $rootScope.editedPixel and (pixel_id = $rootScope.editedPixel.pixel_id)
                 pixel_code_website =  """
                                 <script type="text/javascript">
-                                  (function (document) {
+                                  (function (window, document) {
                                     var iframe = document.createElement('iframe'),
-                                      img = document.createElement("img");
+                                      img = document.createElement("img"),
+                                      httpReferer = window.encodeURIComponent(window.location.href);
                                     iframe.width = "0";
                                     iframe.height = "0";
                                     iframe.frameBorder = "0";
                                     iframe.style.position = "absolute";
                                     iframe.style.left = "-9999px";
                                     iframe.onload = function () {
-                                      img.src="http://advombat.ru/0.gif?pid=#{pixel_id}";
+                                      img.src="http://advombat.ru/0.gif?pid=#{pixel_id}&id=" + httpReferer;
                                       iframe.contentDocument.body.appendChild(img);
                                     };
                                     document.body.appendChild(iframe);
-                                  })(window.document)
+                                  })(window, window.document)
                                 </script>
                               """
 

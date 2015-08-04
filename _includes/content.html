@@ -44,10 +44,11 @@
                           <input type="hidden" data-fv-server="[[!!option.errors.type]]" data-fv-server-message="[[option.errors.type]]" value="[[option.customer.type]]" name="externals-[[$index]]-type" id="id_externals-[[$index]]-type" class="form-control"/>
                           <button type="button" no-edit="mode == 'edit' &amp;&amp; !option.new" dropdown-toggle="dropdown-toggle" class="btn btn-default dropdown-toggle">[[(customers | filter: {type:option.customer.type})[0].name]]<span class="caret"></span></button>
                           <ul role="menu" class="dropdown-menu">
-                            <li ng-repeat="customer in customers" ng-class="{active: $parent.option.customer.type == customer.type }" ng-click="$parent.option.customer = customer"><span ng-bind="customer.name"></span></li>
+                            <li ng-repeat="customer in customers" ng-class="{active: $parent.option.customer.type == customer.type }" ng-click="$parent.option.customer = customer; customer.type == 'google_reseller' &amp;&amp; ($parent.option.customer.id = 1169866720)"><span ng-bind="customer.name"></span></li>
                           </ul>
                         </div>
                         <input type="text" no-edit="mode == 'edit' &amp;&amp; !option.new" id="id_externals-[[$index]]-eid" name="externals-[[$index]]-eid" ng-model="option.customer.id" data-fv-server="[[!!option.errors.customer_id]]" data-fv-server-message="[[option.errors.customer_id]]" data-fv-notempty="true" data-fv-notempty-message="Customer ID is required." data-fv-digits="true" data-fv-digits-message="Customer ID value can contain only digits." placeholder="Customer ID" role="input" class="form-control form-control__custom"/>
+                        <div style="width: 402px; height: 34px; left: 0px; top: 0px;" ng-show="option.customer.type == 'google_reseller'" class="no-edit_veil"></div>
                       </div>
                     </div>
                     <div class="form-group col-lg-5 col-md-5">

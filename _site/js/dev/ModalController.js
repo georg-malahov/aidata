@@ -20,7 +20,7 @@ angular.module('app').controller('ModalController', [
       "new": 1,
       enabled: true,
       customer: {
-        type: "google_ddp",
+        type: "google_dbm",
         id: ""
       },
       cpm: {

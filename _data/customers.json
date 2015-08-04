@@ -1,18 +1,10 @@
 [
   {
-    "type": "google_ddp",
-    "name": "Google DDP"
+    "type": "google_dbm",
+    "name": "Google DBM"
   },
   {
-    "type": "2",
-    "name": "AppNexus"
-  },
-  {
-    "type": "3",
-    "name": "Audience Science"
-  },
-  {
-    "type": "4",
-    "name": "Videology"
+    "type": "google_reseller",
+    "name": "Google Reseller"
   }
 ]

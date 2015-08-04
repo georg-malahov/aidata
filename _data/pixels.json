@@ -12,7 +12,7 @@
         "enabled": true,
         "customer": {
           "id": "2817463",
-          "type": "2"
+          "type": "google_dbm"
         },
         "cpm": {
           "currency": "USD",
@@ -23,7 +23,7 @@
         "enabled": true,
         "customer": {
           "id": "32374",
-          "type": "3"
+          "type": "google_dbm"
         },
         "cpm": {
           "currency": "RUB",
@@ -48,7 +48,7 @@
         "enabled": true,
         "customer": {
           "id": "23265",
-          "type": "2"
+          "type": "google_dbm"
         },
         "cpm": {
           "currency": "USD",
@@ -59,7 +59,7 @@
         "enabled": true,
         "customer": {
           "id": "17953",
-          "type": "1"
+          "type": "google_dbm"
         },
         "cpm": {
           "currency": "USD",
@@ -70,7 +70,7 @@
         "enabled": true,
         "customer": {
           "id": "34398",
-          "type": "3"
+          "type": "google_dbm"
         },
         "cpm": {
           "currency": "RUB",
@@ -93,7 +93,7 @@
         "enabled": true,
         "customer": {
           "id": "223",
-          "type": "2"
+          "type": "google_dbm"
         },
         "cpm": {
           "currency": "USD",
@@ -104,7 +104,7 @@
         "enabled": true,
         "customer": {
           "id": "3345",
-          "type": "3"
+          "type": "google_dbm"
         },
         "cpm": {
           "currency": "RUB",
@@ -115,7 +115,7 @@
         "enabled": true,
         "customer": {
           "id": "48347",
-          "type": "4"
+          "type": "google_dbm"
         },
         "cpm": {
           "currency": "RUB",
@@ -126,7 +126,7 @@
         "enabled": true,
         "customer": {
           "id": "123654",
-          "type": "1"
+          "type": "google_dbm"
         },
         "cpm": {
           "currency": "PHP",
@@ -150,7 +150,7 @@
         "enabled": true,
         "customer": {
           "id": "2284756",
-          "type": "2"
+          "type": "google_dbm"
         },
         "cpm": {
           "currency": "USD",
@@ -161,7 +161,7 @@
         "enabled": true,
         "customer": {
           "id": "3376",
-          "type": "3"
+          "type": "google_dbm"
         },
         "cpm": {
           "currency": "RUB",

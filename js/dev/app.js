@@ -6,5 +6,5 @@
 /* borschik:include:./PreviewDirective.js */
 /* borschik:include:./LookalikeDirective.js */
 /* borschik:include:./FormDirective.js */
-/* borschik:include:./СolumnsService.js */
+/* borschik:include:./ColumnsService.js */
 /* borschik:include:./bootstrapApp.js */

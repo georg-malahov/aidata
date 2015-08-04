@@ -41,7 +41,7 @@ angular.module('app').factory('ColumnsService', function() {
       displayName: 'Cost',
       cellClass: 'to-right',
       headerCellClass: "center",
-      cellFilter: 'number',
+      cellFilter: 'currency',
       minWidth: 100
     }, {
       field: 'size',

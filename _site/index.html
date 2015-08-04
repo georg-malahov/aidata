@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- inject:css -->
   <link rel="stylesheet" href="css/prod/9f01589cd3c776a.libs.min.css">
-  <link rel="stylesheet" href="css/prod/c4cafb7fd618972.app.min.css">
+  <link rel="stylesheet" href="css/prod/f896c25c8915d67.app.min.css">
   <!-- endinject -->
   
 <script>
@@ -57,6 +57,7 @@
               <div class="sharing-options">
                 <h4 class="sharing-options_header">Sharing options</h4>
                 <hr class="hr"/>
+                <p ng-show="pixelOptions.length" class="notice">* Please note that the entered cost has the currency of the specified account.</p>
                 <div ng-repeat="option in pixelOptions track by $index" class="sharing-option row">
                   <div class="sharing-option-inner col-lg-12 col-md-12">
                     <div class="form-group col-lg-6 col-md-6">
@@ -89,7 +90,6 @@
                     </div>
                   </div>
                 </div>
-                <p ng-show="pixelOptions.length" class="notice">* Please note that the entered cost has the currency of the specified account.</p>
                 <div class="sharing-options_add">
                   <div ng-click="pixelOptions.push(getDefaultOption())" class="btn btn-sm btn-success">Add Option</div>
                 </div>
@@ -166,7 +166,7 @@
   </script>
   <!-- inject:js -->
   <script src="js/prod/e3e9a88595f09b9.libs.min.js"></script>
-  <script src="js/prod/b818e6537f9c25f.app.min.js"></script>
+  <script src="js/prod/d54792460161ce9.app.min.js"></script>
   <!-- endinject -->
 </body>
 </html>

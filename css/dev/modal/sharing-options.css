@@ -44,7 +44,8 @@
 .notice {
   font-weight: bold;
   font-size: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  text-align: right;
 }
 .modal-body.create {
   overflow-x: auto;

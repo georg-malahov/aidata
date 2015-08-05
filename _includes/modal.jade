@@ -74,7 +74,7 @@ script(type="text/ng-template", id="modal.html")
                   data-fv-digits-message="Customer ID value can contain only digits.",
                   placeholder="Customer ID",
                   role="input")
-                div(class="no-edit_veil", style="width: 260px; height: 34px; right: 2px; top: 0px;", ng-show="option.customer.type == 'google_reseller'")
+                div(class="no-edit_veil", style="width: 254px; height: 34px; right: 2px; top: 0px;", ng-show="option.customer.type == 'google_reseller'")
             div(class="form-group col-lg-5 col-md-5")
               label(class="control-label") Cost
               input(type="text", class="form-control",
@@ -117,6 +117,12 @@ script(type="text/ng-template", id="modal.html")
                   ng-if="!option.enabled",
                   name="id_externals-[[$index]]-enabled",
                   ng-model="option.enabled")
+        a(class="notice",
+          ng-href="",
+          popover-trigger="mouseenter",
+          popover-placement="right",
+          popover="The Google Reseller Account provides your data in DoubleClick Bid Manager, the Google Display Network,  and YouTube Adding. It makes your data available to Google, but it does not guarantee that your data will be used for targeting. Google may not accept some of the segments you attempt to license, due to legal, policy, pricing, or other considerations.",
+          ng-show="(pixelOptions | filter: 'google_reseller').length") Read more about Google Reseller.
         div(class="sharing-options_add")
           div(class="btn btn-sm btn-success", ng-click="pixelOptions.push(getDefaultOption())") Add Option
       input(id="id_externals-TOTAL_FORMS", name="externals-TOTAL_FORMS", type="hidden", value="[[pixelOptions.length]]", autocomplete="off")
@@ -124,7 +130,7 @@ script(type="text/ng-template", id="modal.html")
       input(id="id_externals-MIN_NUM_FORMS", name="externals-MIN_NUM_FORMS", type="hidden", value="0")
       input(id="id_externals-MAX_NUM_FORMS", name="externals-MAX_NUM_FORMS", type="hidden", value="1000")
       div(class="modal-footer row")
-        div(class="policy")
+        div(class="policy", ng-show="(pixelOptions | filter: 'google').length")
           span I agree with &nbsp;
           a(href="http://my.aidata.me/data/docs/Google_Data_Policies.pdf", target="_blank") Google Data Platform Policies.
         button(class="btn btn-primary", type="submit") OK

@@ -18,6 +18,7 @@ angular.module('app').controller('TableController', [
       enableGridMenu: true,
       showGridFooter: false,
       showColumnFooter: false,
+      virtualizationThreshold: 20,
       multiSelect: false,
       exporterCsvFilename: "pixels_(" + (date.toISOString()) + ").csv",
       exporterFieldCallback: function(grid, row, col, value) {
@@ -30,12 +31,12 @@ angular.module('app').controller('TableController', [
       columnDefs: ColumnsService,
       onRegisterApi: function(gridApi) {
         var count;
-        $scope.gridApi = gridApi;
+        $window.gridApi = $scope.gridApi = gridApi;
         count = $window.__pixels.length;
-        if (count <= 50) {
+        if (count <= 100) {
           angular.element(document.getElementsByClassName('tablegrid_grid')[0]).css('height', count * 30 + 45 + 'px');
         } else {
-          angular.element(document.getElementsByClassName('tablegrid_grid')[0]).css('height', 50 * 30 + 45 + 'px');
+          angular.element(document.getElementsByClassName('tablegrid_grid')[0]).css('height', 100 * 30 + 45 + 'px');
         }
         $timeout(function() {
           return angular.element(document.getElementsByClassName('ui-grid-canvas')[1]).css('height', 'auto');

@@ -66,3 +66,9 @@ fieldset[disabled] .form-control {
 .form-control-feedback {
   font-size: 12px;
 }
+.input-group-btn .btn {
+  width: 150px;
+}
+.alert {
+  font-size: 1.4rem;
+}

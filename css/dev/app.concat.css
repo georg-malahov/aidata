@@ -208,6 +208,12 @@ fieldset[disabled] .form-control {
 .form-control-feedback {
   font-size: 12px;
 }
+.input-group-btn .btn {
+  width: 150px;
+}
+.alert {
+  font-size: 1.4rem;
+}
 
 
 /* base.css end */
@@ -215,6 +221,7 @@ fieldset[disabled] .form-control {
 .header {
   display: block;
   width: 100%;
+  font-size: 1.4rem;
   height: 70px;
   background-color: #e5e9ea;
   -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
@@ -441,6 +448,12 @@ fieldset[disabled] .form-control {
   position: relative;
   margin-bottom: 10px;
   background-color: #F5F5F5;
+}
+.sharing-options .popover {
+  max-width: 600px;
+}
+.sharing-options a.notice {
+  cursor: pointer;
 }
 .sharing-option-inner {
   padding: 7px 15px 15px 15px;

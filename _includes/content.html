@@ -48,7 +48,7 @@
                           </ul>
                         </div>
                         <input type="text" no-edit="mode == 'edit' &amp;&amp; !option.new" id="id_externals-[[$index]]-eid" name="externals-[[$index]]-eid" ng-model="option.customer.id" data-fv-server="[[!!option.errors.customer_id]]" data-fv-server-message="[[option.errors.customer_id]]" data-fv-notempty="true" data-fv-notempty-message="Customer ID is required." data-fv-digits="true" data-fv-digits-message="Customer ID value can contain only digits." placeholder="Customer ID" role="input" class="form-control form-control__custom"/>
-                        <div style="width: 260px; height: 34px; right: 2px; top: 0px;" ng-show="option.customer.type == 'google_reseller'" class="no-edit_veil"></div>
+                        <div style="width: 254px; height: 34px; right: 2px; top: 0px;" ng-show="option.customer.type == 'google_reseller'" class="no-edit_veil"></div>
                       </div>
                     </div>
                     <div class="form-group col-lg-5 col-md-5">
@@ -66,7 +66,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div><a ng-href="" popover-trigger="mouseenter" popover-placement="right" popover="The Google Reseller Account provides your data in DoubleClick Bid Manager, the Google Display Network,  and YouTube Adding. It makes your data available to Google, but it does not guarantee that your data will be used for targeting. Google may not accept some of the segments you attempt to license, due to legal, policy, pricing, or other considerations." ng-show="(pixelOptions | filter: 'google_reseller').length" class="notice">Read more about Google Reseller.</a>
                 <div class="sharing-options_add">
                   <div ng-click="pixelOptions.push(getDefaultOption())" class="btn btn-sm btn-success">Add Option</div>
                 </div>
@@ -76,7 +76,7 @@
               <input id="id_externals-MIN_NUM_FORMS" name="externals-MIN_NUM_FORMS" type="hidden" value="0"/>
               <input id="id_externals-MAX_NUM_FORMS" name="externals-MAX_NUM_FORMS" type="hidden" value="1000"/>
               <div class="modal-footer row">
-                <div class="policy"><span>I agree with &nbsp;</span><a href="http://my.aidata.me/data/docs/Google_Data_Policies.pdf" target="_blank">Google Data Platform Policies.</a></div>
+                <div ng-show="(pixelOptions | filter: 'google').length" class="policy"><span>I agree with &nbsp;</span><a href="http://my.aidata.me/data/docs/Google_Data_Policies.pdf" target="_blank">Google Data Platform Policies.</a></div>
                 <button type="submit" class="btn btn-primary">OK</button>
                 <button ng-click="cancel()" class="btn btn-warning">Cancel</button>
               </div>

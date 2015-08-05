@@ -3,6 +3,12 @@
   margin-bottom: 10px;
   background-color: #F5F5F5;
 }
+.sharing-options .popover {
+  max-width: 600px;
+}
+.sharing-options a.notice {
+  cursor: pointer;
+}
 .sharing-option-inner {
   padding: 7px 15px 15px 15px;
 }

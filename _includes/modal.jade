@@ -30,7 +30,14 @@ script(type="text/ng-template", id="modal.html")
       div(class="sharing-options")
         h4(class="sharing-options_header") Sharing options
         hr(class="hr")
-        p(class="notice", ng-show="pixelOptions.length") Please note that the entered cost has the currency of the specified account.
+        div(class="notice clearfix")
+          a(class="notice_reseller",
+            ng-href="",
+            popover-trigger="mouseenter",
+            popover-placement="right",
+            popover="The Google Reseller Account provides your data in DoubleClick Bid Manager, the Google Display Network,  and YouTube Adding. It makes your data available to Google, but it does not guarantee that your data will be used for targeting. Google may not accept some of the segments you attempt to license, due to legal, policy, pricing, or other considerations.",
+            ng-show="(pixelOptions | filter: 'google_reseller').length") Read more about Google Reseller.
+          p(class="notice_cost", ng-show="pixelOptions.length") Please note that the entered cost has the currency of the specified account.
         div(class="sharing-option row", ng-repeat="option in pixelOptions track by $index")
           div(class="sharing-option-inner col-lg-12 col-md-12")
             div(class="form-group col-lg-6 col-md-6")
@@ -117,12 +124,6 @@ script(type="text/ng-template", id="modal.html")
                   ng-if="!option.enabled",
                   name="id_externals-[[$index]]-enabled",
                   ng-model="option.enabled")
-        a(class="notice",
-          ng-href="",
-          popover-trigger="mouseenter",
-          popover-placement="right",
-          popover="The Google Reseller Account provides your data in DoubleClick Bid Manager, the Google Display Network,  and YouTube Adding. It makes your data available to Google, but it does not guarantee that your data will be used for targeting. Google may not accept some of the segments you attempt to license, due to legal, policy, pricing, or other considerations.",
-          ng-show="(pixelOptions | filter: 'google_reseller').length") Read more about Google Reseller.
         div(class="sharing-options_add")
           div(class="btn btn-sm btn-success", ng-click="pixelOptions.push(getDefaultOption())") Add Option
       input(id="id_externals-TOTAL_FORMS", name="externals-TOTAL_FORMS", type="hidden", value="[[pixelOptions.length]]", autocomplete="off")

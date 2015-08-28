@@ -136,7 +136,9 @@ script(type="text/ng-template", id="modal.html")
       input(id="id_externals-MIN_NUM_FORMS", name="externals-MIN_NUM_FORMS", type="hidden", value="0")
       input(id="id_externals-MAX_NUM_FORMS", name="externals-MAX_NUM_FORMS", type="hidden", value="1000")
       div(class="modal-footer row")
-        div(class="policy", ng-show="(pixelOptions | filter: 'google').length")
+        div(class="policy",
+          ng-hide="pixel.type.toLowerCase() == 'partner'",
+          ng-show="(pixelOptions | filter: 'google').length")
           span I agree with &nbsp;
           a(href="http://my.aidata.me/data/docs/Google_Data_Policies.pdf", target="_blank") Google Data Platform Policies.
         button(class="btn btn-primary", type="submit") OK

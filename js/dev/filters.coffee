@@ -117,7 +117,7 @@ angular.module('app').filter('currency', ->
         , "ZWD": "Z$"
     }
     (input, num = 2, postfix='USD') ->
-        return ('0' + postfix) if !input
         postfix = map[postfix] || '$'
+        return (0 + ' ' + postfix) if !input
         return (jQuery.number(input, num, '.', ' ') + ' ' + postfix) if parseFloat(input)
 )

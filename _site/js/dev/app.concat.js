@@ -692,10 +692,10 @@ angular.module('app').filter('currency', function() {
     if (postfix == null) {
       postfix = 'USD';
     }
-    if (!input) {
-      return '0' + postfix;
-    }
     postfix = map[postfix] || '$';
+    if (!input) {
+      return 0 + ' ' + postfix;
+    }
     if (parseFloat(input)) {
       return jQuery.number(input, num, '.', ' ') + ' ' + postfix;
     }

@@ -27,7 +27,7 @@ script(type="text/ng-template", id="modal.html")
           ng-model="pixel.name",
           placeholder="Displayed name",
           role="input")
-      div(class="sharing-options", ng-hide="pixel.type == 'partner'")
+      div(class="sharing-options", ng-hide="pixel.type.toLowerCase() == 'partner'")
         h4(class="sharing-options_header") Sharing options
         hr(class="hr")
         div(class="notice clearfix")
@@ -127,9 +127,9 @@ script(type="text/ng-template", id="modal.html")
         div(class="sharing-options_add",
           tooltip="Inactive pixel can't be shared, please wait for the pixel activation.",
           tooltip-append-to-body="true",
-          tooltip-enable="mode == 'edit' && pixel.status != 'Approved'")
+          tooltip-enable="mode == 'edit' && pixel.status == 'Not Approved'")
           div(class="btn btn-sm btn-success",
-            ng-disabled="mode == 'edit' && pixel.status != 'Approved'",
+            ng-disabled="mode == 'edit' && pixel.status == 'Not Approved'",
             ng-click="pixelOptions.push(getDefaultOption())") Add Option
       input(id="id_externals-TOTAL_FORMS", name="externals-TOTAL_FORMS", type="hidden", value="[[pixelOptions.length]]", autocomplete="off")
       input(id="id_externals-INITIAL_FORMS", name="externals-INITIAL_FORMS", type="hidden", ng-init="optionsCountInitial = pixelOptions.length", value="[[optionsCountInitial]]")

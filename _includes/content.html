@@ -30,7 +30,7 @@
                   <input type="text" name="description" data-fv-server="[[!!pixel.errors.name]]" data-fv-server-message="[[pixel.errors.name]]" ng-model="pixel.name" placeholder="Displayed name" role="input" class="form-control"/>
                 </div>
               </div>
-              <div class="sharing-options">
+              <div ng-hide="pixel.type == 'partner'" class="sharing-options">
                 <h4 class="sharing-options_header">Sharing options</h4>
                 <hr class="hr"/>
                 <div class="notice clearfix"><a ng-href="" popover-trigger="mouseenter" popover-placement="right" popover="The Google Reseller Account provides your data in DoubleClick Bid Manager, the Google Display Network,  and YouTube Adding. It makes your data available to Google, but it does not guarantee that your data will be used for targeting. Google may not accept some of the segments you attempt to license, due to legal, policy, pricing, or other considerations." ng-show="(pixelOptions | filter: 'google_reseller').length" class="notice_reseller">Read more about Google Reseller.</a>
@@ -69,8 +69,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="sharing-options_add">
-                  <div ng-click="pixelOptions.push(getDefaultOption())" class="btn btn-sm btn-success">Add Option</div>
+                <div tooltip="Inactive pixel can't be shared, please wait for the pixel activation." tooltip-append-to-body="true" tooltip-enable="mode == 'edit' &amp;&amp; pixel.status != 'Approved'" class="sharing-options_add">
+                  <div ng-disabled="mode == 'edit' &amp;&amp; pixel.status != 'Approved'" ng-click="pixelOptions.push(getDefaultOption())" class="btn btn-sm btn-success">Add Option</div>
                 </div>
               </div>
               <input id="id_externals-TOTAL_FORMS" name="externals-TOTAL_FORMS" type="hidden" value="[[pixelOptions.length]]" autocomplete="off"/>

@@ -11,3 +11,4 @@
 /* borschik:include:../../libs/ui-grid-unstable/ui-grid-unstable.min.js */
 /* borschik:include:../../libs/bootstrapValidation/formValidation.min.js */
 /* borschik:include:../../libs/bootstrapValidation/formValidation.bootstrap.min.js */
+/* borschik:include:../../libs/jquery-number/jquery.number.min.js */

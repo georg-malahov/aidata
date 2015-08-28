@@ -7,4 +7,5 @@
 /* borschik:include:./LookalikeDirective.js */
 /* borschik:include:./FormDirective.js */
 /* borschik:include:./ColumnsService.js */
+/* borschik:include:./filters.js */
 /* borschik:include:./bootstrapApp.js */

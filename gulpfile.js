@@ -22,7 +22,7 @@ function cacheBoostRename(file, newname) {
     newname = [hash.slice(0, 15), newname].join(".");
     gulp.src(file)
         .pipe(replace(/\/aidata\//g, '../'))
-        .pipe(replace(/\.\.\/\.\.\/\.\./g, '../../'))
+        .pipe(replace(/\.\.\/\.\.\/\.\./g, '../'))
         .pipe($.rename(path.join(path.dirname(file), newname)))
         .pipe(gulp.dest("./"));
 }

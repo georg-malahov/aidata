@@ -87,7 +87,7 @@ angular.module('app').filter('currency', function() {
     "PLN": "zł",
     "QAR": "﷼",
     "RON": "lei",
-    "RUB": "₽",
+    "RUB": "р",
     "SHP": "£",
     "SAR": "﷼",
     "RSD": "Дин.",
@@ -131,7 +131,23 @@ angular.module('app').filter('currency', function() {
       return 0 + ' ' + postfix;
     }
     if (parseFloat(input)) {
-      return jQuery.number(input, num, '.', ' ') + ' ' + postfix;
+      return jQuery.number(input, num, ',', ' ') + ' ' + postfix;
     }
+  };
+}).filter('number', function() {
+  return function(input, row, name) {
+    var matches, patternStr;
+    patternStr = '((\d+(\.|\,)\d*)|\d+)';
+    input += "";
+    matches = input.match(/((\d+(\.|\,)\d*)|\d+)/g);
+    if (matches === null) {
+      return input;
+    }
+    return input.replace(/[^((\d+(\.|\,)\d*)|\d+)]/g, '').replace(/((\d+(\.|\,)\d*)|\d+)/g, function(str, match1, match2, match3) {
+      var res;
+      str = str.replace(match3, '.');
+      res = jQuery.number(str, (angular.isDefined(match3) ? 2 : 0), ',', ' ');
+      return res;
+    });
   };
 });

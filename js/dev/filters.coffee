@@ -84,7 +84,7 @@ angular.module('app').filter('currency', ->
         , "PLN": "zł"
         , "QAR": "﷼"
         , "RON": "lei"
-        , "RUB": "₽"
+        , "RUB": "р"
         , "SHP": "£"
         , "SAR": "﷼"
         , "RSD": "Дин."
@@ -119,5 +119,16 @@ angular.module('app').filter('currency', ->
     (input, num = 2, postfix='USD') ->
         postfix = map[postfix] || '$'
         return (0 + ' ' + postfix) if !input
-        return (jQuery.number(input, num, '.', ' ') + ' ' + postfix) if parseFloat(input)
+        return (jQuery.number(input, num, ',', ' ') + ' ' + postfix) if parseFloat(input)
+).filter('number', ->
+    (input, row, name) ->
+        patternStr = '((\d+(\.|\,)\d*)|\d+)'
+        input += ""
+        matches = input.match(/((\d+(\.|\,)\d*)|\d+)/g)
+        return input if matches is null
+        return input.replace(/[^((\d+(\.|\,)\d*)|\d+)]/g, '').replace(/((\d+(\.|\,)\d*)|\d+)/g, (str, match1, match2, match3) ->
+            str = str.replace(match3, '.')
+            res = jQuery.number(str, (if angular.isDefined(match3) then 2 else 0), ',', ' ')
+            return res
+        )
 )

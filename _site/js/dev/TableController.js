@@ -19,10 +19,14 @@ angular.module('app').controller('TableController', [
       showGridFooter: false,
       showColumnFooter: false,
       multiSelect: false,
+      exporterCsvColumnSeparator: ';',
       exporterCsvFilename: "pixels_(" + (date.toISOString()) + ").csv",
       exporterFieldCallback: function(grid, row, col, value) {
         if (col.name === 'updated' || col.name === 'created') {
           value = $filter('date')(value, "yyyy-MM-dd HH:mm");
+        }
+        if (col.name === 'total_cost') {
+          value = $filter('number')(value);
         }
         return value;
       },

@@ -198,10 +198,14 @@ angular.module('app').controller('TableController', [
       showGridFooter: false,
       showColumnFooter: false,
       multiSelect: false,
+      exporterCsvColumnSeparator: ';',
       exporterCsvFilename: "pixels_(" + (date.toISOString()) + ").csv",
       exporterFieldCallback: function(grid, row, col, value) {
         if (col.name === 'updated' || col.name === 'created') {
           value = $filter('date')(value, "yyyy-MM-dd HH:mm");
+        }
+        if (col.name === 'total_cost') {
+          value = $filter('number')(value);
         }
         return value;
       },
@@ -653,7 +657,7 @@ angular.module('app').filter('currency', function() {
     "PLN": "zł",
     "QAR": "﷼",
     "RON": "lei",
-    "RUB": "₽",
+    "RUB": "р",
     "SHP": "£",
     "SAR": "﷼",
     "RSD": "Дин.",
@@ -697,8 +701,24 @@ angular.module('app').filter('currency', function() {
       return 0 + ' ' + postfix;
     }
     if (parseFloat(input)) {
-      return jQuery.number(input, num, '.', ' ') + ' ' + postfix;
+      return jQuery.number(input, num, ',', ' ') + ' ' + postfix;
     }
+  };
+}).filter('number', function() {
+  return function(input, row, name) {
+    var matches, patternStr;
+    patternStr = '((\d+(\.|\,)\d*)|\d+)';
+    input += "";
+    matches = input.match(/((\d+(\.|\,)\d*)|\d+)/g);
+    if (matches === null) {
+      return input;
+    }
+    return input.replace(/[^((\d+(\.|\,)\d*)|\d+)]/g, '').replace(/((\d+(\.|\,)\d*)|\d+)/g, function(str, match1, match2, match3) {
+      var res;
+      str = str.replace(match3, '.');
+      res = jQuery.number(str, (angular.isDefined(match3) ? 2 : 0), ',', ' ');
+      return res;
+    });
   };
 });
 
